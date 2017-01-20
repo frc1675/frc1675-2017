@@ -38,7 +38,7 @@ public class OI {
 	}
 
 	public double getDriverLeftYAxis() {
-		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS));
+		return -checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS));
 	}
 
 	public double getDriverRightXAxis() {
@@ -46,7 +46,7 @@ public class OI {
 	}
 
 	public double getDriverRightYAxis() {
-		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS));
+		return -checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS));
 	}
 
 	public double getDriverLeftTriggerAxis() {
@@ -62,7 +62,7 @@ public class OI {
 	}
 
 	public double getOperatorLeftYAxis() {
-		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS));
+		return -checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS));
 	}
 
 	public double getOperatorRightXAxis() {
@@ -70,7 +70,7 @@ public class OI {
 	}
 
 	public double getOperatorRightYAxis() {
-		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS));
+		return -checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS));
 	}
 
 	public double getOperatorLeftTriggerAxis() {
