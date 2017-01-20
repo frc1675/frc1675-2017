@@ -44,6 +44,8 @@ public class OI {
 	private JoystickButton driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 	private JoystickButton driverRightBumper = new JoystickButton(driverController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 	private JoystickButton driverLeftBumper = new JoystickButton(driverController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton driverLeftJoystick = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private JoystickButton driverRightJoystick = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	// private TriggerButton driverRightTrigger = new
 	// TriggerButton(driverController,XBoxControllerMap.RIGHT_TRIGGER_BUTTON);
 	// private TriggerButton driverLeftBumper = new
