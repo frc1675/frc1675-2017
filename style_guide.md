@@ -18,9 +18,9 @@
 - Class names should always be in Pascal case.
  - Good: DriveMotor
  - Bad: driveMotor, DrIvEMoToR
-- Class names generally should be nouns or noun phrases. They represent an object.
- - Good: DriveMotor, TurnLeftCommand
- - Bad: GoForward, ShootBall
+- Class names generally should be nouns or noun phrases (Commands are sometimes an exception). They represent an object.
+ - Good: DriveMotor, RobotMap
+ - Bad: GoForward, BallShooting
 
 ### Methods
 - Method names should always be in camel case.
