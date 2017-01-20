@@ -77,10 +77,9 @@ public class OI {
 		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS));
 	}
 
-	public double getRightTriggerAxisOperator() {
+	public double getOperatorRightTriggerAxis() {
 		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS));
 	}
-	
 	public double checkForDeadzone(double vector){
 		if(Math.abs(vector) < RobotMap.DriverConstants.CONTROLLER_DEADZONE){
 			return 0;
