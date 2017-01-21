@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,9 +20,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
+	public static DriveBase driveBase;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	static {
+		try{
+			driveBase = new DriveBase();
+		}catch(Throwable e){
+			e.printStackTrace();
+		}
+		
+		
+	}
 
 	/**
 	 * This function is run when the robot is first started up and should be
