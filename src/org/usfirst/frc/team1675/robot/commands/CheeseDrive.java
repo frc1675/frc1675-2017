@@ -26,8 +26,8 @@ public class CheeseDrive extends Command {
     protected void execute() {
     	double updown = Robot.oi.getLeftYAxisDriver();
     	double leftright = Robot.oi.getRightXAxisDriver();
-    	Robot.driveBase.setLeftMotors(updown+leftright);
-    	Robot.driveBase.setRightMotors(updown-leftright);
+    	Robot.driveBase.setLeftMotors(updown-leftright);
+    	Robot.driveBase.setRightMotors(updown+leftright);
     }
 
     // Make this return true when this Command no longer needs to run execute()

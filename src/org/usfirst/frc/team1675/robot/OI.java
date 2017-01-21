@@ -57,8 +57,8 @@ public class OI {
 	private JoystickButton operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
 	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
-
 	public double getLeftXAxisDriver() {
+
 		double leftXDriver = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
 		return leftXDriver;
 	}
