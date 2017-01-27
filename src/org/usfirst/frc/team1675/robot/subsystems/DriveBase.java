@@ -1,7 +1,9 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.RobotMap.CANDeviceIDs;
 import org.usfirst.frc.team1675.robot.commands.CheeseDrive;
+import org.usfirst.frc.team1675.robot.commands.bangBangTest;
 
 import com.ctre.CANTalon;
 
@@ -37,18 +39,37 @@ public class DriveBase extends Subsystem {
 		leftFront.set(-power);
 		leftBack.set(-power);
 	}
-	
-	private double motorDeadzone(double power){
-		if(power == 0){
+
+	private double motorDeadzone(double power) {
+		if (power == 0) {
 			return 0;
-		}else{
-			return Math.signum(power) * ((1 - RobotMap.DriveBaseConstants.MOTOR_DEADZONE) * Math.abs(power) + RobotMap.DriveBaseConstants.MOTOR_DEADZONE);
+		} else {
+			return Math.signum(power)
+					* ((1 - RobotMap.DriveBaseConstants.MOTOR_DEADZONE)
+							* Math.abs(power) + RobotMap.DriveBaseConstants.MOTOR_DEADZONE);
 		}
 	}
-	
+
+	public void setBangBang(double power) {
+		power = motorDeadzone(power);
+		// rightFront.setSetpoint(100);
+
+		if (Math.abs(rightFront.getEncVelocity()) < 500) {
+			rightFront.set(power);
+
+		} else
+			rightFront.set(0);
+
+	}
+
+	public int getEncoderVelocity() {
+
+		return rightFront.getEncVelocity();
+	}
+
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new CheeseDrive());
+		setDefaultCommand(new bangBangTest());
 	}
 }
