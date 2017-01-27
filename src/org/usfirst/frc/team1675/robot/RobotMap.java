@@ -47,7 +47,7 @@ public class RobotMap {
 	}
 	
 	public static class SolenoidChannels {
-		public static final int SOLENOID_ONE = 0;//not the actual values
-		public static final int SOLENOID_TWO = 1;
+		public static final int DEPLOY_LEFT = 0;//not the actual values
+		public static final int DEPLOY_RIGHT = 1;
 	}
 }

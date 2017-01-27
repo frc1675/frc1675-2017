@@ -15,16 +15,16 @@ public class Intake extends Subsystem {
 	CANTalon intakeInner;
 	CANTalon intakeOuter;
 
-	Solenoid solenoidOne;
-	Solenoid solenoidTwo;
+	Solenoid deployLeft;
+	Solenoid deployRight;
 
 	public Intake() {
 
 		intakeInner = new CANTalon(RobotMap.CANDeviceIDs.INTAKE_INNER);
 		intakeOuter = new CANTalon(RobotMap.CANDeviceIDs.INTAKE_OUTER);
 
-		solenoidOne = new Solenoid(RobotMap.SolenoidChannels.SOLENOID_ONE);
-		solenoidTwo = new Solenoid(RobotMap.SolenoidChannels.SOLENOID_TWO);
+		deployLeft = new Solenoid(RobotMap.SolenoidChannels.DEPLOY_LEFT);
+		deployRight = new Solenoid(RobotMap.SolenoidChannels.DEPLOY_RIGHT);
 
 	}
 
@@ -37,13 +37,13 @@ public class Intake extends Subsystem {
 	}
 
 	public void deployIntake() {
-		solenoidOne.set(true);
-		solenoidTwo.set(true);
+		deployLeft.set(true);
+		deployRight.set(true);
 	}
 
 	public void undeployIntake() {
-		solenoidOne.set(false);
-		solenoidTwo.set(false);
+		deployLeft.set(false);
+		deployRight.set(false);
 	}
 
 	public void runIntake(double power) {
