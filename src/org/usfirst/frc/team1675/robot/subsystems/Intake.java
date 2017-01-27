@@ -47,18 +47,14 @@ public class Intake extends Subsystem {
 	}
 
 	public void runIntake(double power) {
-		power = intakeDeadzone(power);
+		power = motorDeadzone(power);
 		intakeInner.set(power);
 		intakeOuter.set(power);
 	}	
 
-	private double intakeDeadzone(double power) {
-		if (power == 0) {
-			return 0;
-		} else {
-			return Math.signum(power) * ((1 - RobotMap.IntakeConstants.INTAKE_DEADZONE) * Math.abs(power)
+	private double motorDeadzone(double power) {
+		return Math.signum(power) * ((1 - RobotMap.IntakeConstants.INTAKE_DEADZONE) * Math.abs(power)
 					+ RobotMap.IntakeConstants.INTAKE_DEADZONE);
-		}
 	}
 
 }
