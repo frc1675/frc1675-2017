@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.subsystems.Auger;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -21,6 +22,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveBase driveBase;
+	public static Auger auger;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -28,6 +30,7 @@ public class Robot extends IterativeRobot {
 	static {
 		try{
 			driveBase = new DriveBase();
+			auger = new Auger();
 		}catch(Throwable e){
 			e.printStackTrace();
 		}

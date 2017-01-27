@@ -1,5 +1,10 @@
 package org.usfirst.frc.team1675.robot;
 
+
+
+
+import org.usfirst.frc.team1675.robot.commands.SpinAuger;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -57,6 +62,12 @@ public class OI {
 	private JoystickButton operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
 	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	
+	public OI(){
+		operatorAButton.whenPressed(new SpinAuger(SpinAuger.SpinForward));
+		operatorBButton.whenPressed(new SpinAuger(SpinAuger.SpinBackwards));
+	}
+	
 	public double getLeftXAxisDriver() {
 
 		double leftXDriver = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
