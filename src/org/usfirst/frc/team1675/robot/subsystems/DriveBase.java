@@ -1,9 +1,10 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+
 import org.usfirst.frc.team1675.robot.RobotMap.CANDeviceIDs;
 import org.usfirst.frc.team1675.robot.commands.CheeseDrive;
-import org.usfirst.frc.team1675.robot.commands.bangBangTest;
+
 
 import com.ctre.CANTalon;
 
@@ -70,6 +71,6 @@ public class DriveBase extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new bangBangTest());
+		
 	}
 }
