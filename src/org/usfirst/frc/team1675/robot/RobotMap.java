@@ -16,8 +16,8 @@ public class RobotMap {
 		public static final int LEFT_BACK_MOTOR = 0;
 		public static final int RIGHT_FRONT_MOTOR = 2;
 		public static final int RIGHT_BACK_MOTOR = 0;
+		public static final int ELEVATOR_MOTOR = 0;
 	}
-
 	public static class PDChannels {
 	}
 
@@ -37,5 +37,10 @@ public class RobotMap {
 	
 	public static class DriveBaseConstants{
 		public static final double MOTOR_DEADZONE = .1675;
+	}
+	
+	public static class MotorConstants {
+		public static final double ELEVATOR_DEADZONE = .1675;
+		public static final int ENCODER_TICKS_PER_ROTATION = 420;
 	}
 }

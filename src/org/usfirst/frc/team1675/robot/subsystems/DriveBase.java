@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.CheeseDrive;
 
 import com.ctre.CANTalon;
 
@@ -34,8 +33,8 @@ public class DriveBase extends Subsystem {
 
 	public void setLeftMotors(double power) {
 		power = motorDeadzone(power);
-		leftFront.set(-power);
-		leftBack.set(-power);
+		leftFront.set(power);
+		leftBack.set(power);
 	}
 	
 	private double motorDeadzone(double power){
@@ -49,6 +48,5 @@ public class DriveBase extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new CheeseDrive());
 	}
 }
