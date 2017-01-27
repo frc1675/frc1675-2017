@@ -2,6 +2,7 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
+import org.usfirst.frc.team1675.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,18 +22,19 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveBase driveBase;
+	public static Intake intake;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-	
+
 	static {
-		try{
+		try {
 			driveBase = new DriveBase();
-		}catch(Throwable e){
+			intake = new Intake();
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	/**

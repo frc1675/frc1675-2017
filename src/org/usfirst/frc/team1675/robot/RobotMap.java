@@ -16,6 +16,8 @@ public class RobotMap {
 		public static final int LEFT_BACK_MOTOR = 0;
 		public static final int RIGHT_FRONT_MOTOR = 2;
 		public static final int RIGHT_BACK_MOTOR = 0;
+		public static final int INTAKE_INNER = 5; 
+		public static final int INTAKE_OUTER = 6;
 	}
 
 	public static class PDChannels {
@@ -35,7 +37,17 @@ public class RobotMap {
 	public static class DriverConstants {
 	}
 	
+	
+	public static class IntakeConstants{
+		public static final double INTAKE_DEADZONE = .1675;
+	}
+	
 	public static class DriveBaseConstants{
 		public static final double MOTOR_DEADZONE = .1675;
+	}
+	
+	public static class SolenoidChannels {
+		public static final int SOLENOID_ONE = 0;//not the actual values
+		public static final int SOLENOID_TWO = 1;
 	}
 }
