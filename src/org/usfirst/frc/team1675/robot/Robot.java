@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Intake;
 
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addObject("intakedeploy", new IntakeDeploy());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 

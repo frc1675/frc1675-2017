@@ -1,5 +1,8 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeUndeploy;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -9,7 +12,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 	
-////CREATING BUTTONS
+//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
@@ -42,10 +45,14 @@ public class OI {
 	private JoystickButton driverBButton = new JoystickButton(driverController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton driverXButton = new JoystickButton(driverController, XBoxControllerMap.X_BUTTON);
 	private JoystickButton driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
-	private JoystickButton driverRightBumper = new JoystickButton(driverController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-	private JoystickButton driverLeftBumper = new JoystickButton(driverController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
-	private JoystickButton driverLeftJoystick = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-	private JoystickButton driverRightJoystick = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton driverRightBumper = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+	private JoystickButton driverLeftBumper = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton driverLeftJoystick = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private JoystickButton driverRightJoystick = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	// private TriggerButton driverRightTrigger = new
 	// TriggerButton(driverController,XBoxControllerMap.RIGHT_TRIGGER_BUTTON);
 	// private TriggerButton driverLeftBumper = new
@@ -55,8 +62,16 @@ public class OI {
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 	private JoystickButton operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
-	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,
+			XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,
+			XBoxControllerMap.LEFT_BUMPER_BUTTON);
+
+	public OI() {
+		operatorAButton.whenPressed(new IntakeDeploy());
+		operatorBButton.whenPressed(new IntakeUndeploy());
+	}
+
 	public double getLeftXAxisDriver() {
 
 		double leftXDriver = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);

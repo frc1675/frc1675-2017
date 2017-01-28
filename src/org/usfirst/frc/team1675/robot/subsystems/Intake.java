@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -15,16 +16,18 @@ public class Intake extends Subsystem {
 	CANTalon intakeInner;
 	CANTalon intakeOuter;
 
-	Solenoid deployLeft;
-	Solenoid deployRight;
+	DoubleSolenoid deployLeft;
+	DoubleSolenoid deployRight;
 
 	public Intake() {
 
 		intakeInner = new CANTalon(RobotMap.CANDeviceIDs.INTAKE_INNER);
 		intakeOuter = new CANTalon(RobotMap.CANDeviceIDs.INTAKE_OUTER);
 
-		deployLeft = new Solenoid(RobotMap.SolenoidChannels.DEPLOY_LEFT);
-		deployRight = new Solenoid(RobotMap.SolenoidChannels.DEPLOY_RIGHT);
+		deployLeft = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_LEFT_EXTEND,
+				RobotMap.SolenoidChannels.DEPLOY_LEFT_RETRACT);
+		deployRight = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_RIGHT_EXTEND,
+				RobotMap.SolenoidChannels.DEPLOY_RIGHT_RETRACT);
 
 	}
 
@@ -37,24 +40,29 @@ public class Intake extends Subsystem {
 	}
 
 	public void deployIntake() {
-		deployLeft.set(true);
-		deployRight.set(true);
+		deployLeft.set(DoubleSolenoid.Value.kForward);
+		deployRight.set(DoubleSolenoid.Value.kForward);
 	}
 
 	public void undeployIntake() {
-		deployLeft.set(false);
-		deployRight.set(false);
+		deployLeft.set(DoubleSolenoid.Value.kReverse);
+		deployRight.set(DoubleSolenoid.Value.kReverse);
+	}
+
+	public void haltIntakeDeploy() {
+		deployLeft.set(DoubleSolenoid.Value.kOff);
+		deployRight.set(DoubleSolenoid.Value.kOff);
 	}
 
 	public void runIntake(double power) {
 		power = motorDeadzone(power);
 		intakeInner.set(power);
 		intakeOuter.set(power);
-	}	
+	}
 
 	private double motorDeadzone(double power) {
 		return Math.signum(power) * ((1 - RobotMap.IntakeConstants.INTAKE_DEADZONE) * Math.abs(power)
-					+ RobotMap.IntakeConstants.INTAKE_DEADZONE);
+				+ RobotMap.IntakeConstants.INTAKE_DEADZONE);
 	}
 
 }
