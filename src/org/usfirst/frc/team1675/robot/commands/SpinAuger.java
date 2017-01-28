@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class SpinAuger extends Command {
 
-	private int spinDirection;
+	private int spinPower;
 
-	public SpinAuger(int spinDirection) {
+	public SpinAuger(int spinPower) {
 		requires(Robot.auger);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		this.spinDirection = spinDirection;
+		this.spinPower = spinPower;
 	}
 
 	// Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class SpinAuger extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.auger.setAugerPower(spinDirection);
+		Robot.auger.setAugerPower(spinPower);
 
 	}
 
