@@ -33,9 +33,11 @@ public class Fire extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.shooter.setPower(0);
     }
-    // Called when another command which requires one or more of the same
+    // Called when aother command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
