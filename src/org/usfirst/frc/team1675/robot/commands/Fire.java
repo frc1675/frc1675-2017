@@ -6,8 +6,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Fire extends Command {
+	
+	double setpoint;
 
     public Fire() {
+    	setpoint = 300;
         // Use requires() here to declare subsystem dependencies
         requires(Robot.shooter);
     }
@@ -16,13 +19,13 @@ public class Fire extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.shooter.getSpeed();
-    	if(speed < 200){
+    	double speed = Robot.shooter.getRPM();
+    	if(speed < setpoint){
     		Robot.shooter.setPower(1.0);
     	}else{
     		Robot.shooter.setPower(0.0);
     	}
-    	SmartDashboard.putNumber("What is the velocity that the motors are moving at?", speed);
+    	SmartDashboard.putNumber("RPM:", speed);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
