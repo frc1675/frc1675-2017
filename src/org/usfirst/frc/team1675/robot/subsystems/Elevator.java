@@ -15,7 +15,7 @@ public class Elevator extends Subsystem {
 	}
 
 	public void setElevatorPower(double power) {
-		power = motorDeadzone(power);
+		power = scalePower(power);
 		elevator.set(power);
 	}
 
@@ -23,7 +23,7 @@ public class Elevator extends Subsystem {
 		return elevator.getSpeed();
 	}
 
-	private double motorDeadzone(double power) {
+	private double scalePower(double power) {
 		return Math.signum(power)
 				* ((RobotMap.ElevatorConstants.MAX_POW - RobotMap.ElevatorConstants.ELEVATOR_DEADZONE)
 						* Math.abs(power) + RobotMap.ElevatorConstants.ELEVATOR_DEADZONE);
