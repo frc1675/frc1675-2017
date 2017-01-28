@@ -10,8 +10,9 @@ public class RobotMap {
 	public static class PWMChannels {
 
 	}
-	public static class CANDeviceIDs{
-		//inaccurate info
+
+	public static class CANDeviceIDs {
+		// inaccurate info
 		public static final int LEFT_FRONT_MOTOR = 3;
 		public static final int LEFT_BACK_MOTOR = 0;
 		public static final int RIGHT_FRONT_MOTOR = 2;
@@ -35,8 +36,13 @@ public class RobotMap {
 
 	public static class DriverConstants {
 	}
-	
-	public static class DriveBaseConstants{
+
+	public static class DriveBaseConstants {
 		public static final double MOTOR_DEADZONE = .1675;
+	}
+
+	public static class AugerConstants {
+		public static final int SpinBackwards = -1;
+		public static final int SpinForwards = 1;
 	}
 }

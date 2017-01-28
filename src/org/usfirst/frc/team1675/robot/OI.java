@@ -64,8 +64,8 @@ public class OI {
 	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	
 	public OI(){
-		operatorAButton.whenPressed(new SpinAuger(SpinAuger.SpinForward));
-		operatorBButton.whenPressed(new SpinAuger(SpinAuger.SpinBackwards));
+		operatorBButton.whileHeld(new SpinAuger(RobotMap.AugerConstants.SpinBackwards));
+		operatorAButton.whileHeld(new SpinAuger(RobotMap.AugerConstants.SpinForwards));
 	}
 	
 	public double getLeftXAxisDriver() {
