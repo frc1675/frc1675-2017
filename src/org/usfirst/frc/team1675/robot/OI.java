@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.Elevate;
+import org.usfirst.frc.team1675.robot.commands.elevator.Elevate;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
