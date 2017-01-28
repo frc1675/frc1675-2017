@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
 
 import com.ctre.CANTalon;
 
@@ -41,12 +42,11 @@ public class DriveBase extends Subsystem {
 		if(power == 0){
 			return 0;
 		}else{
-			return Math.signum(power) * ((1 - RobotMap.DriveBaseConstants.MOTOR_DEADZONE) * Math.abs(power) + RobotMap.DriveBaseConstants.MOTOR_DEADZONE);
+			return Math.signum(power) * ((1 - RobotMap.DriveConstants.MOTOR_DEADZONE) * Math.abs(power) + RobotMap.DriveConstants.MOTOR_DEADZONE);
 		}
 	}
 	
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new CheeseDrive());
 	}
 }
