@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1675.robot.commands;
+package org.usfirst.frc.team1675.robot.commands.auger;
 
 import org.usfirst.frc.team1675.robot.Robot;
 
@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class SpinAuger extends Command {
 
-	private int spinPower;
+	private double spinPower;
 
-	public SpinAuger(int spinPower) {
+	public SpinAuger(double spinPower) {
 		requires(Robot.auger);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

@@ -3,7 +3,8 @@ package org.usfirst.frc.team1675.robot;
 
 
 
-import org.usfirst.frc.team1675.robot.commands.SpinAuger;
+import org.usfirst.frc.team1675.robot.commands.auger.SpinAuger;
+import org.usfirst.frc.team1675.robot.commands.auger.SpinAugerForTime;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -66,6 +67,7 @@ public class OI {
 	public OI(){
 		operatorBButton.whileHeld(new SpinAuger(RobotMap.AugerConstants.SpinBackwards));
 		operatorAButton.whileHeld(new SpinAuger(RobotMap.AugerConstants.SpinForwards));
+		operatorXButton.whenPressed(new SpinAugerForTime(1, 5));
 	}
 	
 	public double getLeftXAxisDriver() {
