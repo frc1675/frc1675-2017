@@ -11,7 +11,11 @@ public class RobotMap {
 
 	}
 	public static class CANDeviceIDs{
-		
+		//inaccurate info
+		public static final int LEFT_FRONT_MOTOR = 3;
+		public static final int LEFT_BACK_MOTOR = 0;
+		public static final int RIGHT_FRONT_MOTOR = 2;
+		public static final int RIGHT_BACK_MOTOR = 0;
 	}
 
 	public static class PDChannels {
@@ -30,5 +34,9 @@ public class RobotMap {
 
 	public static class DriverConstants {
 		static public final double CONTROLLER_DEADZONE = .1675;
+	}
+	
+	public static class DriveBaseConstants{
+		public static final double MOTOR_DEADZONE = .1675;
 	}
 }
