@@ -40,8 +40,8 @@ public class RobotMap {
 		public static final double MOTOR_DEADZONE = .1675;
 	}
 	
-	public static class MotorConstants {
+	public static class ElevatorConstants {
 		public static final double ELEVATOR_DEADZONE = .1675;
-		public static final int ENCODER_TICKS_PER_ROTATION = 420;
+		public static final double MAX_POW = 1;
 	}
 }

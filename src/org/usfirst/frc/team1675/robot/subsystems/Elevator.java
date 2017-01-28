@@ -23,13 +23,10 @@ public class Elevator extends Subsystem {
 		return elevator.getSpeed();
 	}
 
-	public double getRPM() {
-		return elevator.getEncVelocity() * 600 / RobotMap.MotorConstants.ENCODER_TICKS_PER_ROTATION;
-	}
-
 	private double motorDeadzone(double power) {
-		return Math.signum(power) * ((1 - RobotMap.MotorConstants.ELEVATOR_DEADZONE) * Math.abs(power)
-				+ RobotMap.MotorConstants.ELEVATOR_DEADZONE);
+		return Math.signum(power)
+				* ((RobotMap.ElevatorConstants.MAX_POW - RobotMap.ElevatorConstants.ELEVATOR_DEADZONE)
+						* Math.abs(power) + RobotMap.ElevatorConstants.ELEVATOR_DEADZONE);
 	}
 
 	public void initDefaultCommand() {
