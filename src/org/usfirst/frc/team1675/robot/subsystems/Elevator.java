@@ -19,10 +19,6 @@ public class Elevator extends Subsystem {
 		elevator.set(power);
 	}
 
-	public double getSpeed() {
-		return elevator.getSpeed();
-	}
-
 	private double scalePower(double power) {
 		return Math.signum(power)
 				* ((RobotMap.ElevatorConstants.MAX_POW - RobotMap.ElevatorConstants.ELEVATOR_DEADZONE)
