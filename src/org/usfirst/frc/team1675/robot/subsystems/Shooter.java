@@ -15,21 +15,21 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setPower(double power) {
-		power = motorDeadzone(power);
+		power = scalePower(power);
 		fireMotor.set(power);
 	}
 
-	public double getSpeed() {
+	public double getEncVelocity() {
 		return fireMotor.getSpeed();
 	}
 
 	public double getRPM() {
-		return fireMotor.getEncVelocity() * 600 / RobotMap.MotorConstants.ENCODER_TICKS_PER_ROTATION;
+		return fireMotor.getEncVelocity() * 600 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_ROTATION;
 	}
 
-	private double motorDeadzone(double power) {
-		return Math.signum(power) * ((1 - RobotMap.MotorConstants.SHOOTER_DEADZONE) * Math.abs(power)
-				+ RobotMap.MotorConstants.SHOOTER_DEADZONE);
+	private double scalePower(double power) {
+		return Math.signum(power) * ((RobotMap.ShooterConstants.MAX_POW - RobotMap.ShooterConstants.DEADZONE) * Math.abs(power)
+				+ RobotMap.ShooterConstants.DEADZONE);
 	}
 
 	public void initDefaultCommand() {

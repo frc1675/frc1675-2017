@@ -32,7 +32,7 @@ public class DriveBase extends Subsystem {
 		if(power == 0){
 			return 0;
 		}else{
-			return Math.signum(power) * ((1 - RobotMap.MotorConstants.DRIVE_DEADZONE) * Math.abs(power) + RobotMap.MotorConstants.DRIVE_DEADZONE);
+			return Math.signum(power) * ((1 - RobotMap.DriveConstants.DEADZONE) * Math.abs(power) + RobotMap.DriveConstants.DEADZONE);
 		}
 	}
 	public void initDefaultCommand() {
