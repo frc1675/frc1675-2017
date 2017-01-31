@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.Fire;
+import org.usfirst.frc.team1675.robot.commands.shooter.Fire;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -33,7 +33,7 @@ public class OI {
 	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	
 	public OI(){
-		driverAButton.whileHeld(new Fire());
+		driverAButton.whileHeld(new Fire(300));
 	}
 	
 	public double getLeftXAxisDriver() {
