@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.shooter;
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
@@ -7,10 +9,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Fire extends Command {
 	
-	double setpoint;
+	double rpmSetpoint;
 
     public Fire(double rpmSetpoint) {
-    	setpoint = rpmSetpoint;
+    	this.rpmSetpoint = rpmSetpoint;
         requires(Robot.shooter);
     }
     
@@ -18,13 +20,13 @@ public class Fire extends Command {
     }
     
     protected void execute() {
-    	double speed = Robot.shooter.getRPM();
-    	if(speed < setpoint){
-    		Robot.shooter.setPower(1.0);
+    	double rpm = Robot.shooter.getRPM();
+    	if(rpm < rpmSetpoint){
+    		Robot.shooter.setPower(RobotMap.ShooterConstants.BANGBANG_HIGH);
     	}else{
-    		Robot.shooter.setPower(0.0);
+    		Robot.shooter.setPower(RobotMap.ShooterConstants.BANGBANG_LOW);
     	}
-    	SmartDashboard.putNumber("RPM:", speed);
+    	SmartDashboard.putNumber("RPM:", rpm);
     }
     
     protected boolean isFinished() {
