@@ -34,8 +34,8 @@ public class RobotMap {
 		static public final double CONTROLLER_DEADZONE = .1675;
 	}
 	
-	public static class DriveConstants {
-		public static final double DEADZONE = .1675;
+	public static class DriveBaseConstants {
+		public static final double MOTOR_DEADZONE = .1675;
 		public static final int ENCODER_TICKS_PER_ROTATION = 697;
 	}
 	
