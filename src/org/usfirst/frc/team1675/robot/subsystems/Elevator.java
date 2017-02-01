@@ -15,14 +15,14 @@ public class Elevator extends Subsystem {
 	}
 
 	public void setElevatorPower(double power) {
-		power = scalePower(power);
+		power = scaledDeadzone(power);
 		elevator.set(power);
 	}
 
-	private double scalePower(double power) {
+	private double scaledDeadzone(double power) {
 		return Math.signum(power)
-				* ((RobotMap.ElevatorConstants.MAX_POW - RobotMap.ElevatorConstants.ELEVATOR_DEADZONE)
-						* Math.abs(power) + RobotMap.ElevatorConstants.ELEVATOR_DEADZONE);
+				* ((RobotMap.ElevatorConstants.MAX_POWER - RobotMap.ElevatorConstants.DEADZONE)
+						* Math.abs(power) + RobotMap.ElevatorConstants.DEADZONE);
 	}
 
 	public void initDefaultCommand() {

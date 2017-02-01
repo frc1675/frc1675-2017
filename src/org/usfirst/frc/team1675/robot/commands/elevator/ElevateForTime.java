@@ -1,7 +1,5 @@
 package org.usfirst.frc.team1675.robot.commands.elevator;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 /**
  *
  */

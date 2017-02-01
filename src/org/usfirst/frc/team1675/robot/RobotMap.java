@@ -41,7 +41,10 @@ public class RobotMap {
 	}
 	
 	public static class ElevatorConstants {
-		public static final double ELEVATOR_DEADZONE = .1675;
-		public static final double MAX_POW = 1;
+		public static final double DEADZONE = .1675;
+		public static final double MAX_POWER = 1;
+		
+		public static final double FORWARD_POWER = 1.0;
+		public static final double BACKWARDS_POWER = -1.0;
 	}
 }
