@@ -15,20 +15,26 @@ public class Shooter extends Subsystem {
 	}
 
 	public void setPower(double power) {
-		power = scalePower(power);
+		power = scaledDeadzone(power);
 		fireMotor.set(power);
 	}
 
+	/**
+	 * returns encoder velocity in ticks per 100 ms
+	 * @return
+	 */
 	public double getEncVelocity() {
 		return fireMotor.getEncVelocity();
+		
 	}
 
 	public double getRPM() {
-		return fireMotor.getEncVelocity() * 600 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_ROTATION;
+		return fireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
+		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
 	}
 
-	private double scalePower(double power) {
-		return Math.signum(power) * ((RobotMap.ShooterConstants.MAX_POW - RobotMap.ShooterConstants.DEADZONE) * Math.abs(power)
+	private double scaledDeadzone(double power) {
+		return Math.signum(power) * ((RobotMap.ShooterConstants.MAX_POWER - RobotMap.ShooterConstants.DEADZONE) * Math.abs(power)
 				+ RobotMap.ShooterConstants.DEADZONE);
 	}
 
