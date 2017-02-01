@@ -46,5 +46,6 @@ public class RobotMap {
 		
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;
+		public static final double BANGBANG_RPM = 300;
 	}
 }
