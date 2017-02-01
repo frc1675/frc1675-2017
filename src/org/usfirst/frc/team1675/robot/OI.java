@@ -18,12 +18,10 @@ public class OI {
 	private JoystickButton driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
 	private JoystickButton driverRightBumper = new JoystickButton(driverController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 	private JoystickButton driverLeftBumper = new JoystickButton(driverController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
-	private JoystickButton driverLeftJoystick = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-	private JoystickButton driverRightJoystick = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	// private TriggerButton driverRightTrigger = new
-	// TriggerButton(driverController,XBoxControllerMap.RIGHT_TRIGGER_BUTTON);
-	// private TriggerButton driverLeftBumper = new
-	// TriggerButton(driverController,XBoxControllerMap.LEFT_TRIGGER_BUTTON);
+	private JoystickButton driverStartButton = new JoystickButton(driverController, XBoxControllerMap.START_BUTTON);
+	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
+	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	private Joystick operatorController = new Joystick(XBoxControllerMap.operatorControllerPort);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
@@ -31,69 +29,67 @@ public class OI {
 	private JoystickButton operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
 	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
 	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton operatorStartButton = new JoystickButton(operatorController, XBoxControllerMap.START_BUTTON);
+	private JoystickButton operatorBackButton = new JoystickButton(operatorController, XBoxControllerMap.BACK_BUTTON);
+	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
 		driverAButton.whileHeld(new Fire(300));
 	}
-	
-	public double getLeftXAxisDriver() {
-		double leftXDriver = driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
-		return leftXDriver;
-	}
 
-	public double getLeftYAxisDriver() {
-		double leftYDriver = driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
-		return leftYDriver;
-	}
-
-	public double getRightXAxisDriver() {
-		double rightXDriver = driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
-		return rightXDriver;
-	}
-
-	public double getRightYAxisDriver() {
-		double rightYDriver = driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
-		return rightYDriver;
+	public double getDriverLeftXAxis() {
+		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS));
 
 	}
 
-	public double getLeftTriggerAxisDriver() {
-		double leftTriggerDriver = driverController.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS);
-		return leftTriggerDriver;
+	public double getDriverLeftYAxis() {
+		return -checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS));
 	}
 
-	public double getRightTriggerAxisDriver() {
-		double rightTriggerDriver = driverController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS);
-		return rightTriggerDriver;
+	public double getDriverRightXAxis() {
+		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS));
 	}
 
-	public double getLeftXAxisOperator() {
-		double leftXOperator = operatorController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS);
-		return leftXOperator;
+	public double getDriverRightYAxis() {
+		return -checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS));
 	}
 
-	public double getLeftYAxisOperator() {
-		double leftYOperator = operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS);
-		return leftYOperator;
+	public double getDriverLeftTriggerAxis() {
+		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS));
 	}
 
-	public double getRightXAxisOperator() {
-		double rightXOperator = operatorController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS);
-		return rightXOperator;
+	public double getDriverRightTriggerAxis() {
+		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS));
 	}
 
-	public double getRightYAxisOperator() {
-		double rightYOperator = operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS);
-		return rightYOperator;
+	public double getOperatorLeftXAxis() {
+		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS));
 	}
 
-	public double getLeftTriggerAxisOperator() {
-		double leftTriggerOperator = operatorController.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS);
-		return leftTriggerOperator;
+	public double getOperatorLeftYAxis() {
+		return -checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.LEFT_Y_AXIS));
 	}
 
-	public double getRightTriggerAxisOperator() {
-		double rightTriggerOperator = operatorController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS);
-		return rightTriggerOperator;
+	public double getOperatorRightXAxis() {
+		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_X_AXIS));
+	}
+
+	public double getOperatorRightYAxis() {
+		return -checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_Y_AXIS));
+	}
+
+	public double getOperatorLeftTriggerAxis() {
+		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.LEFT_TRIGGER_AXIS));
+	}
+
+	public double getOperatorRightTriggerAxis() {
+		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS));
+	}
+	public double checkForDeadzone(double vector){
+		if(Math.abs(vector) < RobotMap.DriverConstants.CONTROLLER_DEADZONE){
+			return 0;
+		}
+		return Math.signum(vector) * (Math.abs(vector) - RobotMap.DriverConstants.CONTROLLER_DEADZONE)/(1 - RobotMap.DriverConstants.CONTROLLER_DEADZONE);
 	}
 }
