@@ -20,7 +20,7 @@ public class Shooter extends Subsystem {
 	}
 
 	public double getEncVelocity() {
-		return fireMotor.getSpeed();
+		return fireMotor.getEncVelocity();
 	}
 
 	public double getRPM() {
