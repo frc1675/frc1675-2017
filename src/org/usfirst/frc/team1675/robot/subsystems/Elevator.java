@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Elevator extends Subsystem {
-	CANTalon elevator;
+	private CANTalon elevator;
 
 	public Elevator() {
 		elevator = new CANTalon(RobotMap.CANDeviceIDs.ELEVATOR_MOTOR);

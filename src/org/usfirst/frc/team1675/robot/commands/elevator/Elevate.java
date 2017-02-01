@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Elevate extends Command {
 	
-	double power;
+	private double power;
 
     public Elevate(double power) {
     	this.power = power;
