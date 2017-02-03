@@ -42,7 +42,7 @@ public class RobotMap {
 	}
 
 	public static class AugerConstants {
-		public static final int SpinBackwards = -1;
-		public static final int SpinForwards = 1;
+		public static final double SPIN_BACKWARDS = -1.0;
+		public static final double SPIN_FORWARDS = 1.0;
 	}
 }

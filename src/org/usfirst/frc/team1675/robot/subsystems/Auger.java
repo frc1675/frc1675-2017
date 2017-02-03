@@ -10,24 +10,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Auger extends Subsystem {
-	//this is a constructor
 
-	
-	private CANTalon augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER_MOTOR);
+	private CANTalon augerController;
 
-	public void setAugerPower (double power){
-		augerController.set(power);
-		
+	public Auger() {
+		augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER_MOTOR);
 	}
-	
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
-    public void initDefaultCommand() {
-    	
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+	public void setAugerPower(double power) {
+		augerController.set(power);
+
+	}
+
+	public void initDefaultCommand() {
+	}
 }
-
