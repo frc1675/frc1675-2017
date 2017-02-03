@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.CheeseDrive;
+import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
 
 import com.ctre.CANTalon;
 
