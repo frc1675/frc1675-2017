@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeUndeploy;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -68,8 +68,6 @@ public class OI {
 			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 
 	public OI() {
-		operatorAButton.whenPressed(new IntakeDeploy());
-		operatorBButton.whenPressed(new IntakeUndeploy());
 	}
 
 	public double getLeftXAxisDriver() {

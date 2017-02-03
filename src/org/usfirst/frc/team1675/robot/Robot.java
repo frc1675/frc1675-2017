@@ -46,7 +46,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		chooser.addObject("intakedeploy", new IntakeDeploy());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 

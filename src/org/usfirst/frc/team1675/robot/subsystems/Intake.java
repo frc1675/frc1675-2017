@@ -44,7 +44,7 @@ public class Intake extends Subsystem {
 		deployRight.set(DoubleSolenoid.Value.kForward);
 	}
 
-	public void undeployIntake() {
+	public void retractIntake() {
 		deployLeft.set(DoubleSolenoid.Value.kReverse);
 		deployRight.set(DoubleSolenoid.Value.kReverse);
 	}
@@ -61,8 +61,8 @@ public class Intake extends Subsystem {
 	}
 
 	private double motorDeadzone(double power) {
-		return Math.signum(power) * ((1 - RobotMap.IntakeConstants.INTAKE_DEADZONE) * Math.abs(power)
-				+ RobotMap.IntakeConstants.INTAKE_DEADZONE);
+		return Math.signum(power) * ((1 - RobotMap.IntakeConstants.DEADZONE) * Math.abs(power)
+				+ RobotMap.IntakeConstants.DEADZONE);
 	}
 
 }

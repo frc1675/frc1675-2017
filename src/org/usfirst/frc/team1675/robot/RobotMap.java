@@ -12,13 +12,12 @@ public class RobotMap {
 	}
 
 	public static class CANDeviceIDs {
-		// inaccurate info
-		public static final int LEFT_FRONT_MOTOR = 3;
+		public static final int LEFT_FRONT_MOTOR = 0;
 		public static final int LEFT_BACK_MOTOR = 0;
-		public static final int RIGHT_FRONT_MOTOR = 2;
+		public static final int RIGHT_FRONT_MOTOR = 0;
 		public static final int RIGHT_BACK_MOTOR = 0;
-		public static final int INTAKE_INNER = 5;
-		public static final int INTAKE_OUTER = 6;
+		public static final int INTAKE_INNER = 0;
+		public static final int INTAKE_OUTER = 0;
 	}
 
 	public static class PDChannels {
@@ -39,10 +38,9 @@ public class RobotMap {
 	}
 
 	public static class IntakeConstants {
-		public static final double INTAKE_DEADZONE = .1675;
-		public static final double INTAKE_SOLENOID_ACTIVE_TIME = .25;// needs to
-																		// be
-																		// tuned
+		// need to tune these
+		public static final double DEADZONE = .1675;
+		public static final double SOLENOID_ACTIVE_TIME = .25;
 	}
 
 	public static class DriveBaseConstants {
@@ -50,9 +48,9 @@ public class RobotMap {
 	}
 
 	public static class SolenoidChannels {
-		public static final int DEPLOY_LEFT_RETRACT = 0;// not the actual values
-		public static final int DEPLOY_RIGHT_RETRACT = 2;
-		public static final int DEPLOY_LEFT_EXTEND = 1;
-		public static final int DEPLOY_RIGHT_EXTEND = 3;
+		public static final int DEPLOY_LEFT_RETRACT = 0;
+		public static final int DEPLOY_RIGHT_RETRACT = 0;
+		public static final int DEPLOY_LEFT_EXTEND = 0;
+		public static final int DEPLOY_RIGHT_EXTEND = 0;
 	}
 }
