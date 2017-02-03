@@ -35,8 +35,6 @@ public class OI {
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
-		operatorAButton.whileHeld(new Elevate(RobotMap.ElevatorConstants.FORWARD_POWER));
-		operatorYButton.whileHeld(new Elevate(RobotMap.ElevatorConstants.BACKWARDS_POWER));
 	}
 
 	public double getDriverLeftXAxis() {

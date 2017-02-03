@@ -10,6 +10,7 @@ public class ElevateForTime extends Elevate {
     	this.setTimeout(seconds);
     }
 
+    @Override
     protected boolean isFinished() {
         return this.isTimedOut();
     }
