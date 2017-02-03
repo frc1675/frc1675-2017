@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.subsystems.Auger;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Shooter;
 import org.usfirst.frc.team1675.robot.subsystems.Elevator;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveBase driveBase;
+	public static Auger auger;
 	public static Shooter shooter;
 	public static Elevator elevator;
 
@@ -32,6 +34,7 @@ public class Robot extends IterativeRobot {
 	static {
 		try{
 			driveBase = new DriveBase();
+			auger = new Auger();
 			shooter = new Shooter();
 			elevator = new Elevator();
 		}catch(Throwable e){

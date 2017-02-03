@@ -15,6 +15,7 @@ public class RobotMap {
 		public static final int LEFT_BACK_MOTOR = 0;
 		public static final int RIGHT_FRONT_MOTOR = 0;
 		public static final int RIGHT_BACK_MOTOR = 0;
+		public static final int AUGER_MOTOR = 0;
 		public static final int SHOOTER_MOTOR = 0;
 		public static final int ELEVATOR_MOTOR = 0;
 	}
@@ -56,5 +57,10 @@ public class RobotMap {
 		
 		public static final double FORWARD_POWER = 1.0;
 		public static final double BACKWARDS_POWER = -1.0;
+	}
+
+	public static class AugerConstants {
+		public static final double SPIN_BACKWARDS = -1.0;
+		public static final double SPIN_FORWARDS = 1.0;
 	}
 }
