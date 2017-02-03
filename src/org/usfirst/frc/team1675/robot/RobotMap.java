@@ -42,11 +42,13 @@ public class RobotMap {
 		// need to tune these
 		public static final double DEADZONE = .1675;
 		public static final double SOLENOID_ACTIVE_TIME = .25;
+		
 	}
 
 	public static class DriveBaseConstants {
 		public static final double MOTOR_DEADZONE = .1675;
 		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;
+		public static final double SHIFTER_TIME = .25;
 	}
 
 	public static class ShooterConstants {

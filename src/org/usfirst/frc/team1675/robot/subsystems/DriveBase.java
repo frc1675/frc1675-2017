@@ -6,6 +6,7 @@ import org.usfirst.frc.team1675.robot.commands.drive.TankDrive;
 
 import com.ctre.CANTalon;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -16,6 +17,7 @@ public class DriveBase extends Subsystem {
 	CANTalon leftBack;
 	CANTalon rightFront;
 	CANTalon rightBack;
+	DoubleSolenoid shifter;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -25,6 +27,9 @@ public class DriveBase extends Subsystem {
 		leftBack = new CANTalon(RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR);
 		rightFront = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR);
 		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
+		shifter = new DoubleSolenoid(
+				RobotMap.SolenoidChannels.DEPLOY_RIGHT_EXTEND,
+				RobotMap.SolenoidChannels.DEPLOY_RIGHT_RETRACT);
 	}
 
 	public void setRightMotors(double power) {
@@ -43,9 +48,22 @@ public class DriveBase extends Subsystem {
 		if (power == 0) {
 			return 0;
 		} else {
-			return Math.signum(power) * ((1 - RobotMap.DriveBaseConstants.MOTOR_DEADZONE) * Math.abs(power)
-					+ RobotMap.DriveBaseConstants.MOTOR_DEADZONE);
+			return Math.signum(power)
+					* ((1 - RobotMap.DriveBaseConstants.MOTOR_DEADZONE)
+							* Math.abs(power) + RobotMap.DriveBaseConstants.MOTOR_DEADZONE);
 		}
+	}
+
+	public void shiftHigh() {
+		shifter.set(DoubleSolenoid.Value.kForward);
+
+	}
+
+	public void shiftLow() {
+		shifter.set(DoubleSolenoid.Value.kReverse);
+	}
+	public void stopShifter(){
+		shifter.set(DoubleSolenoid.Value.kOff);
 	}
 
 	public void initDefaultCommand() {
