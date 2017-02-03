@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 
-	private Joystick driverController = new Joystick(XBoxControllerMap.driverControllerPort);
+	private Joystick driverController = new Joystick(XBoxControllerMap.DRIVER_CONTROLLER_PORT);
 	private JoystickButton driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton driverBButton = new JoystickButton(driverController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton driverXButton = new JoystickButton(driverController, XBoxControllerMap.X_BUTTON);
@@ -27,7 +27,7 @@ public class OI {
 	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
 	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-	private Joystick operatorController = new Joystick(XBoxControllerMap.operatorControllerPort);
+	private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
@@ -90,10 +90,11 @@ public class OI {
 	public double getOperatorRightTriggerAxis() {
 		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS));
 	}
+	
 	public double checkForDeadzone(double vector){
-		if(Math.abs(vector) < RobotMap.DriverConstants.CONTROLLER_DEADZONE){
+		if(Math.abs(vector) < XBoxControllerMap.DEAD_ZONE){
 			return 0;
 		}
-		return Math.signum(vector) * (Math.abs(vector) - RobotMap.DriverConstants.CONTROLLER_DEADZONE)/(1 - RobotMap.DriverConstants.CONTROLLER_DEADZONE);
+		return Math.signum(vector) * (Math.abs(vector) - XBoxControllerMap.DEAD_ZONE)/(1 - XBoxControllerMap.DEAD_ZONE);
 	}
 }

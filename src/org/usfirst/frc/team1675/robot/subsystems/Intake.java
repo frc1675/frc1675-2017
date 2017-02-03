@@ -1,11 +1,8 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-
 import com.ctre.CANTalon;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -31,12 +28,7 @@ public class Intake extends Subsystem {
 
 	}
 
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
-
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
 	}
 
 	public void deployIntake() {
@@ -49,20 +41,20 @@ public class Intake extends Subsystem {
 		deployRight.set(DoubleSolenoid.Value.kReverse);
 	}
 
-	public void haltIntakeDeploy() {
+	public void haltSolonoids() {
 		deployLeft.set(DoubleSolenoid.Value.kOff);
 		deployRight.set(DoubleSolenoid.Value.kOff);
 	}
 
 	public void runIntake(double power) {
-		power = motorDeadzone(power);
+		power = scaledDeadzone(power);
 		intakeInner.set(power);
 		intakeOuter.set(power);
 	}
 
-	private double motorDeadzone(double power) {
-		return Math.signum(power) * ((1 - RobotMap.IntakeConstants.DEADZONE) * Math.abs(power)
-				+ RobotMap.IntakeConstants.DEADZONE);
+	private double scaledDeadzone(double power) {
+		return Math.signum(power)
+				* ((RobotMap.IntakeConstants.MAX_POWER - RobotMap.IntakeConstants.DEADZONE) * Math.abs(power)
+						+ RobotMap.IntakeConstants.DEADZONE);
 	}
-
 }

@@ -27,7 +27,7 @@ public class IntakeRetract extends Command {
 	}
 
 	protected void end() {
-		Robot.intake.haltIntakeDeploy();
+		Robot.intake.haltSolonoids();
 	}
 
 	protected void interrupted() {
