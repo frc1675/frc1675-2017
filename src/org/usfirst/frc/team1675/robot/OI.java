@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.elevator.Elevate;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -31,6 +33,9 @@ public class OI {
 	private JoystickButton operatorBackButton = new JoystickButton(operatorController, XBoxControllerMap.BACK_BUTTON);
 	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	
+	public OI(){
+	}
 
 	public double getDriverLeftXAxis() {
 		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS));

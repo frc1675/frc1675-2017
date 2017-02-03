@@ -2,6 +2,7 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
+import org.usfirst.frc.team1675.robot.subsystems.Elevator;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,6 +22,7 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveBase driveBase;
+	public static Elevator elevator;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -28,6 +30,7 @@ public class Robot extends IterativeRobot {
 	static {
 		try{
 			driveBase = new DriveBase();
+			elevator = new Elevator();
 		}catch(Throwable e){
 			e.printStackTrace();
 		}
