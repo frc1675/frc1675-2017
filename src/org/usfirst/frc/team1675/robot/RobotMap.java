@@ -15,6 +15,8 @@ public class RobotMap {
 		public static final int LEFT_BACK_MOTOR = 0;
 		public static final int RIGHT_FRONT_MOTOR = 0;
 		public static final int RIGHT_BACK_MOTOR = 0;
+		public static final int INTAKE_INNER = 0;
+		public static final int INTAKE_OUTER = 0;
 		public static final int AUGER_MOTOR = 0;
 		public static final int SHOOTER_MOTOR = 0;
 		public static final int ELEVATOR_MOTOR = 0;
@@ -34,6 +36,12 @@ public class RobotMap {
 
 	public static class DriverConstants {
 		static public final double CONTROLLER_DEADZONE = .1675;
+	}
+
+	public static class IntakeConstants {
+		// need to tune these
+		public static final double DEADZONE = .1675;
+		public static final double SOLENOID_ACTIVE_TIME = .25;
 	}
 
 	public static class DriveBaseConstants {
@@ -62,5 +70,12 @@ public class RobotMap {
 	public static class AugerConstants {
 		public static final double SPIN_BACKWARDS = -1.0;
 		public static final double SPIN_FORWARDS = 1.0;
+	}
+
+	public static class SolenoidChannels {
+		public static final int DEPLOY_LEFT_RETRACT = 0;
+		public static final int DEPLOY_RIGHT_RETRACT = 0;
+		public static final int DEPLOY_LEFT_EXTEND = 0;
+		public static final int DEPLOY_RIGHT_EXTEND = 0;
 	}
 }

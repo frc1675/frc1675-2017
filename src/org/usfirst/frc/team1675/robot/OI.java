@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
 import org.usfirst.frc.team1675.robot.commands.auger.SpinAuger;
 import org.usfirst.frc.team1675.robot.commands.auger.SpinAugerForTime;
 import org.usfirst.frc.team1675.robot.commands.shooter.BangBangShooter;
