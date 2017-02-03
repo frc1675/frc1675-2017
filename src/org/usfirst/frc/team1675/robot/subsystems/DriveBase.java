@@ -1,14 +1,8 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
-<<<<<<< HEAD
 
-import org.usfirst.frc.team1675.robot.RobotMap.CANDeviceIDs;
 import org.usfirst.frc.team1675.robot.commands.CheeseDrive;
-
-=======
-import org.usfirst.frc.team1675.robot.commands.CheeseDrive;
->>>>>>> parent of ac2317a... Tara, Sierra, Harrison. We created the Auger subsystem and made simple method.
 
 import com.ctre.CANTalon;
 
