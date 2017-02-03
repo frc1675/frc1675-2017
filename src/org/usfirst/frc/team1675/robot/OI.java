@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.shooter.Fire;
+import org.usfirst.frc.team1675.robot.commands.shooter.BangBangShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -35,7 +35,6 @@ public class OI {
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
-		driverAButton.whileHeld(new Fire(RobotMap.ShooterConstants.BANGBANG_RPM));
 	}
 
 	public double getDriverLeftXAxis() {

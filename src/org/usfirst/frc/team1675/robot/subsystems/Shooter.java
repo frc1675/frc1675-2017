@@ -19,15 +19,6 @@ public class Shooter extends Subsystem {
 		fireMotor.set(power);
 	}
 
-	/**
-	 * returns encoder velocity in ticks per 100 ms
-	 * @return
-	 */
-	public double getEncVelocity() {
-		return fireMotor.getEncVelocity();
-		
-	}
-
 	public double getRPM() {
 		return fireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
 		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
