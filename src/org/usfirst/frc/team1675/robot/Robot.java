@@ -5,7 +5,6 @@ import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Intake;
 import org.usfirst.frc.team1675.robot.subsystems.Auger;
-import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Shooter;
 import org.usfirst.frc.team1675.robot.subsystems.Elevator;
 
