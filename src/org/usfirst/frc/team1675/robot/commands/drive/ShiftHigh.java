@@ -10,27 +10,27 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ShiftHigh extends Command {
 
-    public ShiftHigh() {
-    	requires (Robot.driveBase);
-    	this.setTimeout(RobotMap.DriveBaseConstants.SHIFTER_TIME);
-    }
+	public ShiftHigh() {
+		requires(Robot.driveBase);
+		this.setTimeout(RobotMap.DriveBaseConstants.SHIFTER_TIME);
+	}
 
-    protected void initialize() {
-    }
+	protected void initialize() {
+	}
 
-    protected void execute() {
-    	Robot.driveBase.shiftHigh();
-    }
+	protected void execute() {
+		Robot.driveBase.shiftHigh();
+	}
 
-    protected boolean isFinished() {
-        return isTimedOut();
-    }
+	protected boolean isFinished() {
+		return isTimedOut();
+	}
 
-    protected void end() {
-    	Robot.driveBase.stopShifter();
-    }
+	protected void end() {
+		Robot.driveBase.stopShifter();
+	}
 
-    protected void interrupted() {
-    	end();
-    }
+	protected void interrupted() {
+		end();
+	}
 }

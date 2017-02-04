@@ -27,8 +27,7 @@ public class DriveBase extends Subsystem {
 		leftBack = new CANTalon(RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR);
 		rightFront = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR);
 		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
-		shifter = new DoubleSolenoid(
-				RobotMap.SolenoidChannels.SHIFT_LOW,
+		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
 				RobotMap.SolenoidChannels.SHIFT_HIGH);
 	}
 
@@ -56,13 +55,13 @@ public class DriveBase extends Subsystem {
 
 	public void shiftHigh() {
 		shifter.set(DoubleSolenoid.Value.kForward);
-
 	}
 
 	public void shiftLow() {
 		shifter.set(DoubleSolenoid.Value.kReverse);
 	}
-	public void stopShifter(){
+
+	public void stopShifter() {
 		shifter.set(DoubleSolenoid.Value.kOff);
 	}
 
