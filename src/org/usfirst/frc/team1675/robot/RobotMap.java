@@ -19,7 +19,8 @@ public class RobotMap {
 		public static final int INTAKE_OUTER = 0;
 		public static final int AUGER_MOTOR = 0;
 		public static final int SHOOTER_MOTOR = 0;
-		public static final int ELEVATOR_MOTOR = 0;
+		public static final int LEFT_ELEVATOR_MOTOR = 0;
+		public static final int RIGHT_ELEVATOR_MOTOR = 0;
 	}
   
 	public static class PDChannels {
