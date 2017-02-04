@@ -40,7 +40,7 @@ public class DriveBase extends Subsystem {
   
 	private double scaledDeadzone(double power) {
 		return Math.signum(power)
-				* ((RobotMap.DriveConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
+				* ((RobotMap.DriveBaseConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
 						+ RobotMap.DriveBaseConstants.DEADZONE);
 	}
 
