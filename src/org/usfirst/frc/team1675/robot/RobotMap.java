@@ -20,8 +20,8 @@ public class RobotMap {
 		public static final int AUGER_MOTOR = 0;
 		public static final int LEFT_ELEVATOR_MOTOR = 0;
 		public static final int RIGHT_ELEVATOR_MOTOR = 0;
-		public static final int LEFT_SHOOTER_MOTOR = 0;
-		public static final int RIGHT_SHOOTER_MOTOR = 0;
+		public static final int LEFT_SHOOTER_MOTOR = 2;
+		public static final int RIGHT_SHOOTER_MOTOR = 3;
 	}
 
 	public static class PDChannels {
@@ -69,7 +69,11 @@ public class RobotMap {
 
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;
-		public static final double BANGBANG_RPM = 300;
+		public static final double SETPOINT_RPM = 300;
+		
+		public static final double P = .001; //.001
+		public static final double I = .0005; //.0005
+		public static final double D = .0;
 	}
 
 	public static class ElevatorConstants {
