@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -50,6 +51,9 @@ public class Intake extends Subsystem {
 		power = scaledDeadzone(power);
 		intakeInner.set(power);
 		intakeOuter.set(power);
+	}
+	public double getCurrent(int motorChannel){
+		return Robot.pdp.getIntakeCurrents(motorChannel);
 	}
 
 	private double scaledDeadzone(double power) {

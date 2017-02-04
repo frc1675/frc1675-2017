@@ -19,46 +19,46 @@ public class PowerDistribution {
 	}
 
 	public double getShooterCurrents(int whichMotor) {
-		double returnCurrent = 0;
+		double shooterCurrent = 0;
 		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_SHOOTER_POWER_CHANNEL);
+			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_SHOOTER_POWER_CHANNEL);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_SHOOTER_POWER_CHANNEL);
+			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_SHOOTER_POWER_CHANNEL);
 		}
-		return returnCurrent;
+		return shooterCurrent;
 	}
 
 	public double getElevatorCurrents(int whichMotor) {
-		double returnCurrent = 0;
+		double elevatorCurrent = 0;
 		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_ELEVATOR_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_ELEVATOR_POWER_CHANNEL);
+			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_ELEVATOR_POWER_CHANNEL);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_ELEVATOR_POWER_CHANNEL);
+			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_ELEVATOR_POWER_CHANNEL);
 		}
-		return returnCurrent;
+		return elevatorCurrent;
 	}
 
 	public double getIntakeCurrents(int whichMotor) {
-		double returnCurrent = 0;
+		double intakeCurrent = 0;
 		if (whichMotor == RobotMap.CANDeviceIDs.INTAKE_INNER) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_INNER_POWER_CHANNEL);
+			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_INNER_POWER_CHANNEL);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.INTAKE_OUTER) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_OUTER_POWER_CHANNEL);
+			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_OUTER_POWER_CHANNEL);
 		}
-		return returnCurrent;
+		return intakeCurrent;
 	}
 
 	public double getDriveMotorCurrents(int whichMotor) {
-		double returnCurrent = 0;
+		double motorCurrent = 0;
 		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_BACK_POWER_CHANNEL);
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_BACK_POWER_CHANNEL);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_FRONT_POWER_CHANNEL);
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_FRONT_POWER_CHANNEL);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_BACK_POWER_CHANNEL);
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_BACK_POWER_CHANNEL);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR) {
-			returnCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_FRONT_POWER_CHANNEL);
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_FRONT_POWER_CHANNEL);
 		}
-		return returnCurrent;
+		return motorCurrent;
 	}
 }

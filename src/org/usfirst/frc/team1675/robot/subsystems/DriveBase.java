@@ -1,9 +1,12 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
-import org.usfirst.frc.team1675.robot.commands.drive.TankDrive;
+import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
+
 import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -54,6 +57,9 @@ public class DriveBase extends Subsystem {
 
 	public void stopShifter() {
 		shifter.set(DoubleSolenoid.Value.kOff);
+	}
+	public double getCurrent(int motorChannel){
+		return Robot.pdp.getDriveMotorCurrents(motorChannel);
 	}
 
 	public void initDefaultCommand() {
