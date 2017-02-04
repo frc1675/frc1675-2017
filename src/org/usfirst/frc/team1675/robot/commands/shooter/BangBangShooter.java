@@ -22,13 +22,23 @@ public class BangBangShooter extends Command {
 	}
 
 	protected void execute() {
-		double rpm = Robot.shooter.getRPM();
-		if (rpm < rpmSetpoint) {
-			Robot.shooter.setPower(RobotMap.ShooterConstants.BANGBANG_HIGH);
+		double rpmLeft = Math.abs(Robot.shooter.getLeftMotorRPM());
+		double rpmRight = Math.abs(Robot.shooter.getRightMotorRPM());
+		
+		if (rpmLeft < rpmSetpoint) {
+			Robot.shooter.setLeftMotorPower(RobotMap.ShooterConstants.BANGBANG_HIGH);
 		} else {
-			Robot.shooter.setPower(RobotMap.ShooterConstants.BANGBANG_LOW);
+			Robot.shooter.setLeftMotorPower(RobotMap.ShooterConstants.BANGBANG_LOW);
 		}
-		SmartDashboard.putNumber("Shooter RPM:", rpm);
+		
+		if (rpmRight < rpmSetpoint) {
+			Robot.shooter.setRightMotorPower(RobotMap.ShooterConstants.BANGBANG_HIGH);
+		} else {
+			Robot.shooter.setRightMotorPower(RobotMap.ShooterConstants.BANGBANG_LOW);
+		}
+		
+		SmartDashboard.putNumber("Shooter Left RPM:", rpmLeft);
+		SmartDashboard.putNumber("Shooter Right RPM:", rpmRight);
 	}
 
 	protected boolean isFinished() {
@@ -36,7 +46,7 @@ public class BangBangShooter extends Command {
 	}
 
 	protected void end() {
-		Robot.shooter.setPower(0);
+		Robot.shooter.setMotorPower(0);
 	}
 
 	protected void interrupted() {

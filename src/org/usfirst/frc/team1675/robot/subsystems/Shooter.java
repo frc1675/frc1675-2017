@@ -14,17 +14,29 @@ public class Shooter extends Subsystem {
 	public Shooter() {
 		leftFireMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR);
 		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR);
-		
-		
 	}
 
-	public void setPower(double power) {
+	public void setMotorPower(double power) {
+		setLeftMotorPower(power);
+		setRightMotorPower(power);
+	}
+	
+	public void setLeftMotorPower(double power){
 		power = scaledDeadzone(power);
 		leftFireMotor.set(power);
+	}
+	
+	public void setRightMotorPower(double power){
+		power = scaledDeadzone(power);
 		rightFireMotor.set(power);
 	}
 
-	public double getRPM() {
+	public double getLeftMotorRPM() {
+		return leftFireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
+		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
+	}
+	
+	public double getRightMotorRPM() {
 		return leftFireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
 		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
 	}
