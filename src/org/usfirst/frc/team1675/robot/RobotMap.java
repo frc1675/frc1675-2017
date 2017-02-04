@@ -18,7 +18,8 @@ public class RobotMap {
 		public static final int INTAKE_INNER = 0;
 		public static final int INTAKE_OUTER = 0;
 		public static final int AUGER_MOTOR = 0;
-		public static final int SHOOTER_MOTOR = 0;
+		public static final int LEFT_SHOOTER_MOTOR = 2;
+		public static final int RIGHT_SHOOTER_MOTOR = 3; 
 		public static final int ELEVATOR_MOTOR = 0;
 	}
   
@@ -73,9 +74,10 @@ public class RobotMap {
 	}
 
 	public static class SolenoidChannels {
+		//inaccurate values, but MUST all be different or else robot won't run
 		public static final int DEPLOY_LEFT_RETRACT = 0;
-		public static final int DEPLOY_RIGHT_RETRACT = 0;
-		public static final int DEPLOY_LEFT_EXTEND = 0;
-		public static final int DEPLOY_RIGHT_EXTEND = 0;
+		public static final int DEPLOY_RIGHT_RETRACT = 1;
+		public static final int DEPLOY_LEFT_EXTEND = 2;
+		public static final int DEPLOY_RIGHT_EXTEND = 3;
 	}
 }
