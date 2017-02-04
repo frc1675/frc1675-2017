@@ -6,8 +6,8 @@ public class XBoxControllerMap {
 	
 
 
-	public static final int driverControllerPort = 0;
-	public static final int operatorControllerPort = 1;
+	public static final int DRIVER_CONTROLLER_PORT = 0;
+	public static final int OPERATOR_CONTROLLER_PORT = 1;
 
 	// left analog stick
 	public static final int LEFT_X_AXIS = 0;
