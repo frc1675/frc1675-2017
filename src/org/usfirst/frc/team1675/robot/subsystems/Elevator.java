@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,6 +21,9 @@ public class Elevator extends Subsystem {
 		power = scaledDeadzone(power);
 		leftElevatorMotor.set(power);
 		rightElevatorMotor.set(power);
+	}
+	public double getCurrent(int motorChannel){
+		return Robot.pdp.getElevatorCurrents(motorChannel);
 	}
 
 	private double scaledDeadzone(double power) {

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -34,6 +35,9 @@ public class Shooter extends Subsystem {
 	public double getMotorRPM() {
 		return leftFireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
 		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
+	}
+	public double getCurrent(int motorChannel){
+		return Robot.pdp.getShooterCurrents(motorChannel);
 	}
 
 	private double scaledDeadzone(double power) {

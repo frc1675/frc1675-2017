@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1675.robot.subsystems;
 
+import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,7 +21,9 @@ public class Auger extends Subsystem {
 		augerController.set(power);
 
 	}
-	
+	public double getCurrent(){
+		return Robot.pdp.getAugerCurrent();
+	}
 	private double scaledDeadzone(double power) {
 		return Math.signum(power)
 				* ((RobotMap.AugerConstants.MAX_POWER - RobotMap.AugerConstants.DEADZONE)
