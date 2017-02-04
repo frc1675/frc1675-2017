@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
 			shooter = new Shooter();
 			elevator = new Elevator();
 			pdp = new PowerDistribution();
-		} catch(Throwable e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 
@@ -88,8 +88,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		//autonomousCommand = chooser.getSelected();
-		
+		autonomousCommand = chooser.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -109,7 +108,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		
+
 	}
 
 	@Override
@@ -127,7 +126,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putNumber("Current",pdp.getDriveMotorCurrents(3));
 		Scheduler.getInstance().run();
 	}
 
