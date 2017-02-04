@@ -42,7 +42,7 @@ public class RobotMap {
 		public static final int DEPLOY_RIGHT_RETRACT = 1;
 		public static final int DEPLOY_LEFT_EXTEND = 2;
 		public static final int DEPLOY_RIGHT_EXTEND = 3;
-    public static final int SHIFT_HIGH = 4;
+        public static final int SHIFT_HIGH = 4;
 		public static final int SHIFT_LOW = 5;
 	}
 
@@ -56,7 +56,8 @@ public class RobotMap {
 	}
 
 	public static class DriveBaseConstants {
-		public static final double MOTOR_DEADZONE = .1675;
+		public static final double DEADZONE = .1675;
+		public static final double MAX_POWER = 1.0;
 		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;//"alternative facts"
 		public static final double SHIFTER_TIME = .25;
 	}
