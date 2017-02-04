@@ -1,9 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.auger;
 
 import org.usfirst.frc.team1675.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
@@ -15,16 +13,13 @@ public class SpinAuger extends Command {
 	public SpinAuger(double spinPower) {
 		requires(Robot.auger);
 		this.spinPower = spinPower;
-
 	}
 
 	protected void initialize() {
 		Robot.auger.setAugerPower(spinPower);
-
 	}
 
 	protected void execute() {
-
 	}
 
 	protected boolean isFinished() {
