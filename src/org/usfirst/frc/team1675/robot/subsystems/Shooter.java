@@ -15,6 +15,8 @@ public class Shooter extends Subsystem {
 	public Shooter() {
 		leftFireMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR);
 		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR);
+		
+		leftFireMotor.reverseSensor(true);//might not apply to our robot
 	}
 
 	public void setMotorPower(double power) {
@@ -33,7 +35,7 @@ public class Shooter extends Subsystem {
 	}
 
 	public double getMotorRPM() {
-		return leftFireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
+		return leftFireMotor.getSpeed() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
 		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
 	}
 	public double getCurrent(int motorChannel){

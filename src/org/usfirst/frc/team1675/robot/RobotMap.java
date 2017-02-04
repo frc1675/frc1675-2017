@@ -80,7 +80,11 @@ public class RobotMap {
 
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;
-		public static final double BANGBANG_RPM = 300;
+		public static final double SETPOINT_RPM = 300;
+		
+		public static final double P = .001; //.001
+		public static final double I = .0005; //.0005
+		public static final double D = .0;
 	}
 
 	public static class ElevatorConstants {
