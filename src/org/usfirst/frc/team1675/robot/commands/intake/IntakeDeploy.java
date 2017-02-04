@@ -26,7 +26,7 @@ public class IntakeDeploy extends Command {
 	}
 
 	protected void end() {
-		Robot.intake.haltSolonoids();
+		Robot.intake.stopSolenoids();
 	}
 
 	protected void interrupted() {

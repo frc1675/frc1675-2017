@@ -44,7 +44,7 @@ public class RobotMap {
 	public static class DriveConstants {
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1.0;
-		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;
+		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;//"alternative facts"
 	}
 	
 	public static class IntakeConstants {
@@ -57,7 +57,7 @@ public class RobotMap {
 	public static class ShooterConstants {
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1;
-		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;
+		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;//"alternative facts"
 
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;

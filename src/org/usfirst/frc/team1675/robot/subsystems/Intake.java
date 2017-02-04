@@ -41,7 +41,7 @@ public class Intake extends Subsystem {
 		deployRight.set(DoubleSolenoid.Value.kReverse);
 	}
 
-	public void haltSolonoids() {
+	public void stopSolenoids() {
 		deployLeft.set(DoubleSolenoid.Value.kOff);
 		deployRight.set(DoubleSolenoid.Value.kOff);
 	}
