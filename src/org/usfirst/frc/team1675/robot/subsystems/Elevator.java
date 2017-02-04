@@ -8,15 +8,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Elevator extends Subsystem {
-	private CANTalon elevator;
-
+	private CANTalon leftElevatorMotor;
+	private CANTalon rightElevatorMotor;
+	
 	public Elevator() {
-		elevator = new CANTalon(RobotMap.CANDeviceIDs.ELEVATOR_MOTOR);
+		leftElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_ELEVATOR_MOTOR);
+		rightElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR);
 	}
 
 	public void setElevatorPower(double power) {
 		power = scaledDeadzone(power);
-		elevator.set(power);
+		leftElevatorMotor.set(power);
+		rightElevatorMotor.set(power);
 	}
 
 	private double scaledDeadzone(double power) {
