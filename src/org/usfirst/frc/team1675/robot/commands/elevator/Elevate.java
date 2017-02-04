@@ -9,31 +9,30 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class Elevate extends Command {
-	
+
 	private double power;
 
-    public Elevate(double power) {
-    	this.power = power;
-        requires(Robot.elevator);
-    }
+	public Elevate(double power) {
+		this.power = power;
+		requires(Robot.elevator);
+	}
 
-    protected void initialize() {
-    	Robot.elevator.setElevatorPower(power);
-    }
+	protected void initialize() {
+		Robot.elevator.setElevatorPower(power);
+	}
 
-    protected void execute() {
-    	
-    }
+	protected void execute() {
+	}
 
-    protected boolean isFinished() {
-        return false;
-    }
+	protected boolean isFinished() {
+		return false;
+	}
 
-    protected void end() {
-    	Robot.elevator.setElevatorPower(0);
-    }
+	protected void end() {
+		Robot.elevator.setElevatorPower(0);
+	}
 
-    protected void interrupted() {
-    	end();
-    }
+	protected void interrupted() {
+		end();
+	}
 }
