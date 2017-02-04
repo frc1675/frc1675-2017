@@ -55,6 +55,9 @@ public class RobotMap {
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1.0;
 		public static final double SOLENOID_ACTIVE_TIME = .25;
+		
+		public static final double INTAKE_POWER = 1;
+		public static final double OUTTAKE_POWER = -1;
 	}
 
 	public static class ShooterConstants {
