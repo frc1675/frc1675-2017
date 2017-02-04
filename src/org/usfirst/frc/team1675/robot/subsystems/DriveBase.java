@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
 import org.usfirst.frc.team1675.robot.commands.drive.TankDrive;
 import com.ctre.CANTalon;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -14,12 +15,15 @@ public class DriveBase extends Subsystem {
 	CANTalon leftBack;
 	CANTalon rightFront;
 	CANTalon rightBack;
+	DoubleSolenoid shifter;
 
 	public DriveBase() {
 		leftFront = new CANTalon(RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR);
 		leftBack = new CANTalon(RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR);
 		rightFront = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR);
 		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
+		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
+				RobotMap.SolenoidChannels.SHIFT_HIGH);
 	}
 
 	public void setRightMotors(double power) {
@@ -32,12 +36,24 @@ public class DriveBase extends Subsystem {
 		power = scaledDeadzone(power);
 		leftFront.set(power);
 		leftBack.set(power);
-	}
-
+  }
+  
 	private double scaledDeadzone(double power) {
 		return Math.signum(power)
-				* ((RobotMap.DriveConstants.MAX_POWER - RobotMap.DriveConstants.DEADZONE) * Math.abs(power)
-						+ RobotMap.DriveConstants.DEADZONE);
+				* ((RobotMap.DriveConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
+						+ RobotMap.DriveBaseConstants.DEADZONE);
+	}
+
+	public void shiftHigh() {
+		shifter.set(DoubleSolenoid.Value.kForward);
+	}
+
+	public void shiftLow() {
+		shifter.set(DoubleSolenoid.Value.kReverse);
+	}
+
+	public void stopShifter() {
+		shifter.set(DoubleSolenoid.Value.kOff);
 	}
 
 	public void initDefaultCommand() {
