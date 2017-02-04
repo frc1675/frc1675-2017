@@ -31,12 +31,7 @@ public class Shooter extends Subsystem {
 		rightFireMotor.set(power);
 	}
 
-	public double getLeftMotorRPM() {
-		return leftFireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
-		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
-	}
-	
-	public double getRightMotorRPM() {
+	public double getMotorRPM() {
 		return leftFireMotor.getEncVelocity() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
 		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
 	}
