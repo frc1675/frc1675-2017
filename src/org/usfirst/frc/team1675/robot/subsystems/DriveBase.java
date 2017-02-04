@@ -28,8 +28,8 @@ public class DriveBase extends Subsystem {
 		rightFront = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR);
 		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
 		shifter = new DoubleSolenoid(
-				RobotMap.SolenoidChannels.DEPLOY_RIGHT_EXTEND,
-				RobotMap.SolenoidChannels.DEPLOY_RIGHT_RETRACT);
+				RobotMap.SolenoidChannels.SHIFT_LOW,
+				RobotMap.SolenoidChannels.SHIFT_HIGH);
 	}
 
 	public void setRightMotors(double power) {

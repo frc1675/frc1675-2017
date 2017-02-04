@@ -79,5 +79,7 @@ public class RobotMap {
 		public static final int DEPLOY_RIGHT_RETRACT = 0;
 		public static final int DEPLOY_LEFT_EXTEND = 0;
 		public static final int DEPLOY_RIGHT_EXTEND = 0;
+		public static final int SHIFT_HIGH = 4;
+		public static final int 	SHIFT_LOW = 5;
 	}
 }
