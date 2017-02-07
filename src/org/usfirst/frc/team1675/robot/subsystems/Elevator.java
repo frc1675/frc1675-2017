@@ -13,8 +13,8 @@ public class Elevator extends Subsystem {
 	private CANTalon rightElevatorMotor;
 	
 	public Elevator() {
-		leftElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_ELEVATOR_MOTOR);
-		rightElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR);
+		leftElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.ELEVATOR_LEFT);
+		rightElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.ELEVATOR_RIGHT);
 	}
 
 	public void setElevatorPower(double power) {
@@ -22,8 +22,13 @@ public class Elevator extends Subsystem {
 		leftElevatorMotor.set(power);
 		rightElevatorMotor.set(power);
 	}
-	public double getCurrent(int motorChannel){
-		return Robot.pdp.getElevatorCurrents(motorChannel);
+	
+	public double getLeftCurrent(){
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.ELEVATOR_LEFT);
+	}
+	
+	public double getRightCurrent(){
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.ELEVATOR_RIGHT);
 	}
 
 	private double scaledDeadzone(double power) {

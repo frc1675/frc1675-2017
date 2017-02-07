@@ -1,8 +1,5 @@
 package org.usfirst.frc.team1675.robot.utilities;
 
-import org.usfirst.frc.team1675.robot.Robot;
-import org.usfirst.frc.team1675.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 
 public class PowerDistribution {
@@ -11,54 +8,50 @@ public class PowerDistribution {
 	public PowerDistribution() {
 		pdp = new PowerDistributionPanel();
 	}
-
-	// fill in the actual channels pls.
-	// whichMotor is the CAN id of the motor that you want.
-	public double getAugerCurrent() {
-		return pdp.getCurrent(RobotMap.PDChannels.AUGER_MOTOR_POWER_CHANNEL);
-	}
-
-	public double getShooterCurrents(int whichMotor) {
-		double shooterCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR) {
-			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_SHOOTER_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR) {
-			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_SHOOTER_POWER_CHANNEL);
+	
+	// id is the pd channel of the motor
+	/*returns the current of the motor in Amperes for the channel specified
+	 * channels range from 0 to 15, if you enter an invalid channel, this will return -1
+	 */
+	public double getMotorCurrent(int channel){
+		if(channel >= 0 && channel < 16){
+			return pdp.getCurrent(channel);
 		}
-		return shooterCurrent;
+		return -1;
 	}
-
-	public double getElevatorCurrents(int whichMotor) {
-		double elevatorCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_ELEVATOR_MOTOR) {
-			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_ELEVATOR_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR) {
-			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_ELEVATOR_POWER_CHANNEL);
-		}
-		return elevatorCurrent;
+	
+	/*
+	 * returns the total current from all channels of the pdp in Amperes
+	 */
+	public double getTotalCurrent(){
+		return pdp.getTotalCurrent();
 	}
-
-	public double getIntakeCurrents(int whichMotor) {
-		double intakeCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.INTAKE_INNER) {
-			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_INNER_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.INTAKE_OUTER) {
-			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_OUTER_POWER_CHANNEL);
-		}
-		return intakeCurrent;
+	
+	/*
+	 * returns the temperature of the PDP in degrees Celsius
+	 */
+	public double getTemperature(){
+		return pdp.getTemperature();
 	}
-
-	public double getDriveMotorCurrents(int whichMotor) {
-		double motorCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_BACK_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_FRONT_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_BACK_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_FRONT_POWER_CHANNEL);
-		}
-		return motorCurrent;
+	
+	/*returns the total energy drawn in Joules from all pdp channels
+	 * 
+	 */
+	public double getEnergy(){
+		return pdp.getTotalEnergy();
+	}
+	
+	/*
+	 * returns the total power in Watts from all pdp channels
+	 */
+	public double getPower(){
+		return pdp.getTotalPower();
+	}
+	
+	/*
+	 * returns the input voltage in Volts for the pdp
+	 */
+	public double getVoltage(){
+		return pdp.getVoltage();
 	}
 }

@@ -52,8 +52,13 @@ public class Intake extends Subsystem {
 		intakeInner.set(power);
 		intakeOuter.set(power);
 	}
-	public double getCurrent(int motorChannel){
-		return Robot.pdp.getIntakeCurrents(motorChannel);
+	
+	public double getInnerCurrent(){
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.INTAKE_INNER);
+	}
+	
+	public double getOuterCurrent(){
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.INTAKE_OUTER);
 	}
 
 	private double scaledDeadzone(double power) {

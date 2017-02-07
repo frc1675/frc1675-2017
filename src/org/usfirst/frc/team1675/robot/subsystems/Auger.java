@@ -13,7 +13,7 @@ public class Auger extends Subsystem {
 	private CANTalon augerController;
 
 	public Auger() {
-		augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER_MOTOR);
+		augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER);
 	}
 
 	public void setAugerPower(double power) {
@@ -21,9 +21,11 @@ public class Auger extends Subsystem {
 		augerController.set(power);
 
 	}
+	
 	public double getCurrent(){
-		return Robot.pdp.getAugerCurrent();
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.AUGER);
 	}
+	
 	private double scaledDeadzone(double power) {
 		return Math.signum(power)
 				* ((RobotMap.AugerConstants.MAX_POWER - RobotMap.AugerConstants.DEADZONE)

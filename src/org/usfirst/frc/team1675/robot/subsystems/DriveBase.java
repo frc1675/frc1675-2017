@@ -21,12 +21,11 @@ public class DriveBase extends Subsystem {
 	DoubleSolenoid shifter;
 
 	public DriveBase() {
-		leftFront = new CANTalon(RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR);
-		leftBack = new CANTalon(RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR);
-		rightFront = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR);
-		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
-		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
-				RobotMap.SolenoidChannels.SHIFT_HIGH);
+		leftFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT);
+		leftBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_BACK);
+		rightFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_FRONT);
+		rightBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_BACK);
+		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW, RobotMap.SolenoidChannels.SHIFT_HIGH);
 	}
 
 	public void setRightMotors(double power) {
@@ -39,12 +38,6 @@ public class DriveBase extends Subsystem {
 		power = scaledDeadzone(power);
 		leftFront.set(power);
 		leftBack.set(power);
-  }
-  
-	private double scaledDeadzone(double power) {
-		return Math.signum(power)
-				* ((RobotMap.DriveBaseConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
-						+ RobotMap.DriveBaseConstants.DEADZONE);
 	}
 
 	public void shiftHigh() {
@@ -58,8 +51,27 @@ public class DriveBase extends Subsystem {
 	public void stopShifter() {
 		shifter.set(DoubleSolenoid.Value.kOff);
 	}
-	public double getCurrent(int motorChannel){
-		return Robot.pdp.getDriveMotorCurrents(motorChannel);
+
+	public double getLeftFrontCurrent() {
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.DRIVE_LEFT_FRONT);
+	}
+	
+	public double getLeftBackCurrent() {
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.DRIVE_LEFT_BACK);
+	}
+	
+	public double getRightFrontCurrent() {
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.DRIVE_RIGHT_FRONT);
+	}
+	
+	public double getRightBackCurrent() {
+		return Robot.pdp.getMotorCurrent(RobotMap.PDChannels.DRIVE_RIGHT_BACK);
+	}
+	
+	private double scaledDeadzone(double power) {
+		return Math.signum(power)
+				* ((RobotMap.DriveBaseConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
+						+ RobotMap.DriveBaseConstants.DEADZONE);
 	}
 
 	public void initDefaultCommand() {
