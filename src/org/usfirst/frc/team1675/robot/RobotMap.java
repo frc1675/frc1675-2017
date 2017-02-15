@@ -11,10 +11,10 @@ public class RobotMap {
 	}
 
 	public static class CANDeviceIDs {
-		public static final int LEFT_FRONT_MOTOR = 2;
-		public static final int LEFT_BACK_MOTOR = 0;
+		public static final int LEFT_FRONT_MOTOR = 1;
+		public static final int LEFT_BACK_MOTOR = 2;
 		public static final int RIGHT_FRONT_MOTOR = 3;
-		public static final int RIGHT_BACK_MOTOR = 0;
+		public static final int RIGHT_BACK_MOTOR = 4;
 		public static final int INTAKE_INNER = 0;
 		public static final int INTAKE_OUTER = 0;
 		public static final int AUGER_MOTOR = 0;
