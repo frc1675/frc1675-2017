@@ -2,8 +2,7 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
-import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
+import org.usfirst.frc.team1675.robot.commands.drive.TankDrive;
 
 import com.ctre.CANTalon;
 
@@ -27,6 +26,9 @@ public class DriveBase extends Subsystem {
 		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
 		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
 				RobotMap.SolenoidChannels.SHIFT_HIGH);
+		
+		leftFront.setInverted(true);
+		leftBack.setInverted(true);
 	}
 
 	public void setRightMotors(double power) {
@@ -63,6 +65,6 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new CheeseDrive());
+		setDefaultCommand(new TankDrive());
 	}
 }
