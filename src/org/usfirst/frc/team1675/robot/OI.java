@@ -1,11 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
-import org.usfirst.frc.team1675.robot.commands.auger.SpinAuger;
-import org.usfirst.frc.team1675.robot.commands.auger.SpinAugerForTime;
-import org.usfirst.frc.team1675.robot.commands.shooter.BangBangShooter;
 import org.usfirst.frc.team1675.robot.commands.elevator.Elevate;
+import org.usfirst.frc.team1675.robot.commands.shooter.VBusShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -40,6 +36,11 @@ public class OI {
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
+		driverAButton.whileHeld(new Elevate(RobotMap.ElevatorConstants.FORWARDS_POWER));
+		driverYButton.whileHeld(new Elevate(RobotMap.ElevatorConstants.BACKWARDS_POWER));
+		
+		driverBButton.whileHeld(new VBusShooter(RobotMap.ShooterConstants.FORWARDS_POWER));
+		driverXButton.whileHeld(new VBusShooter(RobotMap.ShooterConstants.BACKWARDS_POWER));
 	}
 
 	public double getDriverLeftXAxis() {

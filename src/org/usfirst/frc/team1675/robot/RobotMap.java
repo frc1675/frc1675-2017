@@ -82,15 +82,18 @@ public class RobotMap {
 		public static final double BANGBANG_HIGH = 1.0;
 		public static final double SETPOINT_RPM = 300;
 		
-		public static final double P = .001; //.001
-		public static final double I = .0005; //.0005
+		public static final double P = .001; //workable value is .001
+		public static final double I = .0005; //workable value is .0005
 		public static final double D = .0;
+		
+		public static final double FORWARDS_POWER = 1.0;
+		public static final double BACKWARDS_POWER = -1.0;
 	}
 
 	public static class ElevatorConstants {
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1.0;
-		public static final double FORWARD_POWER = 1.0;
+		public static final double FORWARDS_POWER = 1.0;
 		public static final double BACKWARDS_POWER = -1.0;
 	}
 
