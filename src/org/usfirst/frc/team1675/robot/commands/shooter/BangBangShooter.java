@@ -21,7 +21,7 @@ public class BangBangShooter extends Command {
 	}
 
 	protected void execute() {
-		double rpm = Math.abs(Robot.shooter.getMotorRPM());
+		double rpm = Math.abs(Robot.shooter.getRPM());
 		
 		if (rpm < rpmSetpoint) {
 			Robot.shooter.setMotorPower(RobotMap.ShooterConstants.BANGBANG_HIGH);

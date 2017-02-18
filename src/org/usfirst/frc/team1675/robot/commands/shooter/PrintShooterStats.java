@@ -8,33 +8,31 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class VBusShooter extends Command {
-	
-	private double power;
+public class PrintShooterStats extends Command {
 
-    public VBusShooter(double power) {
-        requires(Robot.shooter);
-        this.power = power;
+    public PrintShooterStats() {
+    	requires(Robot.shooter);
     }
 
     protected void initialize() {
-    	Robot.shooter.setMotorPower(power);
     }
 
+    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	SmartDashboard.putNumber("Shooter Pulse Count", Robot.shooter.getPulseCount());
-    	SmartDashboard.putNumber("Shooter RPM", Robot.shooter.getRPM());
     }
 
+    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
     }
 
+    // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.setMotorPower(0);
     }
 
+    // Called when another command which requires one or more of the same
+    // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

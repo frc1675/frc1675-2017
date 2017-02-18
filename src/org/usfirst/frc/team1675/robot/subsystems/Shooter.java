@@ -2,7 +2,11 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.shooter.PrintShooterStats;
+
 import com.ctre.CANTalon;
+
+import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -10,13 +14,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 	private CANTalon leftFireMotor;
-	private CANTalon rightFireMotor; 
+	private CANTalon rightFireMotor;
+	
+	private Counter counter;
 
 	public Shooter() {
 		leftFireMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR);
 		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR);
 		
-		leftFireMotor.reverseSensor(true);//might not apply to our robot
+		counter = new Counter(RobotMap.DIOChannels.SHOOTER_COUNTER);
+		counter.setDistancePerPulse(1);
+		
 		rightFireMotor.setInverted(true);
 	}
 
@@ -35,10 +43,19 @@ public class Shooter extends Subsystem {
 		rightFireMotor.set(power);
 	}
 
-	public double getMotorRPM() {
-		return leftFireMotor.getSpeed() * 600.0 / RobotMap.ShooterConstants.ENCODER_TICKS_PER_REVOLUTION;
-		//600 comes from 60 seconds per minute times times 10 tenths of a second per second
+	public double getRPM() {
+		return counter.getRate() * 60.0 / RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION;
+//		60 comes from 60 seconds per minute
 	}
+	
+	public double getPulseRate(){
+		return counter.getRate();
+	}
+	
+	public int getPulseCount(){
+		return counter.get();
+	}
+	
 	public double getCurrent(int motorChannel){
 		return Robot.pdp.getShooterCurrents(motorChannel);
 	}

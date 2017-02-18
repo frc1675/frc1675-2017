@@ -22,15 +22,17 @@ public class PIDShooter extends PIDCommand {
     protected void initialize() {
     	this.getPIDController().reset();
     	this.getPIDController().enable();
-    	this.getPIDController().setSetpoint(rpmSetpoint);
+    	this.getPIDController().setSetpoint(rpmSetpoint * RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION / 60.0);
     	this.getPIDController().setOutputRange(0, 1);
-    }
-
-    protected void execute() {
-    	SmartDashboard.putNumber("Shooter PID error", this.getPIDController().getAvgError());
+    	
+    	SmartDashboard.putNumber("RPM shooter setpoint", rpmSetpoint);
+    	SmartDashboard.putNumber("pulse per second shooter setpoint", rpmSetpoint * RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION / 60.0);
     	SmartDashboard.putNumber("P", this.getPIDController().getP());
     	SmartDashboard.putNumber("I", this.getPIDController().getI());
     	SmartDashboard.putNumber("D", this.getPIDController().getD());
+    }
+
+    protected void execute() {
     }
 
     protected boolean isFinished() {
@@ -48,9 +50,11 @@ public class PIDShooter extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		SmartDashboard.putNumber("PID SHOOTER INPUT", Robot.shooter.getMotorRPM());
+    	SmartDashboard.putNumber("Shooter PID error", this.getPIDController().getAvgError());
+		SmartDashboard.putNumber("PID SHOOTER INPUT", Robot.shooter.getPulseRate());
+		SmartDashboard.putNumber("Shooter RPM", Robot.shooter.getRPM());
 
-		return Robot.shooter.getMotorRPM();
+		return Robot.shooter.getPulseRate();
 	}
 
 	@Override
