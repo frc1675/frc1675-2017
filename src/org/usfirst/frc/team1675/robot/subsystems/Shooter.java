@@ -2,7 +2,6 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
-import org.usfirst.frc.team1675.robot.commands.shooter.PrintShooterStats;
 
 import com.ctre.CANTalon;
 
@@ -23,7 +22,7 @@ public class Shooter extends Subsystem {
 		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR);
 		
 		counter = new Counter(RobotMap.DIOChannels.SHOOTER_COUNTER);
-		counter.setDistancePerPulse(1);
+		counter.setDistancePerPulse(1);//sets a scaling value for getRate
 		
 		rightFireMotor.setInverted(true);
 	}

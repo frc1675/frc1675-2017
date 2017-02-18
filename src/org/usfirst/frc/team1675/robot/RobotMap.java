@@ -82,7 +82,7 @@ public class RobotMap {
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;
 		
-		public static final double SETPOINT_RPM = 2500;
+		public static final double SETPOINT_RPM = 2800;
 		
 		public static final double P = .001; //workable value is .001
 		public static final double I = .0005; //workable value is .0005
