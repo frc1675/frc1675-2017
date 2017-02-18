@@ -7,6 +7,7 @@ import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Elevator;
 import org.usfirst.frc.team1675.robot.subsystems.Intake;
 import org.usfirst.frc.team1675.robot.subsystems.Shooter;
+import org.usfirst.frc.team1675.robot.utilities.Logger;
 import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -32,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter;
 	public static Elevator elevator;
 	public static PowerDistribution pdp;
-
+	public static Logger log;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 			shooter = new Shooter();
 			elevator = new Elevator();
 			pdp = new PowerDistribution();
+			log = new Logger("log.txt");
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -67,7 +69,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		log.closeLog();
 	}
 
 	@Override
@@ -100,6 +102,8 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		log.openLog();
+		log.info("Starting autonomous");
 	}
 
 	/**
@@ -119,6 +123,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		log.openLog();
+		log.info("Starting teleop");
 	}
 
 	/**
@@ -127,6 +133,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		
 	}
 
 	/**
