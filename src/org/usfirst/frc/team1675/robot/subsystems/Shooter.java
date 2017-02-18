@@ -17,6 +17,7 @@ public class Shooter extends Subsystem {
 		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR);
 		
 		leftFireMotor.reverseSensor(true);//might not apply to our robot
+		rightFireMotor.setInverted(true);
 	}
 
 	public void setMotorPower(double power) {
