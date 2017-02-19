@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.shooter.VBusShooter;
 
 import com.ctre.CANTalon;
 
@@ -66,5 +67,6 @@ public class Shooter extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		setDefaultCommand(new VBusShooter(0));
 	}
 }

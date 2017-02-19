@@ -103,7 +103,7 @@ public class RobotMap {
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1.0;
 
-		public static final double SPIN_BACKWARDS = -1.0;
-		public static final double SPIN_FORWARDS = 1.0;
+		public static final double BACKWARDS_POWER = -1.0;
+		public static final double FORWARDS_POWER = 1.0;
 	}
 }

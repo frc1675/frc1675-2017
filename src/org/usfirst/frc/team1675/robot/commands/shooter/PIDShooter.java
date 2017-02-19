@@ -20,7 +20,7 @@ public class PIDShooter extends PIDCommand {
     }
 
     protected void initialize() {
-    	this.getPIDController().reset();
+//    	this.getPIDController().reset(); 
     	this.getPIDController().enable();
     	this.getPIDController().setSetpoint(rpmSetpoint * RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION / 60.0);
     	this.getPIDController().setOutputRange(0, 1);
@@ -40,8 +40,7 @@ public class PIDShooter extends PIDCommand {
     }
 
     protected void end() {
-    	this.getPIDController().disable();
-    	Robot.shooter.setMotorPower(0);
+    	this.getPIDController().reset();
     }
 
     protected void interrupted() {
@@ -50,7 +49,7 @@ public class PIDShooter extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-//    	SmartDashboard.putNumber("Shooter PID error", this.getPIDController().getAvgError());
+    	SmartDashboard.putNumber("Shooter PID error", this.getPIDController().getAvgError());
 //		SmartDashboard.putNumber("PID SHOOTER INPUT", Robot.shooter.getPulseRate());
 		SmartDashboard.putNumber("Shooter RPM", Robot.shooter.getRPM());
 
