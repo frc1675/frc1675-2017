@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Intake extends Subsystem {
 
-	CANTalon intakeInner;
-	CANTalon intakeOuter;
+	private CANTalon intakeInner;
+	private CANTalon intakeOuter;
 
-	DoubleSolenoid deployLeft;
-	DoubleSolenoid deployRight;
+	private DoubleSolenoid deployLeft;
+	private DoubleSolenoid deployRight;
 
 	public Intake() {
 

@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveBase extends Subsystem {
-	CANTalon leftFront;
-	CANTalon leftBack;
-	CANTalon rightFront;
-	CANTalon rightBack;
-	DoubleSolenoid shifter;
+	private CANTalon leftFront;
+	private CANTalon leftBack;
+	private CANTalon rightFront;
+	private CANTalon rightBack;
+	private DoubleSolenoid shifter;
 
 	public DriveBase() {
 		leftFront = new CANTalon(RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR);
