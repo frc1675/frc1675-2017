@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
 import org.usfirst.frc.team1675.robot.commands.drive.TankDrive;
 
 import com.ctre.CANTalon;
@@ -68,6 +69,6 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		setDefaultCommand(new TankDrive());
+		setDefaultCommand(new CheeseDrive());
 	}
 }
