@@ -13,8 +13,8 @@ public class Elevator extends Subsystem {
 	private CANTalon rightElevatorMotor;
 	
 	public Elevator() {
-		leftElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_ELEVATOR_MOTOR);
-		rightElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR);
+		leftElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.ELEVATOR_LEFT);
+		rightElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.ELEVATOR_RIGHT);
 		
 		leftElevatorMotor.setInverted(true);
 		rightElevatorMotor.setInverted(false);

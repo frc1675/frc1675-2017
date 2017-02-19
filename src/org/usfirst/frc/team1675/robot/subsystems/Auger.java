@@ -13,7 +13,7 @@ public class Auger extends Subsystem {
 	private CANTalon augerController;
 
 	public Auger() {
-		augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER_MOTOR);
+		augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER);
 	}
 
 	public void setAugerPower(double power) {

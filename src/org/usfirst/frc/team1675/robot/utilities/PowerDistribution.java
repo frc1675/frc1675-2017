@@ -15,25 +15,25 @@ public class PowerDistribution {
 	// fill in the actual channels pls.
 	// whichMotor is the CAN id of the motor that you want.
 	public double getAugerCurrent() {
-		return pdp.getCurrent(RobotMap.PDChannels.AUGER_MOTOR_POWER_CHANNEL);
+		return pdp.getCurrent(RobotMap.PDChannels.AUGER);
 	}
 
 	public double getShooterCurrents(int whichMotor) {
 		double shooterCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR) {
-			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_SHOOTER_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR) {
-			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_SHOOTER_POWER_CHANNEL);
+		if (whichMotor == RobotMap.CANDeviceIDs.SHOOTER_LEFT) {
+			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.SHOOTER_LEFT);
+		} else if (whichMotor == RobotMap.CANDeviceIDs.SHOOTER_RIGHT) {
+			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.SHOOTER_RIGHT);
 		}
 		return shooterCurrent;
 	}
 
 	public double getElevatorCurrents(int whichMotor) {
 		double elevatorCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_ELEVATOR_MOTOR) {
-			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_ELEVATOR_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR) {
-			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_ELEVATOR_POWER_CHANNEL);
+		if (whichMotor == RobotMap.CANDeviceIDs.ELEVATOR_LEFT) {
+			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.ELEVATOR_LEFT);
+		} else if (whichMotor == RobotMap.CANDeviceIDs.ELEVATOR_RIGHT) {
+			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.ELEVATOR_RIGHT);
 		}
 		return elevatorCurrent;
 	}
@@ -41,23 +41,23 @@ public class PowerDistribution {
 	public double getIntakeCurrents(int whichMotor) {
 		double intakeCurrent = 0;
 		if (whichMotor == RobotMap.CANDeviceIDs.INTAKE_INNER) {
-			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_INNER_POWER_CHANNEL);
+			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_INNER);
 		} else if (whichMotor == RobotMap.CANDeviceIDs.INTAKE_OUTER) {
-			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_OUTER_POWER_CHANNEL);
+			intakeCurrent = pdp.getCurrent(RobotMap.PDChannels.INTAKE_OUTER);
 		}
 		return intakeCurrent;
 	}
 
 	public double getDriveMotorCurrents(int whichMotor) {
 		double motorCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_BACK_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.LEFT_FRONT_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_BACK_POWER_CHANNEL);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR) {
-			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.RIGHT_FRONT_POWER_CHANNEL);
+		if (whichMotor == RobotMap.CANDeviceIDs.DRIVE_LEFT_BACK) {
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.DRIVE_LEFT_BACK);
+		} else if (whichMotor == RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT) {
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.DRIVE_LEFT_FRONT);
+		} else if (whichMotor == RobotMap.CANDeviceIDs.DRIVE_RIGHT_BACK) {
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.DRIVE_RIGHT_BACK);
+		} else if (whichMotor == RobotMap.CANDeviceIDs.DRIVE_RIGHT_FRONT) {
+			motorCurrent = pdp.getCurrent(RobotMap.PDChannels.DRIVE_RIGHT_FRONT);
 		}
 		return motorCurrent;
 	}

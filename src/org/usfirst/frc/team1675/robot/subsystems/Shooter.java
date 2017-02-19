@@ -18,8 +18,8 @@ public class Shooter extends Subsystem {
 	private Counter counter;
 
 	public Shooter() {
-		leftFireMotor = new CANTalon(RobotMap.CANDeviceIDs.LEFT_SHOOTER_MOTOR);
-		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_SHOOTER_MOTOR);
+		leftFireMotor = new CANTalon(RobotMap.CANDeviceIDs.SHOOTER_LEFT);
+		rightFireMotor = new CANTalon(RobotMap.CANDeviceIDs.SHOOTER_RIGHT);
 		
 		counter = new Counter(RobotMap.DIOChannels.SHOOTER_COUNTER);
 		counter.setDistancePerPulse(1);//sets a scaling value for getRate

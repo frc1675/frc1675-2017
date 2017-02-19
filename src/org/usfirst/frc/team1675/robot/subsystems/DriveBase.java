@@ -20,10 +20,10 @@ public class DriveBase extends Subsystem {
 	private DoubleSolenoid shifter;
 
 	public DriveBase() {
-		leftFront = new CANTalon(RobotMap.CANDeviceIDs.LEFT_FRONT_MOTOR);
-		leftBack = new CANTalon(RobotMap.CANDeviceIDs.LEFT_BACK_MOTOR);
-		rightFront = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_FRONT_MOTOR);
-		rightBack = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_BACK_MOTOR);
+		leftFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT);
+		leftBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_BACK);
+		rightFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_FRONT);
+		rightBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_BACK);
 		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
 				RobotMap.SolenoidChannels.SHIFT_HIGH);
 		

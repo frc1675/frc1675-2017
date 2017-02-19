@@ -11,31 +11,31 @@ public class RobotMap {
 	}
 
 	public static class CANDeviceIDs {
-		public static final int LEFT_FRONT_MOTOR = 1;
-		public static final int LEFT_BACK_MOTOR = 2;
-		public static final int RIGHT_FRONT_MOTOR = 3;
-		public static final int RIGHT_BACK_MOTOR = 4;
+		public static final int DRIVE_LEFT_FRONT = 1;
+		public static final int DRIVE_LEFT_BACK = 2;
+		public static final int DRIVE_RIGHT_FRONT = 3;
+		public static final int DRIVE_RIGHT_BACK = 4;
 		public static final int INTAKE_INNER = 0;
 		public static final int INTAKE_OUTER = 0;
-		public static final int AUGER_MOTOR = 0;
-		public static final int LEFT_ELEVATOR_MOTOR = 0;//1 when tested
-		public static final int RIGHT_ELEVATOR_MOTOR = 0;//4 when tested
-		public static final int LEFT_SHOOTER_MOTOR = 0;//2 when tested
-		public static final int RIGHT_SHOOTER_MOTOR = 0;//3 when tested
+		public static final int AUGER = 0;
+		public static final int ELEVATOR_LEFT = 0;//1 when tested
+		public static final int ELEVATOR_RIGHT = 0;//4 when tested
+		public static final int SHOOTER_LEFT = 0;//2 when tested
+		public static final int SHOOTER_RIGHT = 0;//3 when tested
 	}
 
 	public static class PDChannels {
-		public static final int LEFT_FRONT_POWER_CHANNEL = 0;
-		public static final int LEFT_BACK_POWER_CHANNEL = 0;
-		public static final int RIGHT_FRONT_POWER_CHANNEL = 3;
-		public static final int RIGHT_BACK_POWER_CHANNEL = 0;
-		public static final int INTAKE_INNER_POWER_CHANNEL = 0;
-		public static final int INTAKE_OUTER_POWER_CHANNEL = 0;
-		public static final int AUGER_MOTOR_POWER_CHANNEL = 0;
-		public static final int LEFT_ELEVATOR_POWER_CHANNEL= 0;
-		public static final int RIGHT_ELEVATOR_POWER_CHANNEL = 0;
-		public static final int LEFT_SHOOTER_POWER_CHANNEL = 0;
-		public static final int RIGHT_SHOOTER_POWER_CHANNEL = 0;
+		public static final int DRIVE_LEFT_FRONT = 0;
+		public static final int DRIVE_LEFT_BACK = 0;
+		public static final int DRIVE_RIGHT_FRONT = 0;
+		public static final int DRIVE_RIGHT_BACK = 0;
+		public static final int INTAKE_INNER = 0;
+		public static final int INTAKE_OUTER = 0;
+		public static final int AUGER = 0;
+		public static final int ELEVATOR_LEFT= 0;
+		public static final int ELEVATOR_RIGHT = 0;
+		public static final int SHOOTER_LEFT = 0;
+		public static final int SHOOTER_RIGHT = 0;
 	}
 
 	public static class DIOChannels {
