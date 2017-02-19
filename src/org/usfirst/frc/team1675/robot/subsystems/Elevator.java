@@ -17,6 +17,7 @@ public class Elevator extends Subsystem {
 		rightElevatorMotor = new CANTalon(RobotMap.CANDeviceIDs.RIGHT_ELEVATOR_MOTOR);
 		
 		leftElevatorMotor.setInverted(true);
+		rightElevatorMotor.setInverted(false);
 	}
 
 	public void setElevatorPower(double power) {

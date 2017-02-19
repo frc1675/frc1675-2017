@@ -24,6 +24,7 @@ public class Shooter extends Subsystem {
 		counter = new Counter(RobotMap.DIOChannels.SHOOTER_COUNTER);
 		counter.setDistancePerPulse(1);//sets a scaling value for getRate
 		
+		leftFireMotor.setInverted(false);
 		rightFireMotor.setInverted(true);
 	}
 

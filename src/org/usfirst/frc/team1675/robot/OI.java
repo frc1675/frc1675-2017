@@ -1,8 +1,5 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.elevator.Elevate;
-import org.usfirst.frc.team1675.robot.commands.shooter.PIDShooter;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
