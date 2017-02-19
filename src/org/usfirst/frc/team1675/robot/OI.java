@@ -1,11 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
-import org.usfirst.frc.team1675.robot.commands.auger.SpinAuger;
-import org.usfirst.frc.team1675.robot.commands.auger.SpinAugerForTime;
-import org.usfirst.frc.team1675.robot.commands.shooter.BangBangShooter;
 import org.usfirst.frc.team1675.robot.commands.elevator.Elevate;
+import org.usfirst.frc.team1675.robot.commands.shooter.PIDShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
