@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.ShootingProcedure;
+import org.usfirst.frc.team1675.robot.commands.ElevateAndSpinAuger;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeFuel;
+import org.usfirst.frc.team1675.robot.commands.shooter.PIDShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -35,6 +37,11 @@ public class OI {
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
+		driverYButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM));
+		driverLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
+		driverRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
+		driverAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
+
 //		driverXButton.whileHeld(new ShootingProcedure(RobotMap.ElevatorConstants.FORWARDS_POWER,RobotMap.ShooterConstants.SETPOINT_RPM));
 	}
 

@@ -26,6 +26,10 @@ public class Intake extends Subsystem {
 				RobotMap.SolenoidChannels.DEPLOY_LEFT_RETRACT);
 		deployRight = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_RIGHT_EXTEND,
 				RobotMap.SolenoidChannels.DEPLOY_RIGHT_RETRACT);
+		
+		intakeInner.setInverted(true);
+		intakeOuter.setInverted(false);
+
 
 	}
 

@@ -15,13 +15,13 @@ public class RobotMap {
 		public static final int DRIVE_LEFT_BACK = 2;
 		public static final int DRIVE_RIGHT_FRONT = 3;
 		public static final int DRIVE_RIGHT_BACK = 4;
-		public static final int INTAKE_INNER = 0;
-		public static final int INTAKE_OUTER = 0;
-		public static final int AUGER = 0;
-		public static final int ELEVATOR_LEFT = 0;//1 when tested
-		public static final int ELEVATOR_RIGHT = 0;//4 when tested
-		public static final int SHOOTER_LEFT = 0;//2 when tested
-		public static final int SHOOTER_RIGHT = 0;//3 when tested
+		public static final int INTAKE_INNER = 5;
+		public static final int INTAKE_OUTER = 6;
+		public static final int AUGER = 12;
+		public static final int ELEVATOR_LEFT = 8;//1 when tested
+		public static final int ELEVATOR_RIGHT = 9;//4 when tested
+		public static final int SHOOTER_LEFT = 10;//2 when tested
+		public static final int SHOOTER_RIGHT = 11;//3 when tested
 	}
 
 	public static class PDChannels {
@@ -31,7 +31,7 @@ public class RobotMap {
 		public static final int DRIVE_RIGHT_BACK = 0;
 		public static final int INTAKE_INNER = 0;
 		public static final int INTAKE_OUTER = 0;
-		public static final int AUGER = 0;
+		public static final int AUGER = 12;
 		public static final int ELEVATOR_LEFT= 0;
 		public static final int ELEVATOR_RIGHT = 0;
 		public static final int SHOOTER_LEFT = 0;
@@ -76,7 +76,7 @@ public class RobotMap {
 
 	public static class ShooterConstants {
 		public static final double DEADZONE = .1675;
-		public static final double MAX_POWER = 1;
+		public static final double MAX_POWER = 1.0;
 		public static final int COUNTER_PULSES_PER_REVOLUTION = 4;
 
 		public static final double BANGBANG_LOW = 0.0;
@@ -101,9 +101,11 @@ public class RobotMap {
 
 	public static class AugerConstants {
 		public static final double DEADZONE = .1675;
-		public static final double MAX_POWER = 1.0;
+		public static final double MAX_POWER = .25;
 
 		public static final double BACKWARDS_POWER = -1.0;
 		public static final double FORWARDS_POWER = 1.0;
+		
+		public static final double MAX_CURRENT = 5;//not accurate
 	}
 }

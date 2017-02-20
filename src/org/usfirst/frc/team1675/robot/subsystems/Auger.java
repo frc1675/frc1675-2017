@@ -14,6 +14,7 @@ public class Auger extends Subsystem {
 
 	public Auger() {
 		augerController = new CANTalon(RobotMap.CANDeviceIDs.AUGER);
+		augerController.setInverted(true);
 	}
 
 	public void setAugerPower(double power) {

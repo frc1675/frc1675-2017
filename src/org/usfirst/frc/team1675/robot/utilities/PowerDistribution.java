@@ -61,4 +61,11 @@ public class PowerDistribution {
 		}
 		return motorCurrent;
 	}
+	
+	public double getMotorCurrent(int pdChannel){
+		if(pdChannel >= 0 && pdChannel <= 15){
+			return pdp.getCurrent(pdChannel);
+		}
+		return -1;
+	}
 }

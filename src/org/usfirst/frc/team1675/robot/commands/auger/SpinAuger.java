@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot.commands.auger;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -20,6 +21,7 @@ public class SpinAuger extends Command {
 	}
 
 	protected void execute() {
+		SmartDashboard.putNumber("Auger Current", Robot.auger.getCurrent());
 	}
 
 	protected boolean isFinished() {
