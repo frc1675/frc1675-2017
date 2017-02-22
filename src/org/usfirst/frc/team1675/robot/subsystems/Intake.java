@@ -15,7 +15,7 @@ public class Intake extends Subsystem {
 	private CANTalon intakeOuter;
 
 	private DoubleSolenoid deployLeft;
-	private DoubleSolenoid deployRight;
+//	private DoubleSolenoid deployRight;
 
 	public Intake() {
 
@@ -24,8 +24,8 @@ public class Intake extends Subsystem {
 
 		deployLeft = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_LEFT_EXTEND,
 				RobotMap.SolenoidChannels.DEPLOY_LEFT_RETRACT);
-		deployRight = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_RIGHT_EXTEND,
-				RobotMap.SolenoidChannels.DEPLOY_RIGHT_RETRACT);
+//		deployRight = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_RIGHT_EXTEND,
+//				RobotMap.SolenoidChannels.DEPLOY_RIGHT_RETRACT);
 		
 		intakeInner.setInverted(true);
 		intakeOuter.setInverted(false);
@@ -38,17 +38,17 @@ public class Intake extends Subsystem {
 
 	public void deployIntake() {
 		deployLeft.set(DoubleSolenoid.Value.kForward);
-		deployRight.set(DoubleSolenoid.Value.kForward);
+//		deployRight.set(DoubleSolenoid.Value.kForward);
 	}
 
 	public void retractIntake() {
 		deployLeft.set(DoubleSolenoid.Value.kReverse);
-		deployRight.set(DoubleSolenoid.Value.kReverse);
+//		deployRight.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	public void stopSolenoids() {
 		deployLeft.set(DoubleSolenoid.Value.kOff);
-		deployRight.set(DoubleSolenoid.Value.kOff);
+//		deployRight.set(DoubleSolenoid.Value.kOff);
 	}
 
 	public void runIntake(double power) {

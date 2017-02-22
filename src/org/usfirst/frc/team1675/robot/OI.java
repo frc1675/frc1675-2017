@@ -1,7 +1,11 @@
 package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.ElevateAndSpinAuger;
+import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
+import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
 import org.usfirst.frc.team1675.robot.commands.intake.IntakeFuel;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
 import org.usfirst.frc.team1675.robot.commands.shooter.PIDShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -37,11 +41,18 @@ public class OI {
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
-		driverYButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM));
-		driverLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
-		driverRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
-		driverAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
-
+		operatorYButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM));
+		operatorXButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM - 50));
+		operatorBButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM + 50));
+		operatorLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
+//		operatorRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
+		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
+		
+		operatorRightBumper.whenPressed(new IntakeDeploy());
+		operatorStartButton.whenPressed(new IntakeRetract());
+		
+		driverRightBumper.whenPressed(new ShiftLow());
+		driverRightBumper.whenReleased(new ShiftHigh());
 //		driverXButton.whileHeld(new ShootingProcedure(RobotMap.ElevatorConstants.FORWARDS_POWER,RobotMap.ShooterConstants.SETPOINT_RPM));
 	}
 

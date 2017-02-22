@@ -18,24 +18,26 @@ public class RobotMap {
 		public static final int INTAKE_INNER = 5;
 		public static final int INTAKE_OUTER = 6;
 		public static final int AUGER = 12;
-		public static final int ELEVATOR_LEFT = 8;//1 when tested
-		public static final int ELEVATOR_RIGHT = 9;//4 when tested
-		public static final int SHOOTER_LEFT = 10;//2 when tested
-		public static final int SHOOTER_RIGHT = 11;//3 when tested
+		public static final int ELEVATOR_LEFT = 8;
+		public static final int ELEVATOR_RIGHT = 9;
+		public static final int SHOOTER_LEFT = 10;
+		public static final int SHOOTER_RIGHT = 11;
+		//climber will be 7
 	}
 
 	public static class PDChannels {
-		public static final int DRIVE_LEFT_FRONT = 0;
+		public static final int DRIVE_LEFT_FRONT = 1;
 		public static final int DRIVE_LEFT_BACK = 0;
-		public static final int DRIVE_RIGHT_FRONT = 0;
-		public static final int DRIVE_RIGHT_BACK = 0;
-		public static final int INTAKE_INNER = 0;
-		public static final int INTAKE_OUTER = 0;
+		public static final int DRIVE_RIGHT_FRONT = 14;
+		public static final int DRIVE_RIGHT_BACK = 15;
+		public static final int INTAKE_INNER = 11;
+		public static final int INTAKE_OUTER = 10;
 		public static final int AUGER = 12;
-		public static final int ELEVATOR_LEFT= 0;
-		public static final int ELEVATOR_RIGHT = 0;
-		public static final int SHOOTER_LEFT = 0;
-		public static final int SHOOTER_RIGHT = 0;
+		public static final int ELEVATOR_LEFT= 4;
+		public static final int ELEVATOR_RIGHT = 5;
+		public static final int SHOOTER_LEFT = 3;
+		public static final int SHOOTER_RIGHT = 13;
+		//climber will be 2
 	}
 
 	public static class DIOChannels {
@@ -50,12 +52,12 @@ public class RobotMap {
 
 	public static class SolenoidChannels {
 		// inaccurate values, but MUST all be different or else robot won't run
-		public static final int DEPLOY_LEFT_RETRACT = 0;
-		public static final int DEPLOY_RIGHT_RETRACT = 1;
-		public static final int DEPLOY_LEFT_EXTEND = 2;
-		public static final int DEPLOY_RIGHT_EXTEND = 3;
+		public static final int DEPLOY_LEFT_RETRACT = 2;
+//		public static final int DEPLOY_RIGHT_RETRACT = 5;
+		public static final int DEPLOY_LEFT_EXTEND = 1;
+//		public static final int DEPLOY_RIGHT_EXTEND = 6;
         public static final int SHIFT_HIGH = 4;
-		public static final int SHIFT_LOW = 5;
+		public static final int SHIFT_LOW = 3;
 	}
 
 	public static class IntakeConstants {
@@ -82,9 +84,9 @@ public class RobotMap {
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;
 		
-		public static final double SETPOINT_RPM = 2800;
+		public static final double SETPOINT_RPM = 2650;
 		
-		public static final double P = .001; //workable value is .001
+		public static final double P = .0001; //workable value is .001
 		public static final double I = .0005; //workable value is .0005
 		public static final double D = .0;
 		
@@ -101,7 +103,7 @@ public class RobotMap {
 
 	public static class AugerConstants {
 		public static final double DEADZONE = .1675;
-		public static final double MAX_POWER = .25;
+		public static final double MAX_POWER = .18;
 
 		public static final double BACKWARDS_POWER = -1.0;
 		public static final double FORWARDS_POWER = 1.0;
