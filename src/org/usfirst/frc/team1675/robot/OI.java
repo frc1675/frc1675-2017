@@ -26,6 +26,7 @@ public class OI {
 	private DPadButton driverRightDPadButton = new DPadButton(driverController, DPadButton.Direction.RIGHT);
 	private DPadButton driverDownButton = new DPadButton(driverController, DPadButton.Direction.DOWN);
 	private DPadButton driverLeftDPadButton = new DPadButton(driverController, DPadButton.Direction.LEFT);
+	
 	private Joystick operatorController = new Joystick(XBoxControllerMap.operatorControllerPort);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
