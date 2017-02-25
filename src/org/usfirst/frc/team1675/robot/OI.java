@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.utils.DPadButton;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -20,6 +22,10 @@ public class OI {
 	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
 	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private DPadButton driverUpDPadButton = new DPadButton(driverController, DPadButton.Direction.UP);
+	private DPadButton driverRightDPadButton = new DPadButton(driverController, DPadButton.Direction.RIGHT);
+	private DPadButton driverDownButton = new DPadButton(driverController, DPadButton.Direction.DOWN);
+	private DPadButton driverLeftDPadButton = new DPadButton(driverController, DPadButton.Direction.LEFT);
 	private Joystick operatorController = new Joystick(XBoxControllerMap.operatorControllerPort);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
@@ -31,7 +37,11 @@ public class OI {
 	private JoystickButton operatorBackButton = new JoystickButton(operatorController, XBoxControllerMap.BACK_BUTTON);
 	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-
+	private DPadButton operatorUpDPadButton = new DPadButton(operatorController, DPadButton.Direction.UP);
+	private DPadButton operatorRightDPadButton = new DPadButton(operatorController, DPadButton.Direction.RIGHT);
+	private DPadButton operatorDownButton = new DPadButton(operatorController, DPadButton.Direction.DOWN);
+	private DPadButton operatorLeftDPadButton = new DPadButton(operatorController, DPadButton.Direction.LEFT);
+	
 	public double getDriverLeftXAxis() {
 		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS));
 	}
