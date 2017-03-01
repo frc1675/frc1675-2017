@@ -60,6 +60,12 @@ public class Shooter extends Subsystem {
 	public double getCurrent(int motorChannel){
 		return Robot.pdp.getShooterCurrents(motorChannel);
 	}
+	
+	public boolean isShooting;
+	
+	public boolean isSpinning;
+	
+	public boolean isUpToSpeed;
 
 	private double scaledDeadzone(double power) {
 		return Math.signum(power) * ((RobotMap.ShooterConstants.MAX_POWER - RobotMap.ShooterConstants.DEADZONE) * Math.abs(power)

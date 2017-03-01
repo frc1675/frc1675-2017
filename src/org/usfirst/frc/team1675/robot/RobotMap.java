@@ -109,5 +109,6 @@ public class RobotMap {
 		public static final double FORWARDS_POWER = 1.0;
 		
 		public static final double MAX_CURRENT = 5;//not accurate
+		public static final double MIN_JAM_SECONDS = .5;//inaccurate
 	}
 }
