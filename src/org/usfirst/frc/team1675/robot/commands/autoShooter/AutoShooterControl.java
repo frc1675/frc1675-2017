@@ -37,7 +37,7 @@ public class AutoShooterControl extends Command {
     		break;
     	case MAINTAINING:
     		Robot.autoshooter.enable();
-    		if(Robot.autoshooter.atSpeed && Robot.autoshooter.isShooting){
+    		if(Robot.autoshooter.onTarget() && Robot.autoshooter.isShooting){
     			state = ShooterState.SCORING;
     		}else if(!Robot.autoshooter.isShooting && !Robot.autoshooter.isSpinning){
     			state = ShooterState.STOPPED;
@@ -45,7 +45,7 @@ public class AutoShooterControl extends Command {
     		break;
     	case SCORING:
     		Robot.elevator.setElevatorPower(RobotMap.ElevatorConstants.FORWARDS_POWER);
-    		if(!Robot.autoshooter.atSpeed || !Robot.autoshooter.isShooting){
+    		if(!Robot.autoshooter.onTarget() || !Robot.autoshooter.isShooting){
     			state = ShooterState.MAINTAINING;
     		}else if(!Robot.autoshooter.isSpinning && !Robot.autoshooter.isShooting){
     			state = ShooterState.STOPPED;

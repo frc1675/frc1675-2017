@@ -2,6 +2,8 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.autoShooter.AutoShooterControl;
+
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -15,7 +17,6 @@ public class AutomaticShooter extends PIDSubsystem {
 	private Counter counter;
 	public boolean isSpinning;
 	public boolean isShooting;
-	public boolean atSpeed;
 
 	public AutomaticShooter() {
 		super(RobotMap.ShooterConstants.P, RobotMap.ShooterConstants.I, RobotMap.ShooterConstants.D);
@@ -71,6 +72,26 @@ public class AutomaticShooter extends PIDSubsystem {
 		return Robot.pdp.getShooterCurrents(motorChannel);
 	}
 
+	public void isSpinningTrue() {
+		isSpinning = true;
+	}
+
+	public void isSpinningFalse() {
+		isSpinning = false;
+	}
+
+	public void isShootingTrue() {
+		isShooting = true;
+	}
+
+	public void isShootingFalse() {
+		isShooting = false;
+	}
+
+	public boolean onTarget() {
+		return this.getPIDController().onTarget();
+	}
+
 	public void enable() {
 		this.getPIDController().enable();
 	}
@@ -86,8 +107,7 @@ public class AutomaticShooter extends PIDSubsystem {
 	}
 
 	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new AutoShooterControl());
 	}
 
 	protected double returnPIDInput() {
