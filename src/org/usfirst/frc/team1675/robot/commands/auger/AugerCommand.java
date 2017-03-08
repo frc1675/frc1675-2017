@@ -33,13 +33,14 @@ public class AugerCommand extends Command {
 		Robot.auger.setAugerPower(0);
 		if (Robot.shooter.isShooting && Robot.shooter.isUpToSpeed) {
 			augerState = AugerState.RUNNING_FORWARD;
+			startJamTime = this.timeSinceInitialized();//makes sure that it doesn't claim being jammed at the beginning if there's a beginning current spike
 		}
 	}
 
 	private void runningForward() {
 		Robot.auger.setAugerPower(RobotMap.AugerConstants.FORWARDS_POWER);
 		if (Robot.auger.getCurrent() < RobotMap.AugerConstants.MAX_CURRENT) {
-			startJamTime = this.timeSinceInitialized();
+			startJamTime = this.timeSinceInitialized(); //resets jam
 		} else if (this.timeSinceInitialized() - startJamTime > RobotMap.AugerConstants.MIN_JAM_SECONDS) {
 			augerState = AugerState.RUNNING_BACKWARDS;
 			startUnjamTime = this.timeSinceInitialized();
@@ -68,6 +69,7 @@ public class AugerCommand extends Command {
 		if (this.timeSinceInitialized() - startSettleTime > RobotMap.AugerConstants.MIN_SETTLE_SECONDS) {
 			if (Robot.shooter.isShooting && Robot.shooter.isUpToSpeed) {
 				augerState = AugerState.RUNNING_FORWARD;
+				startJamTime = this.timeSinceInitialized();//makes sure that it doesn't claim being jammed at the beginning if there's a beginning current spike
 			}else{
 				augerState = AugerState.STOPPED;
 			}
