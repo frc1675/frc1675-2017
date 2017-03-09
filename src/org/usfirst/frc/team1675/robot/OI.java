@@ -44,12 +44,12 @@ public class OI {
 		operatorYButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM));
 		operatorXButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM - 50));
 		operatorBButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM + 50));
-		operatorLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
+		//operatorLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
 //		operatorRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
 		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
 		
-		operatorRightBumper.whenPressed(new IntakeDeploy());
-		operatorStartButton.whenPressed(new IntakeRetract());
+		//operatorRightBumper.whenPressed(new IntakeDeploy());
+		//operatorStartButton.whenPressed(new IntakeRetract());
 		
 		driverRightBumper.whenPressed(new ShiftLow());
 		driverRightBumper.whenReleased(new ShiftHigh());

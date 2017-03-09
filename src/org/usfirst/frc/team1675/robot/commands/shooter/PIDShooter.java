@@ -52,7 +52,7 @@ public class PIDShooter extends PIDCommand {
 	@Override
 	protected double returnPIDInput() {
     	SmartDashboard.putNumber("Shooter PID Average error", this.getPIDController().getAvgError());
-    	SmartDashboard.putNumber("Shooter PID Error", this.getPIDController().getError());
+//    	SmartDashboard.putNumber("Shooter PID Error", this.getPIDController().getError());
 //		SmartDashboard.putNumber("PID SHOOTER INPUT", Robot.shooter.getPulseRate());
 		SmartDashboard.putNumber("Shooter RPM", Robot.shooter.getRPM());
 		SmartDashboard.putBoolean("SHOOTER PID ON TARGET", this.getPIDController().onTarget());
