@@ -51,8 +51,8 @@ public class OI {
 		//operatorRightBumper.whenPressed(new IntakeDeploy());
 		//operatorStartButton.whenPressed(new IntakeRetract());
 		
-		driverRightBumper.whenPressed(new ShiftLow());
-		driverRightBumper.whenReleased(new ShiftHigh());
+		driverRightBumper.whenPressed(new ShiftHigh());
+		driverRightBumper.whenReleased(new ShiftLow());
 //		driverXButton.whileHeld(new ShootingProcedure(RobotMap.ElevatorConstants.FORWARDS_POWER,RobotMap.ShooterConstants.SETPOINT_RPM));
 	}
 

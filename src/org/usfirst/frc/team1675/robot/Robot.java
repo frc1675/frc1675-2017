@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.DeployGearHolderInAuto;
 import org.usfirst.frc.team1675.robot.subsystems.Auger;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Elevator;
@@ -89,7 +90,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = new DeployGearHolderInAuto();
 //		autonomousCommand = new DriveVBusForTime(.25, 5);
 		
 
