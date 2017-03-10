@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static Auger auger;
 	public static Shooter shooter;
-	public static AutomaticShooter autoshooter;
+	public static AutomaticShooter autoShooter;
 	public static Elevator elevator;
 	public static PowerDistribution pdp;
 	public static Logger log;
@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 			intake = new Intake();
 			auger = new Auger();
 	//		shooter = new Shooter();
-			autoshooter = new AutomaticShooter();
+			autoShooter = new AutomaticShooter();
 			elevator = new Elevator();
 			pdp = new PowerDistribution();
 			log = new Logger("log.txt");

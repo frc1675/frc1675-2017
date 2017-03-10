@@ -16,7 +16,7 @@ public class ChangeElevatorMotorState extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-			Robot.autoshooter.setShooting(shooting);
+			Robot.autoShooter.setShooting(shooting);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
