@@ -108,6 +108,12 @@ public class RobotMap {
 		public static final double BACKWARDS_POWER = -1.0;
 		public static final double FORWARDS_POWER = 1.0;
 		
-		public static final double MAX_CURRENT = 5;//not accurate
+		public static final double FORWARDS_CURRENT_THRESHOLD = 5;//not accurate
+		public static final double BACKWARDS_CURRENT_THRESHOLD = 5;//not accurate
+		
+		public static final double MIN_JAM_SECONDS = .5;//inaccurate
+		public static final double MIN_DOUBLE_JAM_SECONDS = .5;//inaccurate
+		public static final double UNJAM_DURATION = .5;//inaccurate
+		public static final double SETTLE_DURATION = .5;//inaccurate
 	}
 }

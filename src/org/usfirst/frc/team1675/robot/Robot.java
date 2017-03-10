@@ -3,6 +3,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.DeployGearHolderInAuto;
 import org.usfirst.frc.team1675.robot.subsystems.Auger;
+import org.usfirst.frc.team1675.robot.subsystems.AutomaticShooter;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Elevator;
 import org.usfirst.frc.team1675.robot.subsystems.Intake;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static Auger auger;
 	public static Shooter shooter;
+	public static AutomaticShooter autoshooter;
 	public static Elevator elevator;
 	public static PowerDistribution pdp;
 	public static Logger log;
@@ -42,7 +44,8 @@ public class Robot extends IterativeRobot {
 			driveBase = new DriveBase();
 			intake = new Intake();
 			auger = new Auger();
-			shooter = new Shooter();
+	//		shooter = new Shooter();
+			autoshooter = new AutomaticShooter();
 			elevator = new Elevator();
 			pdp = new PowerDistribution();
 			log = new Logger("log.txt");
