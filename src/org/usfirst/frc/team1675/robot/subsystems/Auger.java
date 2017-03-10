@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Auger extends Subsystem {
 
 	}
 	public double getCurrent(){
+		SmartDashboard.putNumber("Auger Current", Robot.pdp.getAugerCurrent());
 		return Robot.pdp.getAugerCurrent();
 	}
 	private double scaledDeadzone(double power) {

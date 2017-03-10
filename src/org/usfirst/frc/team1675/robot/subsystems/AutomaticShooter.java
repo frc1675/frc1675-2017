@@ -7,6 +7,7 @@ import org.usfirst.frc.team1675.robot.commands.autoShooter.AutoShooterControl;
 import com.ctre.CANTalon;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -111,6 +112,7 @@ public class AutomaticShooter extends PIDSubsystem {
 	}
 
 	protected double returnPIDInput() {
+		SmartDashboard.putNumber("Shooter RPM", this.getRPM());
 		return getPulseRate();
 	}
 

@@ -4,6 +4,7 @@ import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -26,6 +27,7 @@ public class AugerCommand extends Command {
 		Robot.auger.setAugerPower(0);
 		if (!Robot.autoShooter.isShooting()) {
 			augerState = AugerState.STOPPED;
+			System.out.println("Stopped");
 		}
 	}
 
@@ -34,6 +36,7 @@ public class AugerCommand extends Command {
 		if (Robot.autoShooter.isShooting() && Robot.autoShooter.onTarget()) {
 			augerState = AugerState.RUNNING_FORWARD;
 			startJamTime = this.timeSinceInitialized();//makes sure that it doesn't claim being jammed at the beginning if there's a beginning current spike
+			System.out.println("Running_Forward");
 		}
 	}
 
@@ -46,23 +49,27 @@ public class AugerCommand extends Command {
 			augerState = AugerState.RUNNING_BACKWARDS;
 			startUnjamTime = this.timeSinceInitialized();
 			startDoubleJamTime = this.timeSinceInitialized();
+			System.out.println("Running_Backwards");
 		} else if(!(Robot.autoShooter.isShooting() && Robot.autoShooter.onTarget())) {
 			augerState = AugerState.STOPPED;
+			System.out.println("Stopped");
 		}
 	
 
 	}
 
-	private void runningBackward() {
+	private void runningBackwards() {
 		Robot.auger.setAugerPower(RobotMap.AugerConstants.BACKWARDS_POWER);
 		if (Robot.auger.getCurrent() < RobotMap.AugerConstants.BACKWARDS_CURRENT_THRESHOLD) {
 			startDoubleJamTime = this.timeSinceInitialized();
 			if (this.timeSinceInitialized() - startUnjamTime > RobotMap.AugerConstants.UNJAM_DURATION) {
 				augerState = AugerState.SETTLING;
 				startSettleTime = this.timeSinceInitialized();
+				System.out.println("Settling");
 			}
 		} else if (this.timeSinceInitialized() - startDoubleJamTime > RobotMap.AugerConstants.MIN_DOUBLE_JAM_SECONDS) {
 			augerState = AugerState.MEGA_STOP;
+			System.out.println("Mega Stop");
 		}
 	}
 
@@ -72,8 +79,10 @@ public class AugerCommand extends Command {
 			if (Robot.autoShooter.isShooting() && Robot.autoShooter.onTarget()) {
 				augerState = AugerState.RUNNING_FORWARD;
 				startJamTime = this.timeSinceInitialized();//makes sure that it doesn't claim being jammed at the beginning if there's a beginning current spike
+				System.out.println("Running_Forward");
 			}else{
 				augerState = AugerState.STOPPED;
+				System.out.println("Stopped");
 			}
 		}
 
@@ -90,6 +99,7 @@ public class AugerCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		SmartDashboard.putString("Auger State", augerState.toString());
 		switch (augerState) {
 		case STOPPED:
 			this.stopped();
@@ -98,7 +108,7 @@ public class AugerCommand extends Command {
 			this.runningForward();
 			break;
 		case RUNNING_BACKWARDS:
-			this.runningBackward();
+			this.runningBackwards();
 			break;
 		case SETTLING:
 			this.settling();
@@ -109,17 +119,15 @@ public class AugerCommand extends Command {
 		}
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		return false;
 	}
 
-	// Called once after isFinished returns true
 	protected void end() {
+		Robot.auger.setAugerPower(0);
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
+		end();
 	}
 }

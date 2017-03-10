@@ -1,12 +1,9 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.ElevateAndSpinAuger;
+import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeElevatorMotorState;
+import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeShooterMotorState;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeFuel;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
-import org.usfirst.frc.team1675.robot.commands.shooter.PIDShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -41,12 +38,13 @@ public class OI {
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	
 	public OI(){
-		operatorYButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM));
-		operatorXButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM - 50));
-		operatorBButton.toggleWhenPressed(new PIDShooter(RobotMap.ShooterConstants.SETPOINT_RPM + 50));
 		//operatorLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
 //		operatorRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
-		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
+//		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
+		
+		operatorYButton.whenPressed(new ChangeShooterMotorState(!Robot.autoShooter.isSpinning()));
+		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
+		operatorAButton.whenPressed(new ChangeElevatorMotorState(false));
 		
 		//operatorRightBumper.whenPressed(new IntakeDeploy());
 		//operatorStartButton.whenPressed(new IntakeRetract());
