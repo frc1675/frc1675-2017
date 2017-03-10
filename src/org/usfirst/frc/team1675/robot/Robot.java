@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 			driveBase = new DriveBase();
 			intake = new Intake();
 			auger = new Auger();
-			shooter = new Shooter();
+	//		shooter = new Shooter();
 			autoshooter = new AutomaticShooter();
 			elevator = new Elevator();
 			pdp = new PowerDistribution();

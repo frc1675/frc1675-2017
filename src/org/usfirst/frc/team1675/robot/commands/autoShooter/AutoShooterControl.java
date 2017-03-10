@@ -18,6 +18,7 @@ public class AutoShooterControl extends Command {
 	ShooterState state;
     public AutoShooterControl() {
         requires(Robot.autoshooter);
+        requires(Robot.elevator);
     }
 
     // Called just before this Command runs the first time
@@ -31,23 +32,23 @@ public class AutoShooterControl extends Command {
     	case STOPPED:
     		Robot.autoshooter.reset();
     		Robot.elevator.setElevatorPower(0);
-    		if(Robot.autoshooter.isSpinning || Robot.autoshooter.isShooting){
+    		if(Robot.autoshooter.isSpinning() || Robot.autoshooter.isShooting()){
     			state = ShooterState.MAINTAINING;
     		}
     		break;
     	case MAINTAINING:
     		Robot.autoshooter.enable();
-    		if(Robot.autoshooter.onTarget() && Robot.autoshooter.isShooting){
+    		if(Robot.autoshooter.onTarget() && Robot.autoshooter.isShooting()){
     			state = ShooterState.SCORING;
-    		}else if(!Robot.autoshooter.isShooting && !Robot.autoshooter.isSpinning){
+    		}else if(!Robot.autoshooter.isShooting() && !Robot.autoshooter.isSpinning()){
     			state = ShooterState.STOPPED;
     		}
     		break;
     	case SCORING:
     		Robot.elevator.setElevatorPower(RobotMap.ElevatorConstants.FORWARDS_POWER);
-    		if(!Robot.autoshooter.onTarget() || !Robot.autoshooter.isShooting){
+    		if(!Robot.autoshooter.onTarget() || !Robot.autoshooter.isShooting()){
     			state = ShooterState.MAINTAINING;
-    		}else if(!Robot.autoshooter.isSpinning && !Robot.autoshooter.isShooting){
+    		}else if(!Robot.autoshooter.isSpinning() && !Robot.autoshooter.isShooting()){
     			state = ShooterState.STOPPED;
     		}
     		break;

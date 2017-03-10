@@ -15,8 +15,8 @@ public class AutomaticShooter extends PIDSubsystem {
 	private CANTalon leftFireMotor;
 	private CANTalon rightFireMotor;
 	private Counter counter;
-	public boolean isSpinning;
-	public boolean isShooting;
+	private boolean spinning;
+	private boolean shooting;
 
 	public AutomaticShooter() {
 		super(RobotMap.ShooterConstants.P, RobotMap.ShooterConstants.I, RobotMap.ShooterConstants.D);
@@ -72,20 +72,20 @@ public class AutomaticShooter extends PIDSubsystem {
 		return Robot.pdp.getShooterCurrents(motorChannel);
 	}
 
-	public void isSpinningTrue() {
-		isSpinning = true;
+	public void setSpinning(boolean spinning) {
+		this.spinning = spinning;
 	}
 
-	public void isSpinningFalse() {
-		isSpinning = false;
+	public boolean isSpinning() {
+		return spinning;
 	}
 
-	public void isShootingTrue() {
-		isShooting = true;
+	public void setShooting(boolean shooting) {
+		this.shooting = shooting;
 	}
 
-	public void isShootingFalse() {
-		isShooting = false;
+	public boolean isShooting() {
+		return shooting;
 	}
 
 	public boolean onTarget() {
