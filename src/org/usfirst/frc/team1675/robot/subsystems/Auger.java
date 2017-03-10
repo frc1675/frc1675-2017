@@ -2,7 +2,10 @@ package org.usfirst.frc.team1675.robot.subsystems;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.auger.AugerCommand;
+
 import com.ctre.CANTalon;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -34,5 +37,6 @@ public class Auger extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		this.setDefaultCommand(new AugerCommand());
 	}
 }

@@ -4,6 +4,8 @@ import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeElevatorMotorSt
 import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeShooterMotorState;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -42,12 +44,13 @@ public class OI {
 //		operatorRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
 //		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
 		
-		operatorYButton.whenPressed(new ChangeShooterMotorState(!Robot.autoShooter.isSpinning()));
+		operatorYButton.whenPressed(new ChangeShooterMotorState(true));
+		operatorBButton.whenPressed(new ChangeShooterMotorState(false));
 		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
-		operatorAButton.whenPressed(new ChangeElevatorMotorState(false));
+		operatorAButton.whenReleased(new ChangeElevatorMotorState(false));
 		
-		//operatorRightBumper.whenPressed(new IntakeDeploy());
-		//operatorStartButton.whenPressed(new IntakeRetract());
+		operatorRightBumper.whenPressed(new IntakeDeploy());
+		operatorLeftBumper.whenPressed(new IntakeRetract());
 		
 		driverRightBumper.whenPressed(new ShiftHigh());
 		driverRightBumper.whenReleased(new ShiftLow());

@@ -84,7 +84,7 @@ public class RobotMap {
 		public static final double BANGBANG_LOW = 0.0;
 		public static final double BANGBANG_HIGH = 1.0;
 		
-		public static final double SETPOINT_RPM = 2650;
+		public static final double SETPOINT_RPM = 2800;
 		
 		public static final double P = .0001; //workable value is .001
 		public static final double I = .0005; //workable value is .0005
@@ -103,17 +103,18 @@ public class RobotMap {
 
 	public static class AugerConstants {
 		public static final double DEADZONE = .1;
-		public static final double MAX_POWER = .15;
+		public static final double MAX_POWER = .4;
 
 		public static final double BACKWARDS_POWER = -1.0;
 		public static final double FORWARDS_POWER = 1.0;
 		
 		public static final double FORWARDS_CURRENT_THRESHOLD = 5;//not accurate
-		public static final double BACKWARDS_CURRENT_THRESHOLD = 5;//not accurate
+		public static final double BACKWARDS_CURRENT_THRESHOLD = 5					
+				;//not accurate
 		
-		public static final double MIN_JAM_SECONDS = .4;//inaccurate
-		public static final double MIN_DOUBLE_JAM_SECONDS = .4;//inaccurate
-		public static final double UNJAM_DURATION = 1.0;//inaccurate
+		public static final double MIN_JAM_SECONDS = .5;//inaccurate
+		public static final double MIN_DOUBLE_JAM_SECONDS = .35;//inaccurate
+		public static final double UNJAM_DURATION = .5;//inaccurate
 		public static final double SETTLE_DURATION = 1.0;//inaccurate
 	}
 }

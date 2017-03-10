@@ -33,8 +33,10 @@ public class AutomaticShooter extends PIDSubsystem {
 		this.getPIDController().setSetpoint(RobotMap.ShooterConstants.SETPOINT_RPM
 				* RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION / 60.0);
 		this.getPIDController().setOutputRange(0, 1);
-		this.getPIDController().setPercentTolerance(5);
-		this.getPIDController().setToleranceBuffer(10);
+		this.getPIDController().setInputRange(0, 240);
+		this.getPIDController().setPercentTolerance(10);
+		this.getPIDController().setToleranceBuffer(1);
+		
 	}
 
 	public void setShooterSetpoint(double set) {
@@ -96,6 +98,12 @@ public class AutomaticShooter extends PIDSubsystem {
 	public void enable() {
 		this.getPIDController().enable();
 	}
+	
+	public void disableReset(){
+		spinning = false;
+		shooting = false;
+		reset();
+	}
 
 	public void reset() {
 		this.getPIDController().reset();
@@ -112,7 +120,6 @@ public class AutomaticShooter extends PIDSubsystem {
 	}
 
 	protected double returnPIDInput() {
-		SmartDashboard.putNumber("Shooter RPM", this.getRPM());
 		return getPulseRate();
 	}
 
