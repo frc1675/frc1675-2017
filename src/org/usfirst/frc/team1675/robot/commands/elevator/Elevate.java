@@ -15,6 +15,7 @@ public class Elevate extends Command {
 	public Elevate(double power) {
 		this.power = power;
 		requires(Robot.elevator);
+		requires(Robot.autoShooter);
 	}
 
 	protected void initialize() {

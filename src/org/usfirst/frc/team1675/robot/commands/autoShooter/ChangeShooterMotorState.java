@@ -10,14 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ChangeShooterMotorState extends Command {
 	boolean spinning;
 
-    public ChangeShooterMotorState(boolean spinning) {
-    this.spinning = spinning;
-    }
+	
+	public ChangeShooterMotorState(){
+	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    		Robot.autoShooter.setSpinning(spinning);
-    	}
+    		Robot.autoShooter.setSpinning(!Robot.autoShooter.isSpinning());
+    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {

@@ -44,8 +44,7 @@ public class OI {
 //		operatorRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
 //		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
 		
-		operatorYButton.whenPressed(new ChangeShooterMotorState(true));
-		operatorBButton.whenPressed(new ChangeShooterMotorState(false));
+		operatorYButton.whenPressed(new ChangeShooterMotorState());
 		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
 		operatorAButton.whenReleased(new ChangeElevatorMotorState(false));
 		
