@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeElevatorMotorState;
 import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeShooterMotorState;
+import org.usfirst.frc.team1675.robot.commands.climber.Climbing;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
 import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
@@ -21,39 +22,53 @@ public class OI {
 	private JoystickButton driverBButton = new JoystickButton(driverController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton driverXButton = new JoystickButton(driverController, XBoxControllerMap.X_BUTTON);
 	private JoystickButton driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
-	private JoystickButton driverRightBumper = new JoystickButton(driverController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-	private JoystickButton driverLeftBumper = new JoystickButton(driverController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton driverRightBumper = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+	private JoystickButton driverLeftBumper = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton driverStartButton = new JoystickButton(driverController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
-	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 	private JoystickButton operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
-	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,
+			XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,
+			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton operatorStartButton = new JoystickButton(operatorController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton operatorBackButton = new JoystickButton(operatorController, XBoxControllerMap.BACK_BUTTON);
-	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-	
-	public OI(){
-		//operatorLeftBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
-//		operatorRightBumper.whileHeld(new IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
-//		operatorAButton.whileHeld(new ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER, RobotMap.ElevatorConstants.FORWARDS_POWER));
-		
+	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController,
+			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController,
+			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+
+	public OI() {
+		// operatorLeftBumper.whileHeld(new
+		// IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
+		// operatorRightBumper.whileHeld(new
+		// IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
+		// operatorAButton.whileHeld(new
+		// ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER,
+		// RobotMap.ElevatorConstants.FORWARDS_POWER));
+
 		operatorYButton.whenPressed(new ChangeShooterMotorState());
 		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
 		operatorAButton.whenReleased(new ChangeElevatorMotorState(false));
-		
+		operatorBButton.whileHeld(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
+
 		operatorRightBumper.whenPressed(new IntakeDeploy());
 		operatorLeftBumper.whenPressed(new IntakeRetract());
-		
+
 		driverRightBumper.whenPressed(new ShiftHigh());
 		driverRightBumper.whenReleased(new ShiftLow());
-//		driverXButton.whileHeld(new ShootingProcedure(RobotMap.ElevatorConstants.FORWARDS_POWER,RobotMap.ShooterConstants.SETPOINT_RPM));
+		// driverXButton.whileHeld(new
+		// ShootingProcedure(RobotMap.ElevatorConstants.FORWARDS_POWER,RobotMap.ShooterConstants.SETPOINT_RPM));
 	}
 
 	public double getDriverLeftXAxis() {
@@ -104,11 +119,12 @@ public class OI {
 	public double getOperatorRightTriggerAxis() {
 		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS));
 	}
-	
-	public double checkForDeadzone(double vector){
-		if(Math.abs(vector) < XBoxControllerMap.DEAD_ZONE){
+
+	public double checkForDeadzone(double vector) {
+		if (Math.abs(vector) < XBoxControllerMap.DEAD_ZONE) {
 			return 0;
 		}
-		return Math.signum(vector) * (Math.abs(vector) - XBoxControllerMap.DEAD_ZONE)/(1 - XBoxControllerMap.DEAD_ZONE);
+		return Math.signum(vector) * (Math.abs(vector) - XBoxControllerMap.DEAD_ZONE)
+				/ (1 - XBoxControllerMap.DEAD_ZONE);
 	}
 }

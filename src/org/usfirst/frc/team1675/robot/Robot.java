@@ -4,6 +4,7 @@ package org.usfirst.frc.team1675.robot;
 import org.usfirst.frc.team1675.robot.commands.ShootInAuto;
 import org.usfirst.frc.team1675.robot.subsystems.Auger;
 import org.usfirst.frc.team1675.robot.subsystems.AutomaticShooter;
+import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.Elevator;
 import org.usfirst.frc.team1675.robot.subsystems.Intake;
@@ -34,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static Elevator elevator;
 	public static PowerDistribution pdp;
 	public static Logger log;
+	public static Climber climber;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -46,6 +48,7 @@ public class Robot extends IterativeRobot {
 			elevator = new Elevator();
 			pdp = new PowerDistribution();
 			log = new Logger("log.txt");
+			climber = new Climber();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}

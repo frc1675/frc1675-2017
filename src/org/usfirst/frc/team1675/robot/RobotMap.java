@@ -22,7 +22,7 @@ public class RobotMap {
 		public static final int ELEVATOR_RIGHT = 9;
 		public static final int SHOOTER_LEFT = 10;
 		public static final int SHOOTER_RIGHT = 11;
-		//climber will be 7
+		public static final int CLIMBER = 7;
 	}
 
 	public static class PDChannels {
@@ -37,7 +37,7 @@ public class RobotMap {
 		public static final int ELEVATOR_RIGHT = 5;
 		public static final int SHOOTER_LEFT = 3;
 		public static final int SHOOTER_RIGHT = 13;
-		//climber will be 2
+		public static final int CLIMBER = 2;
 	}
 
 	public static class DIOChannels {
@@ -108,13 +108,18 @@ public class RobotMap {
 		public static final double BACKWARDS_POWER = -1.0;
 		public static final double FORWARDS_POWER = 1.0;
 		
-		public static final double FORWARDS_CURRENT_THRESHOLD = 5;//not accurate
-		public static final double BACKWARDS_CURRENT_THRESHOLD = 5					
-				;//not accurate
+		public static final double FORWARDS_CURRENT_THRESHOLD = 5;//somewhat accurate
+		public static final double BACKWARDS_CURRENT_THRESHOLD = 5;//somewhat accurate
 		
-		public static final double MIN_JAM_SECONDS = .5;//inaccurate
-		public static final double MIN_DOUBLE_JAM_SECONDS = .35;//inaccurate
-		public static final double UNJAM_DURATION = .5;//inaccurate
-		public static final double SETTLE_DURATION = 1.0;//inaccurate
+		public static final double MIN_JAM_SECONDS = .5;//needs tuning, but works
+		public static final double MIN_DOUBLE_JAM_SECONDS = .35;//needs tuning, but works
+		public static final double UNJAM_DURATION = .5;//needs tuning, but works
+		public static final double SETTLE_DURATION = 1.0;//needs tuning, but works
+	}
+	
+	public static class ClimberConstants {
+		
+		public static final double CLIMBER_POWER = 1.0;
+		
 	}
 }
