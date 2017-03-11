@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.DriveForwardAuto;
 import org.usfirst.frc.team1675.robot.commands.ShootInAuto;
+import org.usfirst.frc.team1675.robot.commands.Wait;
 import org.usfirst.frc.team1675.robot.subsystems.Auger;
 import org.usfirst.frc.team1675.robot.subsystems.AutomaticShooter;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
@@ -59,7 +61,11 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		chooser.addObject("Drive Forward", new DriveForwardAuto());
+		chooser.addObject("Shoot then drive Back", new ShootInAuto());
+		chooser.addObject("Do nothing", new Wait(1));
 		SmartDashboard.putData("Auto mode", chooser);
+		
 	}
 
 	/**
@@ -91,7 +97,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new ShootInAuto();
+		autonomousCommand = chooser.getSelected();
+//		autonomousCommand = new ShootInAuto();
 //		autonomousCommand = new DriveVBusForTime(.25, 5);
 		
 

@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DriveForwardAuto extends CommandGroup {
 
     public DriveForwardAuto() {
+    	addSequential(new Wait(1));//so the drive doesn't start moving until after the holder deploys
     	addSequential(new DriveVBusForTime(.25, 5));
         // Add Commands here:
         // e.g. addSequential(new Command1());
