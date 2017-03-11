@@ -120,7 +120,7 @@ public class RobotMap {
 	public static class ClimberConstants {
 		
 		public static final double CLIMBER_POWER = 1.0;
-		public static final double CURRENT_THRESHOLD = 30;
+		public static final double CURRENT_THRESHOLD = 30;//too low, but unknown what the real value is
 		public static final double MIN_STALL_TIME = 0.3;
 	}
 }
