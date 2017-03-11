@@ -9,10 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class DeployGearHolderInAuto extends CommandGroup {
+public class DriveForwardAuto extends CommandGroup {
 
-    public DeployGearHolderInAuto() {
-    	addSequential(new ElevateForTime(RobotMap.ElevatorConstants.FORWARDS_POWER, .1));
+    public DriveForwardAuto() {
     	addSequential(new DriveVBusForTime(.25, 5));
         // Add Commands here:
         // e.g. addSequential(new Command1());

@@ -24,6 +24,7 @@ public class AutoShooterControl extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.elevator.setElevatorPower(RobotMap.ElevatorConstants.FORWARDS_POWER);
     	state = ShooterState.STOPPED;
     }
 
