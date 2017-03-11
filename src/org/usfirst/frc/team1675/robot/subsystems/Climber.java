@@ -16,14 +16,14 @@ public class Climber extends Subsystem {
 
 	}
 
-	public void climberSpinner(double power) {
+	public void setPower(double power) {
 		climberTalon.set(power);
 
 	}
 	
-	public double getClimberCurrents(){
-		SmartDashboard.putNumber("Climber Current", Robot.pdp.getClimberCurrents());
-				return Robot.pdp.getClimberCurrents();
+	public double getCurrent(){
+		SmartDashboard.putNumber("Climber Current", Robot.pdp.getClimberCurrent());
+				return Robot.pdp.getClimberCurrent();
 	}
 
 	public void initDefaultCommand() {

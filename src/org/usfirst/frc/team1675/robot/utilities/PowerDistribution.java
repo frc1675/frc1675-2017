@@ -28,9 +28,10 @@ public class PowerDistribution {
 		return shooterCurrent;
 	}
 
-	public double getClimberCurrents(){
+	public double getClimberCurrent(){
 			return pdp.getCurrent(RobotMap.PDChannels.CLIMBER);
 	}
+	
 	public double getElevatorCurrents(int whichMotor) {
 		double elevatorCurrent = 0;
 		if (whichMotor == RobotMap.CANDeviceIDs.ELEVATOR_LEFT) {

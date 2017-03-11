@@ -15,14 +15,14 @@ public class RobotMap {
 		public static final int DRIVE_LEFT_BACK = 2;
 		public static final int DRIVE_RIGHT_FRONT = 3;
 		public static final int DRIVE_RIGHT_BACK = 4;
-		public static final int INTAKE_INNER = 5;
+		public static final int INTAKE_INNER = 7;//5
 		public static final int INTAKE_OUTER = 6;
 		public static final int AUGER = 12;
 		public static final int ELEVATOR_LEFT = 8;
 		public static final int ELEVATOR_RIGHT = 9;
 		public static final int SHOOTER_LEFT = 10;
 		public static final int SHOOTER_RIGHT = 11;
-		public static final int CLIMBER = 7;
+		public static final int CLIMBER = 5;//7
 	}
 
 	public static class PDChannels {
@@ -30,14 +30,14 @@ public class RobotMap {
 		public static final int DRIVE_LEFT_BACK = 0;
 		public static final int DRIVE_RIGHT_FRONT = 14;
 		public static final int DRIVE_RIGHT_BACK = 15;
-		public static final int INTAKE_INNER = 11;
+		public static final int INTAKE_INNER = 2;//11
 		public static final int INTAKE_OUTER = 10;
 		public static final int AUGER = 12;
 		public static final int ELEVATOR_LEFT= 4;
 		public static final int ELEVATOR_RIGHT = 5;
 		public static final int SHOOTER_LEFT = 3;
 		public static final int SHOOTER_RIGHT = 13;
-		public static final int CLIMBER = 2;
+		public static final int CLIMBER = 11;//2
 	}
 
 	public static class DIOChannels {
@@ -120,6 +120,7 @@ public class RobotMap {
 	public static class ClimberConstants {
 		
 		public static final double CLIMBER_POWER = 1.0;
-		
+		public static final double CURRENT_THRESHOLD = 30;
+		public static final double MIN_STALL_TIME = 0.3;
 	}
 }

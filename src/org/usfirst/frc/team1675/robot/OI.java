@@ -60,7 +60,11 @@ public class OI {
 		operatorYButton.whenPressed(new ChangeShooterMotorState());
 		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
 		operatorAButton.whenReleased(new ChangeElevatorMotorState(false));
-		operatorBButton.whileHeld(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
+		
+		
+		
+		operatorBButton.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
+		operatorBButton.whenReleased(new Climbing(0));
 
 		operatorRightBumper.whenPressed(new IntakeDeploy());
 		operatorLeftBumper.whenPressed(new IntakeRetract());

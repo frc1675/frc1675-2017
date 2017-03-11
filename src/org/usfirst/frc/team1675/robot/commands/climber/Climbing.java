@@ -3,10 +3,14 @@ package org.usfirst.frc.team1675.robot.commands.climber;
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Climbing extends Command {
+
 	double power;
+	double stallStartTime;
 
 	public Climbing(double power) {
 		requires(Robot.climber);
@@ -14,38 +18,34 @@ public class Climbing extends Command {
 		this.power = power;
 	}
 
-	// Called just before this Command runs the first time
 	protected void initialize() {
+		stallStartTime = timeSinceInitialized();
+		SmartDashboard.putBoolean("Climber Running", true);
+		SmartDashboard.putBoolean("Stopped from Current", false);
+
 	}
 
-	// Called repeatedly when this Command is scheduled to run
-
-	@Override
 	protected void execute() {
-		Robot.climber.climberSpinner(power);
+		Robot.climber.setPower(power);
+		if (Robot.climber.getCurrent() < RobotMap.ClimberConstants.CURRENT_THRESHOLD) {
+			stallStartTime = timeSinceInitialized();
+		}
 	}
-
-	// Make this return true when this Command no longer needs to run execute()
-	// protected boolean isFinished() {
-	// if (Robot.climber.getClimberCurrents() <
-	// RobotMap.ClimberConstants.CLIMBER_POWER) {
-	// return false;
-	// } else {
-	// return true;
-	// }
-	// }
 
 	protected boolean isFinished() {
-		return false;
+		if (timeSinceInitialized() - stallStartTime < RobotMap.ClimberConstants.MIN_STALL_TIME) {
+			return false;
+		} else {
+			SmartDashboard.putBoolean("Stopped from Current", true);
+			return true;
+		}
 	}
 
-	// Called once after isFinished returns true
 	protected void end() {
-		Robot.climber.climberSpinner(0);
+		Robot.climber.setPower(0);
+		SmartDashboard.putBoolean("Climber Running", false);
 	}
 
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
 		end();
 	}
