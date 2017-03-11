@@ -30,17 +30,13 @@ public class AutomaticShooter extends PIDSubsystem {
 		leftFireMotor.setInverted(false);
 		rightFireMotor.setInverted(true);
 
-		this.getPIDController().setSetpoint(RobotMap.ShooterConstants.SETPOINT_RPM
-				* RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION / 60.0);
-		this.getPIDController().setOutputRange(0, 1);
-		this.getPIDController().setInputRange(0, 240);
-		this.getPIDController().setPercentTolerance(10);
+		this.setSetpoint(this.toPulseRate(RobotMap.ShooterConstants.SETPOINT_RPM));
+		this.setOutputRange(0, 1);
+		this.setInputRange(0, this.toPulseRate(RobotMap.ShooterConstants.MAX_RPM));
+		this.setPercentTolerance(2);
 		this.getPIDController().setToleranceBuffer(1);
 		
-	}
-
-	public void setShooterSetpoint(double set) {
-		this.getPIDController().setSetpoint(set);
+		
 	}
 
 	public void setMotorPower(double power) {
@@ -59,7 +55,26 @@ public class AutomaticShooter extends PIDSubsystem {
 	}
 
 	public double getRPM() {
-		return counter.getRate() * 60.0 / RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION;
+		return this.toRPM(counter.getRate());
+		// 60 comes from 60 seconds per minute
+	}
+	
+	public double getRPMSetpoint(){
+		return this.toRPM(this.getSetpoint());
+	}
+	
+	public void incrementRPMSetpoint(double rpm){
+		this.setSetpoint(this.toPulseRate(rpm) + this.getSetpoint());
+	}
+	
+	public double toRPM(double pulseRate){
+		return pulseRate * 60 / RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION;
+		// 60 comes from 60 seconds per minute
+
+	}
+	
+	public double toPulseRate(double rpm){
+		return rpm * RobotMap.ShooterConstants.COUNTER_PULSES_PER_REVOLUTION / 60;
 		// 60 comes from 60 seconds per minute
 	}
 
@@ -89,10 +104,6 @@ public class AutomaticShooter extends PIDSubsystem {
 
 	public boolean isShooting() {
 		return shooting;
-	}
-
-	public boolean onTarget() {
-		return this.getPIDController().onTarget();
 	}
 
 	public void enable() {

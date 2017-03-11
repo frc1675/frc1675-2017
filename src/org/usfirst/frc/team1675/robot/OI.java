@@ -2,6 +2,7 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeElevatorMotorState;
 import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeShooterMotorState;
+import org.usfirst.frc.team1675.robot.commands.autoShooter.IncrementRPM;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
 import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
@@ -47,6 +48,9 @@ public class OI {
 		operatorYButton.whenPressed(new ChangeShooterMotorState());
 		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
 		operatorAButton.whenReleased(new ChangeElevatorMotorState(false));
+		operatorXButton.whenPressed(new IncrementRPM(-RobotMap.ShooterConstants.RPM_INCREMENT));
+		operatorBButton.whenPressed(new IncrementRPM(RobotMap.ShooterConstants.RPM_INCREMENT));
+
 		
 		operatorRightBumper.whenPressed(new IntakeDeploy());
 		operatorLeftBumper.whenPressed(new IntakeRetract());
