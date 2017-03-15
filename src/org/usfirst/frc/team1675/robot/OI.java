@@ -1,5 +1,11 @@
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.climber.Climbing;
+import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
+import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
+import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -9,31 +15,52 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  */
 public class OI {
 
-	private Joystick driverController = new Joystick(XBoxControllerMap.driverControllerPort);
+	private Joystick driverController = new Joystick(XBoxControllerMap.DRIVER_CONTROLLER_PORT);
 	private JoystickButton driverAButton = new JoystickButton(driverController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton driverBButton = new JoystickButton(driverController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton driverXButton = new JoystickButton(driverController, XBoxControllerMap.X_BUTTON);
 	private JoystickButton driverYButton = new JoystickButton(driverController, XBoxControllerMap.Y_BUTTON);
-	private JoystickButton driverRightBumper = new JoystickButton(driverController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-	private JoystickButton driverLeftBumper = new JoystickButton(driverController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton driverRightBumper = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+	private JoystickButton driverLeftBumper = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton driverStartButton = new JoystickButton(driverController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
-	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-	private Joystick operatorController = new Joystick(XBoxControllerMap.operatorControllerPort);
+	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
 	private JoystickButton operatorYButton = new JoystickButton(operatorController, XBoxControllerMap.Y_BUTTON);
-	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,	XBoxControllerMap.RIGHT_BUMPER_BUTTON);
-	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,	XBoxControllerMap.LEFT_BUMPER_BUTTON);
+	private JoystickButton operatorRightBumper = new JoystickButton(operatorController,
+			XBoxControllerMap.RIGHT_BUMPER_BUTTON);
+	private JoystickButton operatorLeftBumper = new JoystickButton(operatorController,
+			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton operatorStartButton = new JoystickButton(operatorController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton operatorBackButton = new JoystickButton(operatorController, XBoxControllerMap.BACK_BUTTON);
-	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController,
+			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController,
+			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+
+	public OI() {
+		
+		operatorBButton.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
+		operatorBButton.whenReleased(new Climbing(0));
+
+		operatorRightBumper.whenPressed(new IntakeDeploy());
+		operatorLeftBumper.whenPressed(new IntakeRetract());
+
+		driverRightBumper.whenPressed(new ShiftHigh());
+		driverRightBumper.whenReleased(new ShiftLow());
+	}
 
 	public double getDriverLeftXAxis() {
 		return checkForDeadzone(driverController.getRawAxis(XBoxControllerMap.LEFT_X_AXIS));
+
 	}
 
 	public double getDriverLeftYAxis() {
@@ -79,10 +106,12 @@ public class OI {
 	public double getOperatorRightTriggerAxis() {
 		return checkForDeadzone(operatorController.getRawAxis(XBoxControllerMap.RIGHT_TRIGGER_AXIS));
 	}
-	public double checkForDeadzone(double vector){
-		if(Math.abs(vector) < RobotMap.DriverConstants.CONTROLLER_DEADZONE){
+
+	public double checkForDeadzone(double vector) {
+		if (Math.abs(vector) < XBoxControllerMap.DEAD_ZONE) {
 			return 0;
 		}
-		return Math.signum(vector) * (Math.abs(vector) - RobotMap.DriverConstants.CONTROLLER_DEADZONE)/(1 - RobotMap.DriverConstants.CONTROLLER_DEADZONE);
+		return Math.signum(vector) * (Math.abs(vector) - XBoxControllerMap.DEAD_ZONE)
+				/ (1 - XBoxControllerMap.DEAD_ZONE);
 	}
 }

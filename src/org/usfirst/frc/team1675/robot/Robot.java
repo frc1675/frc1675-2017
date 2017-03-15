@@ -1,7 +1,11 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
+import org.usfirst.frc.team1675.robot.subsystems.Intake;
+import org.usfirst.frc.team1675.robot.utilities.Logger;
+import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -21,18 +25,24 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveBase driveBase;
-
+	public static Intake intake;
+	public static PowerDistribution pdp;
+	public static Logger log;
+	public static Climber climber;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-	
+
 	static {
-		try{
+		try {
 			driveBase = new DriveBase();
-		}catch(Throwable e){
+			intake = new Intake();
+			pdp = new PowerDistribution();
+			log = new Logger("log.txt");
+			climber = new Climber();
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	/**
@@ -42,7 +52,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 	}
 
@@ -53,7 +62,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		log.closeLog();
 	}
 
 	@Override
@@ -74,7 +83,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+//		autonomousCommand = new DriveVBusForTime(.25, 5);
+		
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -86,6 +96,8 @@ public class Robot extends IterativeRobot {
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		log.openLog();
+		log.info("Starting autonomous");
 	}
 
 	/**
@@ -94,6 +106,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+
 	}
 
 	@Override
@@ -104,6 +117,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
+		log.openLog();
+		log.info("Starting teleop");
 	}
 
 	/**
@@ -112,6 +127,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+		
 	}
 
 	/**
