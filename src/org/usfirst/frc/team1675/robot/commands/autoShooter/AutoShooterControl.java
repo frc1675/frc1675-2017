@@ -30,12 +30,14 @@ public class AutoShooterControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putString("Shooter State", state.toString());
+    	
 		SmartDashboard.putNumber("Shooter RPM", Robot.autoShooter.getRPM());
-		SmartDashboard.putString("Shooter State", state.toString());
 		SmartDashboard.putNumber("Avg Error", Robot.autoShooter.getPIDController().getAvgError());
 		SmartDashboard.putNumber("Error", Robot.autoShooter.getPIDController().getError());
-		SmartDashboard.putBoolean("On Target", Robot.autoShooter.onTarget());
+		SmartDashboard.putNumber("RPM Setpoint", Robot.autoShooter.getRPMSetpoint());
 		
+		SmartDashboard.putBoolean("On Target", Robot.autoShooter.onTarget());
 		SmartDashboard.putBoolean("Spinning", Robot.autoShooter.isSpinning());
 		SmartDashboard.putBoolean("Shooting", Robot.autoShooter.isShooting());
 		
@@ -43,9 +45,9 @@ public class AutoShooterControl extends Command {
     	case STOPPED:
     		Robot.autoShooter.reset();
     		Robot.elevator.setElevatorPower(0);
+    		Robot.autoShooter.setSetpoint(Robot.autoShooter.getSetpoint());
     		if(Robot.autoShooter.isSpinning() || Robot.autoShooter.isShooting()){
     			state = ShooterState.MAINTAINING;
-    			Robot.autoShooter.setSetpoint(Robot.autoShooter.getSetpoint());
     			//set the setpoint to clear the buffer
     			
     		}
