@@ -17,11 +17,6 @@ public class RobotMap {
 		public static final int DRIVE_RIGHT_BACK = 4;
 		public static final int INTAKE_INNER = 7;//5
 		public static final int INTAKE_OUTER = 6;
-		public static final int AUGER = 12;
-		public static final int ELEVATOR_LEFT = 8;
-		public static final int ELEVATOR_RIGHT = 9;
-		public static final int SHOOTER_LEFT = 10;
-		public static final int SHOOTER_RIGHT = 11;
 		public static final int CLIMBER = 5;//7
 	}
 
@@ -32,11 +27,6 @@ public class RobotMap {
 		public static final int DRIVE_RIGHT_BACK = 15;
 		public static final int INTAKE_INNER = 2;//11
 		public static final int INTAKE_OUTER = 10;
-		public static final int AUGER = 12;
-		public static final int ELEVATOR_LEFT= 4;
-		public static final int ELEVATOR_RIGHT = 5;
-		public static final int SHOOTER_LEFT = 3;
-		public static final int SHOOTER_RIGHT = 13;
 		public static final int CLIMBER = 11;//2
 	}
 
@@ -53,9 +43,7 @@ public class RobotMap {
 	public static class SolenoidChannels {
 		// inaccurate values, but MUST all be different or else robot won't run
 		public static final int DEPLOY_LEFT_RETRACT = 2;
-//		public static final int DEPLOY_RIGHT_RETRACT = 5;
 		public static final int DEPLOY_LEFT_EXTEND = 1;
-//		public static final int DEPLOY_RIGHT_EXTEND = 6;
         public static final int SHIFT_HIGH = 4;
 		public static final int SHIFT_LOW = 3;
 	}
@@ -76,47 +64,6 @@ public class RobotMap {
 		public static final double SHIFTER_TIME = .25;
 	}
 
-	public static class ShooterConstants {
-		public static final double DEADZONE = .1675;
-		public static final double MAX_POWER = 1.0;
-		public static final int COUNTER_PULSES_PER_REVOLUTION = 4;
-
-		public static final double BANGBANG_LOW = 0.0;
-		public static final double BANGBANG_HIGH = 1.0;
-		
-		public static final double SETPOINT_RPM = 2800;
-		
-		public static final double P = .0001; //workable value is .001
-		public static final double I = .0005; //workable value is .0005
-		public static final double D = .0;
-		
-		public static final double FORWARDS_POWER = 1.0;
-		public static final double BACKWARDS_POWER = -1.0;
-	}
-
-	public static class ElevatorConstants {
-		public static final double DEADZONE = .1675;
-		public static final double MAX_POWER = 1.0;
-		public static final double FORWARDS_POWER = 1.0;
-		public static final double BACKWARDS_POWER = -1.0;
-	}
-
-	public static class AugerConstants {
-		public static final double DEADZONE = .1;
-		public static final double MAX_POWER = .4;
-
-		public static final double BACKWARDS_POWER = -1.0;
-		public static final double FORWARDS_POWER = 1.0;
-		
-		public static final double FORWARDS_CURRENT_THRESHOLD = 5;//somewhat accurate
-		public static final double BACKWARDS_CURRENT_THRESHOLD = 5;//somewhat accurate
-		
-		public static final double MIN_JAM_SECONDS = .5;//needs tuning, but works
-		public static final double MIN_DOUBLE_JAM_SECONDS = .35;//needs tuning, but works
-		public static final double UNJAM_DURATION = .5;//needs tuning, but works
-		public static final double SETTLE_DURATION = 1.0;//needs tuning, but works
-	}
-	
 	public static class ClimberConstants {
 		
 		public static final double CLIMBER_POWER = 1.0;

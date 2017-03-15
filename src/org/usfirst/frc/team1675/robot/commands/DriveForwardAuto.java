@@ -1,8 +1,6 @@
 package org.usfirst.frc.team1675.robot.commands;
 
-import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drive.DriveVBusForTime;
-import org.usfirst.frc.team1675.robot.commands.elevator.ElevateForTime;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

@@ -1,7 +1,5 @@
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeElevatorMotorState;
-import org.usfirst.frc.team1675.robot.commands.autoShooter.ChangeShooterMotorState;
 import org.usfirst.frc.team1675.robot.commands.climber.Climbing;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
@@ -49,19 +47,6 @@ public class OI {
 			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 
 	public OI() {
-		// operatorLeftBumper.whileHeld(new
-		// IntakeFuel(RobotMap.IntakeConstants.INTAKE_POWER));
-		// operatorRightBumper.whileHeld(new
-		// IntakeFuel(RobotMap.IntakeConstants.OUTTAKE_POWER));
-		// operatorAButton.whileHeld(new
-		// ElevateAndSpinAuger(RobotMap.AugerConstants.FORWARDS_POWER,
-		// RobotMap.ElevatorConstants.FORWARDS_POWER));
-
-		operatorYButton.whenPressed(new ChangeShooterMotorState());
-		operatorAButton.whenPressed(new ChangeElevatorMotorState(true));
-		operatorAButton.whenReleased(new ChangeElevatorMotorState(false));
-		
-		
 		
 		operatorBButton.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
 		operatorBButton.whenReleased(new Climbing(0));
@@ -71,8 +56,6 @@ public class OI {
 
 		driverRightBumper.whenPressed(new ShiftHigh());
 		driverRightBumper.whenReleased(new ShiftLow());
-		// driverXButton.whileHeld(new
-		// ShootingProcedure(RobotMap.ElevatorConstants.FORWARDS_POWER,RobotMap.ShooterConstants.SETPOINT_RPM));
 	}
 
 	public double getDriverLeftXAxis() {

@@ -1,12 +1,8 @@
 
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.ShootInAuto;
-import org.usfirst.frc.team1675.robot.subsystems.Auger;
-import org.usfirst.frc.team1675.robot.subsystems.AutomaticShooter;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
-import org.usfirst.frc.team1675.robot.subsystems.Elevator;
 import org.usfirst.frc.team1675.robot.subsystems.Intake;
 import org.usfirst.frc.team1675.robot.utilities.Logger;
 import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
@@ -30,9 +26,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveBase driveBase;
 	public static Intake intake;
-	public static Auger auger;
-	public static AutomaticShooter autoShooter;
-	public static Elevator elevator;
 	public static PowerDistribution pdp;
 	public static Logger log;
 	public static Climber climber;
@@ -43,9 +36,6 @@ public class Robot extends IterativeRobot {
 		try {
 			driveBase = new DriveBase();
 			intake = new Intake();
-			auger = new Auger();
-			autoShooter = new AutomaticShooter();
-			elevator = new Elevator();
 			pdp = new PowerDistribution();
 			log = new Logger("log.txt");
 			climber = new Climber();
@@ -78,7 +68,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		autoShooter.disableReset();
 	}
 
 	/**
@@ -94,7 +83,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new ShootInAuto();
 //		autonomousCommand = new DriveVBusForTime(.25, 5);
 		
 

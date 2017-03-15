@@ -14,33 +14,11 @@ public class PowerDistribution {
 
 	// fill in the actual channels pls.
 	// whichMotor is the CAN id of the motor that you want.
-	public double getAugerCurrent() {
-		return pdp.getCurrent(RobotMap.PDChannels.AUGER);
-	}
-
-	public double getShooterCurrents(int whichMotor) {
-		double shooterCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.SHOOTER_LEFT) {
-			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.SHOOTER_LEFT);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.SHOOTER_RIGHT) {
-			shooterCurrent = pdp.getCurrent(RobotMap.PDChannels.SHOOTER_RIGHT);
-		}
-		return shooterCurrent;
-	}
-
 	public double getClimberCurrent(){
 			return pdp.getCurrent(RobotMap.PDChannels.CLIMBER);
 	}
 	
-	public double getElevatorCurrents(int whichMotor) {
-		double elevatorCurrent = 0;
-		if (whichMotor == RobotMap.CANDeviceIDs.ELEVATOR_LEFT) {
-			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.ELEVATOR_LEFT);
-		} else if (whichMotor == RobotMap.CANDeviceIDs.ELEVATOR_RIGHT) {
-			elevatorCurrent = pdp.getCurrent(RobotMap.PDChannels.ELEVATOR_RIGHT);
-		}
-		return elevatorCurrent;
-	}
+	
 
 	public double getIntakeCurrents(int whichMotor) {
 		double intakeCurrent = 0;
