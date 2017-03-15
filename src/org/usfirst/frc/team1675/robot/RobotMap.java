@@ -31,7 +31,6 @@ public class RobotMap {
 	}
 
 	public static class DIOChannels {
-		public static final int SHOOTER_COUNTER = 0;
 	}
 
 	public static class AnalogInChannels {
