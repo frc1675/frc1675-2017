@@ -60,6 +60,19 @@ public class DriveBase extends Subsystem {
 	public void shiftLow() {
 		shifter.set(DoubleSolenoid.Value.kReverse);
 	}
+	public void resetEncoder() {
+		leftFront.setEncPosition(0);
+		rightFront.setEncPosition(0);
+	}
+
+	public void reverseEncoder(boolean reversed) {
+		leftFront.reverseOutput(reversed);
+		rightFront.reverseOutput(reversed);
+	}
+
+	public double getEncoderValue() {
+		return leftFront.getEncPosition();
+	}
 
 	public void stopShifter() {
 		shifter.set(DoubleSolenoid.Value.kOff);
