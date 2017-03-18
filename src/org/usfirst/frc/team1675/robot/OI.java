@@ -3,8 +3,9 @@ package org.usfirst.frc.team1675.robot;
 import org.usfirst.frc.team1675.robot.commands.climber.Climbing;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.BringUp;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.GearIntake;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -49,11 +50,16 @@ public class OI {
 	public OI() {
 		
 		operatorBButton.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
-		operatorBButton.whenReleased(new Climbing(0));
+		operatorBButton.whenReleased(new Climbing(RobotMap.ClimberConstants.CLIMBER_STOPPED));
 
-		operatorRightBumper.whenPressed(new IntakeDeploy());
-		operatorLeftBumper.whenPressed(new IntakeRetract());
+	
 
+		operatorYButton.whenPressed(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+		operatorYButton.whenReleased(new BringUp());
+		
+		operatorXButton.whenPressed(new GearIntake());
+		operatorXButton.whenReleased(new BringUp());
+		
 		driverRightBumper.whenPressed(new ShiftHigh());
 		driverRightBumper.whenReleased(new ShiftLow());
 	}

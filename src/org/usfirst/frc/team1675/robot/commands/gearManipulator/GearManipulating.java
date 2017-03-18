@@ -1,22 +1,23 @@
-package org.usfirst.frc.team1675.robot.commands.intake;
+package org.usfirst.frc.team1675.robot.commands.gearManipulator;
 
 import org.usfirst.frc.team1675.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class IntakeFuel extends Command {
+public class GearManipulating extends Command {
 
 	private double power;
-	
-	public IntakeFuel(double power) {
-		requires(Robot.intake);
+
+	public GearManipulating(double power) {
+		requires(Robot.gearManipulator);
 		this.power = power;
 	}
 
 	protected void initialize() {
-		Robot.intake.runIntake(power);
+		Robot.gearManipulator.runGearManipulator(power);
 	}
 
 	protected void execute() {
@@ -27,7 +28,7 @@ public class IntakeFuel extends Command {
 	}
 
 	protected void end() {
-		Robot.intake.runIntake(0);
+		Robot.gearManipulator.runGearManipulator(0);
 	}
 
 	protected void interrupted() {
