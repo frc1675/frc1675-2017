@@ -36,6 +36,9 @@ public class DriveBase extends Subsystem {
 		leftBack.setInverted(true);
 		rightFront.setInverted(false);
 		rightBack.setInverted(false);
+		
+		
+		rightFront.reverseSensor(true);
 
 	}
 
@@ -74,15 +77,18 @@ public class DriveBase extends Subsystem {
 		rightFront.reverseOutput(reversed);
 	}
 
-	public double getEncoderValue() {
-		return leftFront.getEncPosition();
+	public double getLeftEncoderValue() {
+		return leftFront.getPosition();
+	}
+	public double getRightEncoderValue() {
+		return rightFront.getPosition();
 	}
 	public double getAngle() {
 		return ahrs.getAngle();
 	}
 
 	public void resetGyro() {
-		ahrs.reset();	
+		ahrs.zeroYaw();
 	}
 
 	public void stopShifter() {

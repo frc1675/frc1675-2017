@@ -6,7 +6,6 @@ import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  *
  */
@@ -18,8 +17,11 @@ public class TurnOnGyro extends PIDCommand {
 	static final int BUFFER = 10;
 	static final int ENDALIGN = 5;
 	double setpoint;
-	int counter = 0;
-
+	double initialDegrees;
+	/**
+	 * 
+	 * @param setpoint angle to turn in degrees
+	 */
 	public TurnOnGyro(double setpoint) {
 		super(P, I, D);
 		requires(Robot.driveBase);
@@ -28,28 +30,24 @@ public class TurnOnGyro extends PIDCommand {
 
 	protected void initialize() {
 		SmartDashboard.putString("Turn command", "Started");
-		Robot.driveBase.resetGyro();
 		this.getPIDController().reset();
 		this.getPIDController().enable();
-		this.getPIDController().setSetpoint(setpoint);
+		this.getPIDController().setOutputRange(-1.0, 1.0);
+		initialDegrees = Robot.driveBase.getAngle();
+    	this.getPIDController().setSetpoint((initialDegrees + setpoint));
 		this.getPIDController().setAbsoluteTolerance(TOLERANCE);
 		this.getPIDController().setToleranceBuffer(BUFFER);
+		this.setTimeout(20);
+        this.getPIDController().setContinuous(true);
 	}
 
 	protected void execute() {
 	}
 
 	protected boolean isFinished() {
-		if (this.getPIDController().onTarget()) {
-			counter = counter + 1;
-		} else {
-			counter = 0;
-		}
-		SmartDashboard.putNumber("Counter", counter);
-		if (counter == ENDALIGN) {
+		if(this.getPIDController().onTarget() || this.isTimedOut()){
 			return true;
-		}
-		return false;
+		}else return false;
 	}
 
 	protected void end() {
@@ -68,7 +66,10 @@ public class TurnOnGyro extends PIDCommand {
 	}
 
 	protected void usePIDOutput(double output) {
-		Robot.driveBase.setLeftMotors(-output);
-		Robot.driveBase.setRightMotors(output);
+		SmartDashboard.putNumber("GyroPIDoutput", output);
+		SmartDashboard.putNumber("GyroPIDError", this.getPIDController().getError());
+		SmartDashboard.putNumber("GyroPIDAngle", Robot.driveBase.getAngle());
+		Robot.driveBase.setLeftMotors(output);
+		Robot.driveBase.setRightMotors(-output);
 	}
 }
