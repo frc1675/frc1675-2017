@@ -11,7 +11,7 @@ public class GearIntake extends CommandGroup {
 
 	public GearIntake() {
 
-		//addSequential(new GearManipulatorDown());
+		addSequential(new GearManipulatorDown());
 		addSequential(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_IN));
 	}
 }

@@ -43,8 +43,8 @@ public class RobotMap {
 
 	public static class SolenoidChannels {
 		// inaccurate values, but MUST all be different or else robot won't run
-		public static final int DEPLOY_LEFT_RETRACT = 2;
-		public static final int DEPLOY_LEFT_EXTEND = 1;
+		public static final int DEPLOY_LEFT_RETRACT = 1;
+		public static final int DEPLOY_LEFT_EXTEND = 2;
 		public static final int SHIFT_HIGH = 4;
 		public static final int SHIFT_LOW = 3;
 	}

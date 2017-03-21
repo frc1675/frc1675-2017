@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class BringUp extends CommandGroup {
 
 	public BringUp() {
-		//addSequential(new GearManipulatorUp());
+		addSequential(new GearManipulatorUp());
 		addSequential(new GearManipulating(0));
 
 		// To run multiple commands at the same time,
