@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1675.robot.commands.intake;
+package org.usfirst.frc.team1675.robot.commands.gearManipulator;
 
 import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
@@ -8,18 +8,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class IntakeRetract extends Command {
+public class GearManipulatorUp extends Command {
 
-	public IntakeRetract() {
-		requires(Robot.intake);
-		this.setTimeout(RobotMap.IntakeConstants.SOLENOID_ACTIVE_TIME);
+	public GearManipulatorUp() {
+		requires(Robot.gearManipulator);
+		this.setTimeout(RobotMap.GearManipulatorConstants.SOLENOID_ACTIVE_TIME);
 	}
 
 	protected void initialize() {
 	}
 
 	protected void execute() {
-		Robot.intake.retractIntake();
+		Robot.gearManipulator.retractGearManipulator();
 	}
 
 	protected boolean isFinished() {
@@ -27,7 +27,7 @@ public class IntakeRetract extends Command {
 	}
 
 	protected void end() {
-		Robot.intake.stopSolenoids();
+		Robot.gearManipulator.stopSolenoids();
 	}
 
 	protected void interrupted() {

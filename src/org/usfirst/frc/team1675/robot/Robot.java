@@ -4,7 +4,7 @@ package org.usfirst.frc.team1675.robot;
 import org.usfirst.frc.team1675.robot.commands.drive.AutoRoutine;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
-import org.usfirst.frc.team1675.robot.subsystems.Intake;
+import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team1675.robot.utilities.Logger;
 import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
 
@@ -27,20 +27,20 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveBase driveBase;
-	public static Intake intake;
 	public static PowerDistribution pdp;
 	public static Logger log;
 	public static Climber climber;
+	public static GearManipulator gearManipulator;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	static {
 		try {
 			driveBase = new DriveBase();
-			intake = new Intake();
 			pdp = new PowerDistribution();
 			log = new Logger("log.txt");
 			climber = new Climber();
+			gearManipulator = new GearManipulator();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
