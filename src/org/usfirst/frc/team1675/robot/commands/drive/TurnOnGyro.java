@@ -10,19 +10,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class TurnOnGyro extends PIDCommand {
-	static final double P = .0093;
-	static final double I = .00044;
-	static final double D = .005;
-	static final int TOLERANCE = 2;
+	static final double P = .03;
+	static final double I = .0;
+	static final double D = .03;
+	static final double TOLERANCE = 0.5;
 	static final int BUFFER = 10;
-	static final int ENDALIGN = 5;
 	double setpoint;
 	double initialDegrees;
 	/**
 	 * 
 	 * @param setpoint angle to turn in degrees
 	 */
-	public TurnOnGyro(double setpoint) {
+	public TurnOnGyro(double setpoint,double timeout) {
 		super(P, I, D);
 		requires(Robot.driveBase);
 		this.setpoint = setpoint;
@@ -46,6 +45,7 @@ public class TurnOnGyro extends PIDCommand {
 
 	protected boolean isFinished() {
 		if(this.getPIDController().onTarget() || this.isTimedOut()){
+			SmartDashboard.putNumber("finalAngle", Robot.driveBase.getAngle());
 			return true;
 		}else return false;
 	}

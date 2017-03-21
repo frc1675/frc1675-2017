@@ -45,6 +45,7 @@ public class LeftSidePIDDrive extends PIDCommand {
 
 	protected boolean isFinished() {
 		if(this.getPIDController().onTarget() || this.isTimedOut()){
+			SmartDashboard.putNumber("finalLeft", Robot.driveBase.getLeftEncoderValue());
 			return true;
 		}else return false;
 	}
