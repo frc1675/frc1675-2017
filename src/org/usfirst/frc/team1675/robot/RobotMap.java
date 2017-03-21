@@ -59,11 +59,16 @@ public class RobotMap {
 	}
 
 	public static class DriveBaseConstants {
+		public static final double P = .0003;
+		public static final double I = 0.0;
+		public static final double D = 0.0003;
+		public static final int BUFFER = 10;
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1.0;
-		public static final int ENCODER_TICKS_PER_REVOLUTION = 697;// "alternative
-																	// facts"
 		public static final double SHIFTER_TIME = .25;
+		// 720 tick/rotation / 18.85 in/rotation = 38.2 ticks/inch
+		public static final double TICKS_PER_INCH = 410.86;
+		public static final double TOLERANCE = TICKS_PER_INCH * 0.5;
 	}
 
 	public static class ClimberConstants {
