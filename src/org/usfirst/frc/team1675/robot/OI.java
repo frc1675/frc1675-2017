@@ -54,13 +54,15 @@ public class OI {
 		operatorRightBumper.whenReleased(new Climbing(RobotMap.ClimberConstants.CLIMBER_STOPPED));
 	
 
-		operatorYButton.whenPressed(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+		operatorLeftBumper.whenPressed(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
 		
-		operatorBButton.whenPressed(new GearManipulatorDown());
+		operatorBButton.whenPressed(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
 		
-		operatorXButton.whenPressed(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_IN));
+		operatorXButton.whenPressed(new GearManipulatorDown());
 		
-		operatorAButton.whenPressed(new GearManipulatorUp());
+		operatorAButton.whenPressed(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_IN));
+		
+		operatorYButton.whenPressed(new GearManipulatorUp());
 		
 		driverRightBumper.whenPressed(new ShiftHigh());
 		driverRightBumper.whenReleased(new ShiftLow());
