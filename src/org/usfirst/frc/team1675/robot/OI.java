@@ -55,6 +55,7 @@ public class OI {
 	
 
 		operatorLeftBumper.whenPressed(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+		operatorLeftBumper.whenReleased(new GearManipulatorUp());
 		
 		operatorBButton.whenPressed(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
 		
