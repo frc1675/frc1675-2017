@@ -10,23 +10,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class GearLeftBoiler extends CommandGroup {
-
-	private static final double SEGMENT_1 = 66.0;
+public class LeftEscapeLeft extends CommandGroup {
+	
+	private static final double TURN_1_ANGLE = -60.0;
+	private static final double TURN_1_TIMEOUT = 4.0;
+	
+	private static final double SEGMENT_1 = 72.0;
 	private static final double SEGMENT_1_TIMEOUT = 4.0;
-	
-	private static final double TURN_ANGLE = 57.29;
-	private static final double TURN_TIMEOUT = 4.0;
-	
-	private static final double SEGMENT_2 = 73.0;
-	private static final double SEGMENT_2_TIMEOUT = 4.0;
-	
-    public GearLeftBoiler() {
+
+
+    public LeftEscapeLeft() {
         // Add Commands here:
-        addSequential(new DriveForDistance(SEGMENT_1, SEGMENT_1_TIMEOUT));
-        addSequential(new TurnOnGyro(TURN_ANGLE, TURN_TIMEOUT));
-        addSequential(new DriveForDistance(SEGMENT_2, SEGMENT_2_TIMEOUT));
-        addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+    	addSequential(new TurnOnGyro(TURN_1_ANGLE, TURN_1_TIMEOUT));
+    	addSequential(new DriveForDistance(SEGMENT_1, SEGMENT_1_TIMEOUT));
         //      addSequential(new Command2());
         // these will run in order.
 

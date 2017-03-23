@@ -8,6 +8,7 @@ import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team1675.robot.utilities.Logger;
 import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
+import org.usfirst.frc.team1675.robot.utilities.AutoChooser;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -27,6 +28,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
+	public static AutoChooser autoChooser;
 	public static DriveBase driveBase;
 	public static PowerDistribution pdp;
 	public static Logger log;
@@ -55,8 +57,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		autoChooser = new AutoChooser();
 		CameraServer.getInstance().startAutomaticCapture();
-		SmartDashboard.putData("Auto mode", chooser);
 	}
 
 	/**
@@ -88,7 +90,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//autonomousCommand = new DriveForDistance(72,60);
-		autonomousCommand = new GearLeftBoiler();
+		//autonomousCommand = new GearLeftBoiler();
+		autonomousCommand = autoChooser.generateAuto();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
