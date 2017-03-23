@@ -1,13 +1,20 @@
-package org.usfirst.frc.team1675.robot.commands;
+package org.usfirst.frc.team1675.robot.commands.auto;
+
+import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.drive.DriveForDistance;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class test extends CommandGroup {
+public class GearCenter extends CommandGroup {
 
-    public test() {
+    public GearCenter() {
+    	
+    	addSequential(new DriveForDistance(79.0, 5.0));
+    	addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

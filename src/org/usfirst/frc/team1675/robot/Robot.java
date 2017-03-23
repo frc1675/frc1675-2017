@@ -1,8 +1,8 @@
 
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.AutoForward;
-import org.usfirst.frc.team1675.robot.commands.drive.AutoSide;
+import org.usfirst.frc.team1675.robot.commands.auto.GearCenter;
+import org.usfirst.frc.team1675.robot.commands.auto.GearLeftBoiler;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//autonomousCommand = new DriveForDistance(72,60);
-		autonomousCommand = new AutoSide();
+		autonomousCommand = new GearLeftBoiler();
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",

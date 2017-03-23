@@ -1,7 +1,8 @@
-package org.usfirst.frc.team1675.robot.commands;
+package org.usfirst.frc.team1675.robot.commands.auto;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drive.DriveForDistance;
+import org.usfirst.frc.team1675.robot.commands.drive.TurnOnGyro;
 import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -9,14 +10,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoForward extends CommandGroup {
+public class GearLeftBoiler extends CommandGroup {
 
-    public AutoForward() {
-    	
-    	addSequential(new DriveForDistance(79.0, 5.0));
-    	addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+    public GearLeftBoiler() {
         // Add Commands here:
-        // e.g. addSequential(new Command1());
+        addSequential(new DriveForDistance(66,7));
+        addSequential(new TurnOnGyro(57.29,7));
+        addSequential(new DriveForDistance(73,7));
+        addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         //      addSequential(new Command2());
         // these will run in order.
 
