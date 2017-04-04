@@ -11,8 +11,7 @@ public class DriveForDistance extends CommandGroup {
 
     public DriveForDistance(double distance,double timeout) {
     	requires(Robot.driveBase);
-    	addParallel(new LeftSidePIDDrive(distance,timeout));
-    	addParallel(new RightSidePIDDrive(distance,timeout));
+    	addParallel(new SunflowerDrive(distance,timeout));
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

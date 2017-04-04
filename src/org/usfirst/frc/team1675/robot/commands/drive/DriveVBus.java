@@ -16,8 +16,7 @@ public class DriveVBus extends Command {
     }
 
     protected void initialize() {
-    	Robot.driveBase.setLeftMotors(power);
-    	Robot.driveBase.setRightMotors(power);
+    	Robot.driveBase.setMotorPower(power);
     }
 
     protected void execute() {
@@ -28,8 +27,7 @@ public class DriveVBus extends Command {
     }
 
     protected void end() {
-    	Robot.driveBase.setLeftMotors(0);
-    	Robot.driveBase.setRightMotors(0);
+    	Robot.driveBase.setMotorPower(0);
     			
     }
     

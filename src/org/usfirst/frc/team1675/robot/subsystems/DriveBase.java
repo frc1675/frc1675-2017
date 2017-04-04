@@ -41,17 +41,23 @@ public class DriveBase extends Subsystem {
 		rightFront.reverseSensor(true);
 
 	}
-
-	public void setRightMotors(double power) {
+	public void setLeftMotors(double power){
+		power = scaledDeadzone(power);
+		leftFront.set(power);
+		leftBack.set(power);
+	}
+	public void setRightMotors(double power){
 		power = scaledDeadzone(power);
 		rightFront.set(power);
 		rightBack.set(power);
 	}
 
-	public void setLeftMotors(double power) {
+	public void setMotorPower(double power) {
 		power = scaledDeadzone(power);
 		leftFront.set(power);
 		leftBack.set(power);
+		rightFront.set(power);
+		rightBack.set(power);
   }
   
 	private double scaledDeadzone(double power) {

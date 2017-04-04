@@ -10,7 +10,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class RightSidePIDDrive extends PIDCommand {
+public class SunflowerDrive extends PIDCommand {
+
 	double setpoint;
 	double timeout;
 
@@ -19,7 +20,7 @@ public class RightSidePIDDrive extends PIDCommand {
 	 * @param setpoint
 	 *            distance to drive in inches
 	 */
-	public RightSidePIDDrive(double setpoint, double timeout) {
+	public SunflowerDrive(double setpoint, double timeout) {
 		super(RobotMap.DriveBaseConstants.P, RobotMap.DriveBaseConstants.I, RobotMap.DriveBaseConstants.D);
 		// Use requires() here to declare subsystem dependencies
 		this.setpoint = setpoint * RobotMap.DriveBaseConstants.TICKS_PER_INCH;
@@ -37,7 +38,6 @@ public class RightSidePIDDrive extends PIDCommand {
         this.setTimeout(timeout);
 		this.getPIDController().setAbsoluteTolerance(RobotMap.DriveBaseConstants.TOLERANCE);
 		this.getPIDController().setToleranceBuffer(RobotMap.DriveBaseConstants.BUFFER);
-		
 	}
 
 	protected void execute() {
@@ -45,14 +45,14 @@ public class RightSidePIDDrive extends PIDCommand {
 
 	protected boolean isFinished() {
 		if(this.getPIDController().onTarget() || this.isTimedOut()){
-			SmartDashboard.putNumber("finalRight", Robot.driveBase.getRightEncoderValue());
+			SmartDashboard.putNumber("finalLeft", Robot.driveBase.getLeftEncoderValue());
 			return true;
 		}else return false;
 	}
 
 	protected void end() {
 		this.getPIDController().disable();
-		Robot.driveBase.setRightMotors(0);
+		Robot.driveBase.setMotorPower(0);
 	}
 
 	protected void interrupted() {
@@ -60,14 +60,11 @@ public class RightSidePIDDrive extends PIDCommand {
 	}
 
 	protected double returnPIDInput() {
-		double encodervalue = Robot.driveBase.getRightEncoderValue();
+		double encodervalue = Robot.driveBase.getLeftEncoderValue();
 		return encodervalue;
 	}
 
 	protected void usePIDOutput(double output) {
-		SmartDashboard.putNumber("RightPIDoutput", output);
-		SmartDashboard.putNumber("RightPIDError", this.getPIDController().getError());
-		SmartDashboard.putNumber("RightPIDEncValue", Robot.driveBase.getRightEncoderValue());
-		Robot.driveBase.setRightMotors(output);
+		Robot.driveBase.setMotorPower(output);
 	}
 }

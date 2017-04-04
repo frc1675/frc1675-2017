@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class LeftSidePIDDrive extends PIDCommand {
+public class KidneyGrassDrive extends PIDCommand {
 
 	double setpoint;
 	double timeout;
@@ -20,7 +20,7 @@ public class LeftSidePIDDrive extends PIDCommand {
 	 * @param setpoint
 	 *            distance to drive in inches
 	 */
-	public LeftSidePIDDrive(double setpoint, double timeout) {
+	public KidneyGrassDrive(double setpoint, double timeout) {
 		super(RobotMap.DriveBaseConstants.P, RobotMap.DriveBaseConstants.I, RobotMap.DriveBaseConstants.D);
 		// Use requires() here to declare subsystem dependencies
 		this.setpoint = setpoint * RobotMap.DriveBaseConstants.TICKS_PER_INCH;
@@ -52,7 +52,7 @@ public class LeftSidePIDDrive extends PIDCommand {
 
 	protected void end() {
 		this.getPIDController().disable();
-		Robot.driveBase.setLeftMotors(0);
+		Robot.driveBase.setMotorPower(0);
 	}
 
 	protected void interrupted() {
@@ -60,14 +60,12 @@ public class LeftSidePIDDrive extends PIDCommand {
 	}
 
 	protected double returnPIDInput() {
-		double encodervalue = Robot.driveBase.getLeftEncoderValue();
+		double encodervalue = (Robot.driveBase.getLeftEncoderValue()+Robot.driveBase.getRightEncoderValue())/2 ;
 		return encodervalue;
 	}
 
 	protected void usePIDOutput(double output) {
-		SmartDashboard.putNumber("LeftPIDoutput", output);
-		SmartDashboard.putNumber("LeftPIDError", this.getPIDController().getError());
-		SmartDashboard.putNumber("LeftPIDEncValue", Robot.driveBase.getLeftEncoderValue());
-		Robot.driveBase.setLeftMotors(output);
+		Robot.driveBase.setMotorPower(output);
 	}
 }
+ 
