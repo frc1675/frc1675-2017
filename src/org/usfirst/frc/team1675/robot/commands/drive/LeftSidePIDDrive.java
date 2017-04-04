@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LeftSidePIDDrive extends PIDCommand {
-
+	public static double errorLeft;
 	double setpoint;
 	double timeout;
-
+	double difference;
 	/**
 	 * 
 	 * @param setpoint
@@ -68,6 +68,8 @@ public class LeftSidePIDDrive extends PIDCommand {
 		SmartDashboard.putNumber("LeftPIDoutput", output);
 		SmartDashboard.putNumber("LeftPIDError", this.getPIDController().getError());
 		SmartDashboard.putNumber("LeftPIDEncValue", Robot.driveBase.getLeftEncoderValue());
-		Robot.driveBase.setLeftMotors(output);
+		errorLeft = this.getPIDController().getError();
+		difference = errorLeft-RightSidePIDDrive.errorRight;
+		Robot.driveBase.setLeftMotors(output + difference*RobotMap.DriveBaseConstants.ADJUST_CONSTANT);
 	}
 }

@@ -101,6 +101,4 @@ public class DriveBase extends Subsystem {
 	public void initDefaultCommand() {
 		setDefaultCommand(new CheeseDrive());
 	}
-
-	
 }
