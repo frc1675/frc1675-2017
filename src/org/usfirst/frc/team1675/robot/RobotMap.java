@@ -69,6 +69,8 @@ public class RobotMap {
 		// 720 tick/rotation / 18.85 in/rotation = 38.2 ticks/inch
 		public static final double TICKS_PER_INCH = 410.86;
 		public static final double TOLERANCE = TICKS_PER_INCH * 0.5;
+		
+		public static final double GYRO_MODIFIER = .1;
 	}
 
 	public static class ClimberConstants {
