@@ -51,6 +51,8 @@ public class DrivePIDBothSides extends PIDCommand {
     	this.getPIDController().disable();
     	Robot.driveBase.setDistanceOnTarget(false);
     	Robot.driveBase.setDistancePIDOutput(0);
+    	Robot.driveBase.setLeftMotors(0);
+    	Robot.driveBase.setRightMotors(0);
     }
 
     protected void interrupted() {
