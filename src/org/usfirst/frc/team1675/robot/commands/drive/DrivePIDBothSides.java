@@ -65,5 +65,6 @@ public class DrivePIDBothSides extends PIDCommand {
 	@Override
 	protected void usePIDOutput(double output) {
 		Robot.driveBase.setDistancePIDOutput(output);
+		Robot.driveBase.setMotorsPIDStraight();
 	}
 }

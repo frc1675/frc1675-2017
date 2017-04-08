@@ -21,35 +21,32 @@ public class DriveBase extends Subsystem {
 	private CANTalon rightBack;
 	private DoubleSolenoid shifter;
 	AHRS ahrs;
-	
+
 	private boolean distanceOnTarget;
 	private boolean straight;
-	
+
 	private double distancePIDOutput;
 	private double straightenPIDOutput;
-	
 
 	public DriveBase() {
 		leftFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT);
 		leftBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_BACK);
 		rightFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_FRONT);
 		rightBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_BACK);
-		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
-				RobotMap.SolenoidChannels.SHIFT_HIGH);
-		
+		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW, RobotMap.SolenoidChannels.SHIFT_HIGH);
+
 		ahrs = new AHRS(SerialPort.Port.kMXP);
-		
+
 		distanceOnTarget = false;
 		straight = false;
 		distancePIDOutput = 0;
 		straightenPIDOutput = 0;
-		
+
 		leftFront.setInverted(true);
 		leftBack.setInverted(true);
 		rightFront.setInverted(false);
 		rightBack.setInverted(false);
-		
-		
+
 		rightFront.reverseSensor(true);
 
 	}
@@ -64,7 +61,14 @@ public class DriveBase extends Subsystem {
 		power = scaledDeadzone(power);
 		leftFront.set(power);
 		leftBack.set(power);
-  }
+	}
+
+	public void setMotorsPIDStraight(){
+		double forward = distancePIDOutput * (1 - RobotMap.DriveBaseConstants.STRAIGHTEN_WEIGHTING);
+		double straighten = straightenPIDOutput * RobotMap.DriveBaseConstants.STRAIGHTEN_WEIGHTING;
+		setRightMotors(forward + straighten);
+		setLeftMotors(forward - straighten);
+	}
 
 	public void shiftHigh() {
 		shifter.set(DoubleSolenoid.Value.kForward);
@@ -73,6 +77,7 @@ public class DriveBase extends Subsystem {
 	public void shiftLow() {
 		shifter.set(DoubleSolenoid.Value.kReverse);
 	}
+
 	public void resetEncoder() {
 		leftFront.setEncPosition(0);
 		rightFront.setEncPosition(0);
@@ -83,37 +88,47 @@ public class DriveBase extends Subsystem {
 		rightFront.reverseOutput(reversed);
 	}
 
-	public double getAverageEncoderValue(){
-		return (getLeftEncoderValue() + getRightEncoderValue())/2;
+	public double getAverageEncoderValue() {
+		return (getLeftEncoderValue() + getRightEncoderValue()) / 2;
 	}
+	
+	public double getEncoderValueDifference(){
+		return getLeftEncoderValue() - getRightEncoderValue();
+	}
+
 	public double getLeftEncoderValue() {
 		return leftFront.getPosition();
 	}
+
 	public double getRightEncoderValue() {
 		return rightFront.getPosition();
 	}
+
 	public double getAngle() {
 		return ahrs.getAngle();
 	}
-	
-	public boolean isDistanceOnTarget(){
+
+	public boolean isDistanceOnTarget() {
 		return distanceOnTarget;
 	}
-	public boolean isStraight(){
+
+	public boolean isStraight() {
 		return straight;
 	}
-	
-	public void setDistanceOnTarget(boolean onTarget){
+
+	public void setDistanceOnTarget(boolean onTarget) {
 		distanceOnTarget = onTarget;
 	}
-	public void setStraight(boolean onTarget){
+
+	public void setStraight(boolean onTarget) {
 		straight = onTarget;
 	}
-	
-	public void setDistancePIDOutput(double output){
+
+	public void setDistancePIDOutput(double output) {
 		distancePIDOutput = output;
 	}
-	public void setStraightenPIDOutput(double output){
+
+	public void setStraightenPIDOutput(double output) {
 		straightenPIDOutput = output;
 	}
 
@@ -124,7 +139,8 @@ public class DriveBase extends Subsystem {
 	public void stopShifter() {
 		shifter.set(DoubleSolenoid.Value.kOff);
 	}
-	public double getCurrent(int motorChannel){
+
+	public double getCurrent(int motorChannel) {
 		return Robot.pdp.getDriveMotorCurrents(motorChannel);
 	}
 
