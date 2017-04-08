@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.drive;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -10,11 +11,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class TurnOnGyro extends PIDCommand {
-	static final double P = .03;
-	static final double I = .0;
-	static final double D = .03;
-	static final double TOLERANCE = 0.5;
-	static final int BUFFER = 10;
 	double setpoint;
 	double initialDegrees;
 	/**
@@ -22,7 +18,7 @@ public class TurnOnGyro extends PIDCommand {
 	 * @param setpoint angle to turn in degrees
 	 */
 	public TurnOnGyro(double setpoint,double timeout) {
-		super(P, I, D);
+		super(RobotMap.DriveBaseConstants.P_TURN, RobotMap.DriveBaseConstants.I_TURN, RobotMap.DriveBaseConstants.D_TURN);
 		requires(Robot.driveBase);
 		this.setpoint = setpoint;
 	}
@@ -34,8 +30,8 @@ public class TurnOnGyro extends PIDCommand {
 		this.getPIDController().setOutputRange(-1.0, 1.0);
 		initialDegrees = Robot.driveBase.getAngle();
     	this.getPIDController().setSetpoint((initialDegrees + setpoint));
-		this.getPIDController().setAbsoluteTolerance(TOLERANCE);
-		this.getPIDController().setToleranceBuffer(BUFFER);
+		this.getPIDController().setAbsoluteTolerance(RobotMap.DriveBaseConstants.TOLERANCE_TURN);
+		this.getPIDController().setToleranceBuffer(RobotMap.DriveBaseConstants.BUFFER_TURN);
 		this.setTimeout(20);
         this.getPIDController().setContinuous(true);
 	}

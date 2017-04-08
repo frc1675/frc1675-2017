@@ -21,6 +21,13 @@ public class DriveBase extends Subsystem {
 	private CANTalon rightBack;
 	private DoubleSolenoid shifter;
 	AHRS ahrs;
+	
+	private boolean distanceOnTarget;
+	private boolean straight;
+	
+	private double distancePIDOutput;
+	private double straightenPIDOutput;
+	
 
 	public DriveBase() {
 		leftFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT);
@@ -31,6 +38,11 @@ public class DriveBase extends Subsystem {
 				RobotMap.SolenoidChannels.SHIFT_HIGH);
 		
 		ahrs = new AHRS(SerialPort.Port.kMXP);
+		
+		distanceOnTarget = false;
+		straight = false;
+		distancePIDOutput = 0;
+		straightenPIDOutput = 0;
 		
 		leftFront.setInverted(true);
 		leftBack.setInverted(true);
@@ -53,12 +65,6 @@ public class DriveBase extends Subsystem {
 		leftFront.set(power);
 		leftBack.set(power);
   }
-  
-	private double scaledDeadzone(double power) {
-		return Math.signum(power)
-				* ((RobotMap.DriveBaseConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
-						+ RobotMap.DriveBaseConstants.DEADZONE);
-	}
 
 	public void shiftHigh() {
 		shifter.set(DoubleSolenoid.Value.kForward);
@@ -77,6 +83,9 @@ public class DriveBase extends Subsystem {
 		rightFront.reverseOutput(reversed);
 	}
 
+	public double getAverageEncoderValue(){
+		return (getLeftEncoderValue() + getRightEncoderValue())/2;
+	}
 	public double getLeftEncoderValue() {
 		return leftFront.getPosition();
 	}
@@ -85,6 +94,27 @@ public class DriveBase extends Subsystem {
 	}
 	public double getAngle() {
 		return ahrs.getAngle();
+	}
+	
+	public boolean isDistanceOnTarget(){
+		return distanceOnTarget;
+	}
+	public boolean isStraight(){
+		return straight;
+	}
+	
+	public void setDistanceOnTarget(boolean onTarget){
+		distanceOnTarget = onTarget;
+	}
+	public void setStraight(boolean onTarget){
+		straight = onTarget;
+	}
+	
+	public void setDistancePIDOutput(double output){
+		distancePIDOutput = output;
+	}
+	public void setStraightenPIDOutput(double output){
+		straightenPIDOutput = output;
 	}
 
 	public void resetGyro() {
@@ -102,5 +132,9 @@ public class DriveBase extends Subsystem {
 		setDefaultCommand(new CheeseDrive());
 	}
 
-	
+	private double scaledDeadzone(double power) {
+		return Math.signum(power)
+				* ((RobotMap.DriveBaseConstants.MAX_POWER - RobotMap.DriveBaseConstants.DEADZONE) * Math.abs(power)
+						+ RobotMap.DriveBaseConstants.DEADZONE);
+	}
 }

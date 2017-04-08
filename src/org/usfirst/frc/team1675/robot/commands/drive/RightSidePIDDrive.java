@@ -20,7 +20,7 @@ public class RightSidePIDDrive extends PIDCommand {
 	 *            distance to drive in inches
 	 */
 	public RightSidePIDDrive(double setpoint, double timeout) {
-		super(RobotMap.DriveBaseConstants.P, RobotMap.DriveBaseConstants.I, RobotMap.DriveBaseConstants.D);
+		super(RobotMap.DriveBaseConstants.P_RIGHT, RobotMap.DriveBaseConstants.I_RIGHT, RobotMap.DriveBaseConstants.D_RIGHT);
 		// Use requires() here to declare subsystem dependencies
 		this.setpoint = setpoint * RobotMap.DriveBaseConstants.TICKS_PER_INCH;
 		this.timeout = timeout;
@@ -35,9 +35,8 @@ public class RightSidePIDDrive extends PIDCommand {
 		this.getPIDController().setSetpoint(setpoint);
         this.getPIDController().setOutputRange(-1.0, 1.0);
         this.setTimeout(timeout);
-		this.getPIDController().setAbsoluteTolerance(RobotMap.DriveBaseConstants.TOLERANCE);
-		this.getPIDController().setToleranceBuffer(RobotMap.DriveBaseConstants.BUFFER);
-		
+		this.getPIDController().setAbsoluteTolerance(RobotMap.DriveBaseConstants.TOLERANCE_RIGHT);
+		this.getPIDController().setToleranceBuffer(RobotMap.DriveBaseConstants.BUFFER_RIGHT);
 	}
 
 	protected void execute() {

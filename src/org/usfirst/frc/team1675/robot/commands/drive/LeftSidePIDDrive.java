@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class LeftSidePIDDrive extends PIDCommand {
-
 	double setpoint;
 	double timeout;
 
@@ -21,7 +20,7 @@ public class LeftSidePIDDrive extends PIDCommand {
 	 *            distance to drive in inches
 	 */
 	public LeftSidePIDDrive(double setpoint, double timeout) {
-		super(RobotMap.DriveBaseConstants.P, RobotMap.DriveBaseConstants.I, RobotMap.DriveBaseConstants.D);
+		super(RobotMap.DriveBaseConstants.P_LEFT, RobotMap.DriveBaseConstants.I_LEFT, RobotMap.DriveBaseConstants.D_LEFT);
 		// Use requires() here to declare subsystem dependencies
 		this.setpoint = setpoint * RobotMap.DriveBaseConstants.TICKS_PER_INCH;
 		this.timeout = timeout;
@@ -36,8 +35,8 @@ public class LeftSidePIDDrive extends PIDCommand {
 		this.getPIDController().setSetpoint(setpoint);
         this.getPIDController().setOutputRange(-1.0, 1.0);
         this.setTimeout(timeout);
-		this.getPIDController().setAbsoluteTolerance(RobotMap.DriveBaseConstants.TOLERANCE);
-		this.getPIDController().setToleranceBuffer(RobotMap.DriveBaseConstants.BUFFER);
+		this.getPIDController().setAbsoluteTolerance(RobotMap.DriveBaseConstants.TOLERANCE_LEFT);
+		this.getPIDController().setToleranceBuffer(RobotMap.DriveBaseConstants.BUFFER_LEFT);
 	}
 
 	protected void execute() {

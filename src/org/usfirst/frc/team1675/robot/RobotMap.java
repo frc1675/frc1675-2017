@@ -59,16 +59,50 @@ public class RobotMap {
 	}
 
 	public static class DriveBaseConstants {
-		public static final double P = .0003;
-		public static final double I = 0.0;
-		public static final double D = 0.0003;
-		public static final int BUFFER = 10;
+		// 720 tick/rotation / 18.85 in/rotation = 38.2 ticks/inch
+		public static final double TICKS_PER_INCH = 410.86;
+		
+		public static final double P_TURN = .03;
+		public static final double I_TURN = .0;
+		public static final double D_TURN = .03;
+		public static final int BUFFER_TURN = 10;
+		public static final double TOLERANCE_TURN = 0.5;
+
+		public static final double P_RIGHT = .0003;
+		public static final double I_RIGHT = 0.0;
+		public static final double D_RIGHT = 0.0003;
+		public static final int BUFFER_RIGHT = 10;
+		public static final double TOLERANCE_RIGHT = TICKS_PER_INCH * 0.5;
+
+		public static final double P_LEFT = .0003;
+		public static final double I_LEFT = 0.0;
+		public static final double D_LEFT = 0.0003;
+		public static final int BUFFER_LEFT = 10;
+		public static final double TOLERANCE_LEFT = TICKS_PER_INCH * 0.5;
+
+		public static final double P_BOTH = .0003;
+		public static final double I_BOTH = 0.0;
+		public static final double D_BOTH = 0.0003;
+		public static final int BUFFER_BOTH = 10;
+		public static final double TOLERANCE_BOTH = TICKS_PER_INCH * 0.5;
+		
+		public static final double P_ENCODER_STRAIGHT = .0003;
+		public static final double I_ENCODER_STRAIGHT = 0.0;
+		public static final double D_ENCODER_STRAIGHT = 0.0003;
+		public static final int BUFFER_ENCODER_STRAIGHT = 10;
+		public static final double TOLERANCE_ENCODER_STRAIGHT = TICKS_PER_INCH * 0.5;
+		
+		public static final double P_GYRO_STRAIGHT = .0003;
+		public static final double I_GYRO_STRAIGHT = 0.0;
+		public static final double D_GYRO_STRAIGHT = 0.0003;
+		public static final int BUFFER_GYRO_STRAIGHT = 10;
+		public static final double TOLERANCE_GYRO_STRAIGHT = 0.5;
+
 		public static final double DEADZONE = .1675;
 		public static final double MAX_POWER = 1.0;
 		public static final double SHIFTER_TIME = .25;
-		// 720 tick/rotation / 18.85 in/rotation = 38.2 ticks/inch
-		public static final double TICKS_PER_INCH = 410.86;
-		public static final double TOLERANCE = TICKS_PER_INCH * 0.5;
+		public static final double STRAIGHTEN_WEIGHTING = .3;
+
 	}
 
 	public static class ClimberConstants {
@@ -83,7 +117,7 @@ public class RobotMap {
 
 	public static class GearManipulatorConstants {
 		public static final double SOLENOID_ACTIVE_TIME = .25;// untested
-		public static final double GEAR_SPINNER_POWER_IN = -1.00; 
+		public static final double GEAR_SPINNER_POWER_IN = -1.00;
 		public static final double GEAR_SPINNER_POWER_OUT = 1.00;
 		public static final double GEAR_SPINNER_STOPPED = 0;
 	}
