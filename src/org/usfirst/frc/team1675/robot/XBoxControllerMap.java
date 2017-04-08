@@ -24,10 +24,6 @@ public class XBoxControllerMap {
 	public static final int LEFT_TRIGGER_AXIS = 2;
 	public static final int RIGHT_TRIGGER_AXIS = 3;
 
-	// D-Pad horizontal axis.
-	// Starts at 0, goes down when left is pressed, up when right is pressed.
-	public static final int DPAD_AXIS = 6;
-
 	// Face Buttons
 	public static final int A_BUTTON = 1;
 	public static final int B_BUTTON = 2;
@@ -45,7 +41,7 @@ public class XBoxControllerMap {
 	// Joystick buttons (clicking them in)
 	public static final int LEFT_JOYSTICK_BUTTON = 9;
 	public static final int RIGHT_JOYSTICK_BUTTON = 10;
-
+	
 	public static final double DEAD_ZONE = .1675;
 	
 

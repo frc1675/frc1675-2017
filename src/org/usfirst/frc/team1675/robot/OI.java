@@ -1,10 +1,12 @@
 package org.usfirst.frc.team1675.robot;
 
+
 import org.usfirst.frc.team1675.robot.commands.climber.Climbing;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
 import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeRetract;
+import org.usfirst.frc.team1675.robot.commands.intak
+import org.usfirst.frc.team1675.robot.utils.DPadButton;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -26,11 +28,14 @@ public class OI {
 			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton driverStartButton = new JoystickButton(driverController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
-	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController,
-			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController,
-			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-	private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
+	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private DPadButton driverUpDPadButton = new DPadButton(driverController, DPadButton.Direction.UP);
+	private DPadButton driverRightDPadButton = new DPadButton(driverController, DPadButton.Direction.RIGHT);
+	private DPadButton driverDownButton = new DPadButton(driverController, DPadButton.Direction.DOWN);
+	private DPadButton driverLeftDPadButton = new DPadButton(driverController, DPadButton.Direction.LEFT);
+  
+  private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
@@ -41,13 +46,18 @@ public class OI {
 			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton operatorStartButton = new JoystickButton(operatorController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton operatorBackButton = new JoystickButton(operatorController, XBoxControllerMap.BACK_BUTTON);
+
 	private JoystickButton operatorRightJoystickButton = new JoystickButton(operatorController,
 			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController,
 			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+  
+  	private DPadButton operatorUpDPadButton = new DPadButton(operatorController, DPadButton.Direction.UP);
+	private DPadButton operatorRightDPadButton = new DPadButton(operatorController, DPadButton.Direction.RIGHT);
+	private DPadButton operatorDownButton = new DPadButton(operatorController, DPadButton.Direction.DOWN);
+	private DPadButton operatorLeftDPadButton = new DPadButton(operatorController, DPadButton.Direction.LEFT);
 
-	public OI() {
-		
+	public OI() {		
 		operatorBButton.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
 		operatorBButton.whenReleased(new Climbing(0));
 
