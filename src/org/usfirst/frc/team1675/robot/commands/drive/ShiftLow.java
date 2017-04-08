@@ -1,32 +1,33 @@
 package org.usfirst.frc.team1675.robot.commands.drive;
 
 import org.usfirst.frc.team1675.robot.Robot;
+import org.usfirst.frc.team1675.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TankDrive extends Command {
+public class ShiftLow extends Command {
 
-	public TankDrive() {
-		requires(Robot.driveBase);
+	public ShiftLow() {
+		//requires(Robot.driveBase);
+		this.setTimeout(RobotMap.DriveBaseConstants.SHIFTER_TIME);
 	}
 
 	protected void initialize() {
 	}
 
 	protected void execute() {
-		Robot.driveBase.setLeftMotors(Robot.oi.getDriverLeftYAxis());
-		Robot.driveBase.setRightMotors(Robot.oi.getDriverRightYAxis());
+		Robot.driveBase.shiftLow();
 	}
 
 	protected boolean isFinished() {
-		return false;
+		return isTimedOut();
 	}
 
 	protected void end() {
-		Robot.driveBase.setLeftMotors(0);
-		Robot.driveBase.setRightMotors(0);
+		Robot.driveBase.stopShifter();
 	}
 
 	protected void interrupted() {
