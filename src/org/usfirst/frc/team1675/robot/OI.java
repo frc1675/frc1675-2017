@@ -50,8 +50,12 @@ public class OI {
 
 	public OI() {
 		
-		operatorRightBumper.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
-		operatorRightBumper.whenReleased(new Climbing(RobotMap.ClimberConstants.CLIMBER_STOPPED));
+		operatorRightBumper.whenPressed(new Climbing(RobotMap.ClimberConstants.FULL_POWER));
+		operatorRightBumper.whenReleased(new Climbing(RobotMap.ClimberConstants.STOPPED_POWER));
+		
+		operatorStartButton.whenPressed(new Climbing(RobotMap.ClimberConstants.SLOW_POWER));
+		operatorStartButton.whenReleased(new Climbing(RobotMap.ClimberConstants.STOPPED_POWER));
+
 	
 
 		operatorLeftBumper.whenPressed(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
