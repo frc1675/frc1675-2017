@@ -1,7 +1,8 @@
 
 package org.usfirst.frc.team1675.robot;
 
-import org.usfirst.frc.team1675.robot.commands.drive.AutoRoutine;
+import org.usfirst.frc.team1675.robot.commands.AutoForward;
+import org.usfirst.frc.team1675.robot.commands.drive.AutoSide;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
@@ -87,7 +88,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//autonomousCommand = new DriveForDistance(72,60);
-		autonomousCommand = new AutoRoutine();
+		autonomousCommand = new AutoSide();
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

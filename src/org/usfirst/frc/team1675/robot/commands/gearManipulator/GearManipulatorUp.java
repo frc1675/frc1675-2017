@@ -16,6 +16,7 @@ public class GearManipulatorUp extends Command {
 	}
 
 	protected void initialize() {
+		Robot.gearManipulator.runGearManipulator(0.0);
 	}
 
 	protected void execute() {

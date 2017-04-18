@@ -1,22 +1,22 @@
-package org.usfirst.frc.team1675.robot.commands.drive;
+package org.usfirst.frc.team1675.robot.commands;
+
+import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.drive.DriveForDistance;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoRoutine extends CommandGroup {
+public class AutoForward extends CommandGroup {
 
-    public AutoRoutine() {
+    public AutoForward() {
+    	
+    	addSequential(new DriveForDistance(79.0, 5.0));
+    	addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         // Add Commands here:
-        addSequential(new DriveForDistance(60,7));
-        addSequential(new TurnOnGyro(90,7));
-        addSequential(new DriveForDistance(60,7));
-        addSequential(new TurnOnGyro(90,7));
-        addSequential(new DriveForDistance(60,7));
-        addSequential(new TurnOnGyro(90,7));
-        addSequential(new DriveForDistance(60,7));
-        addSequential(new TurnOnGyro(90,7));
+        // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
 
