@@ -45,7 +45,7 @@ public class SunflowerDrive extends PIDCommand {
 
 	protected boolean isFinished() {
 		if(this.getPIDController().onTarget() || this.isTimedOut()){
-			SmartDashboard.putNumber("finalLeft", Robot.driveBase.getLeftEncoderValue());
+			SmartDashboard.putNumber("finalRight", Robot.driveBase.getRightEncoderValue());
 			return true;
 		}else return false;
 	}
@@ -60,7 +60,7 @@ public class SunflowerDrive extends PIDCommand {
 	}
 
 	protected double returnPIDInput() {
-		double encodervalue = Robot.driveBase.getLeftEncoderValue();
+		double encodervalue = Robot.driveBase.getRightEncoderValue();
 		return encodervalue;
 	}
 

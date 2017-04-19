@@ -12,9 +12,13 @@ public class AutoSide extends CommandGroup {
 
     public AutoSide() {
         // Add Commands here:
-        addSequential(new DriveForDistance(66,7));
-        addSequential(new TurnOnGyro(57.29,7));
-        addSequential(new DriveForDistance(73,7));
+//        addSequential(new KidneyGrassDrive(66,7));
+//        addSequential(new TurnOnGyro(55,7));
+//        addSequential(new KidneyGrassDrive(73,7));
+//        addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+        addSequential(new SunflowerDrive(66,7));
+        addSequential(new TurnOnGyro(53,7));
+        addSequential(new SunflowerDrive(73,7));
         addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         //      addSequential(new Command2());
         // these will run in order.
