@@ -13,7 +13,7 @@ public class GearCenter extends CommandGroup {
 
     public GearCenter() {
     	
-    	addSequential(new DriveForDistance(79.0, 5.0));
+    	addSequential(new DriveForDistance(91.0, 5.0));
     	addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         // Add Commands here:
         // e.g. addSequential(new Command1());

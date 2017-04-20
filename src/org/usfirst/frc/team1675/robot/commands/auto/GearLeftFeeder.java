@@ -11,12 +11,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *
  */
 public class GearLeftFeeder extends CommandGroup {
+	
+	private static final double SEGMENT_1 = 70.75;
+	private static final double SEGMENT_1_TIMEOUT = 4.0;
+	
+	private static final double TURN_ANGLE = 59.5;
+	private static final double TURN_TIMEOUT = 4.0;
+	
+	private static final double SEGMENT_2 = 74.0;
+	private static final double SEGMENT_2_TIMEOUT = 4.0;
 
     public GearLeftFeeder() {
         // Add Commands here:
-        addSequential(new DriveForDistance(66,7));
-        addSequential(new TurnOnGyro(57.29,7));
-        addSequential(new DriveForDistance(73,7));
+    	addSequential(new DriveForDistance(SEGMENT_1, SEGMENT_1_TIMEOUT));
+        addSequential(new TurnOnGyro(TURN_ANGLE, TURN_TIMEOUT));
+        addSequential(new DriveForDistance(SEGMENT_2, SEGMENT_2_TIMEOUT));
         addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         //      addSequential(new Command2());
         // these will run in order.
