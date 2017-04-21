@@ -1,6 +1,8 @@
-package org.usfirst.frc.team1675.robot.commands.drive;
+package org.usfirst.frc.team1675.robot.commands.auto;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.drive.DriveForDistance;
+import org.usfirst.frc.team1675.robot.commands.drive.TurnOnGyro;
 import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -8,18 +10,23 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoSide extends CommandGroup {
+public class GearRightFeeder extends CommandGroup {
+	
+	private static final double SEGMENT_1 = 71.0;
+	private static final double SEGMENT_1_TIMEOUT = 4.0;
+	
+	private static final double TURN_ANGLE = -69.5;
+	private static final double TURN_TIMEOUT = 4.0;
+	
+	private static final double SEGMENT_2 = 71.25;
+	private static final double SEGMENT_2_TIMEOUT = 4.0;
 
-    public AutoSide() {
+    public GearRightFeeder() {
         // Add Commands here:
-        addSequential(new KidneyGrassDrive(66,7));
-        addSequential(new TurnOnGyro(51,7));
-        addSequential(new KidneyGrassDrive(77,7));
+    	addSequential(new DriveForDistance(SEGMENT_1, SEGMENT_1_TIMEOUT));
+        addSequential(new TurnOnGyro(TURN_ANGLE, TURN_TIMEOUT));
+        addSequential(new DriveForDistance(SEGMENT_2, SEGMENT_2_TIMEOUT));
         addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
-//        addSequential(new SunflowerDrive(66,7));
-//        addSequential(new TurnOnGyro(53,7));
-//        addSequential(new SunflowerDrive(73,7));
-//        addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         //      addSequential(new Command2());
         // these will run in order.
 
