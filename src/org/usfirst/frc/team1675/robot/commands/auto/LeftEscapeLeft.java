@@ -20,15 +20,7 @@ public class LeftEscapeLeft extends CommandGroup {
 
 
     public LeftEscapeLeft() {
-        // Add Commands here:
-//        addSequential(new KidneyGrassDrive(66,7));
-//        addSequential(new TurnOnGyro(51,7));
-//        addSequential(new KidneyGrassDrive(77,7));
-//        addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
-//        addSequential(new SunflowerDrive(66,7));
-//        addSequential(new TurnOnGyro(53,7));
-//        addSequential(new SunflowerDrive(73,7));
-//        addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+      
 
     	addSequential(new TurnOnGyro(TURN_1_ANGLE, TURN_1_TIMEOUT));
     	addSequential(new DriveForDistance(SEGMENT_1, SEGMENT_1_TIMEOUT));

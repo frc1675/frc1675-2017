@@ -15,13 +15,13 @@ public class RightEscapeLeft extends CommandGroup {
 	private static final double TURN_1_ANGLE = 60.0;
 	private static final double TURN_1_TIMEOUT = 4.0;
 	
-	private static final double SEGMENT_1 = 120.0;
+	private static final double SEGMENT_1 = 204.0;
 	private static final double SEGMENT_1_TIMEOUT = 4.0;
 	
 	private static final double TURN_2_ANGLE = -90.0;
 	private static final double TURN_2_TIMEOUT = 4.0;
 	
-	private static final double SEGMENT_2 = 48.0;
+	private static final double SEGMENT_2 = 212.0;
 	private static final double SEGMENT_2_TIMEOUT = 5.0;
 	
 	private static final double TURN_3_ANGLE = 90.0;
