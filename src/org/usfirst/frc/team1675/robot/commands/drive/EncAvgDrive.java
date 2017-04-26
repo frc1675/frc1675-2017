@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class SunflowerDrive extends PIDCommand {
+public class EncAvgDrive extends PIDCommand {
 
 	double setpoint;
 	double timeout;
@@ -20,7 +20,7 @@ public class SunflowerDrive extends PIDCommand {
 	 * @param setpoint
 	 *            distance to drive in inches
 	 */
-	public SunflowerDrive(double setpoint, double timeout) {
+	public EncAvgDrive(double setpoint, double timeout) {
 		super(RobotMap.DriveBaseConstants.P, RobotMap.DriveBaseConstants.I, RobotMap.DriveBaseConstants.D);
 		// Use requires() here to declare subsystem dependencies
 		this.setpoint = setpoint * RobotMap.DriveBaseConstants.TICKS_PER_INCH;
@@ -45,7 +45,7 @@ public class SunflowerDrive extends PIDCommand {
 
 	protected boolean isFinished() {
 		if(this.getPIDController().onTarget() || this.isTimedOut()){
-			SmartDashboard.putNumber("finalRight", Robot.driveBase.getRightEncoderValue());
+			SmartDashboard.putNumber("finalLeft", Robot.driveBase.getLeftEncoderValue());
 			return true;
 		}else return false;
 	}
@@ -60,7 +60,7 @@ public class SunflowerDrive extends PIDCommand {
 	}
 
 	protected double returnPIDInput() {
-		double encodervalue = Robot.driveBase.getRightEncoderValue();
+		double encodervalue = (Robot.driveBase.getLeftEncoderValue()+Robot.driveBase.getRightEncoderValue())/2 ;
 		return encodervalue;
 	}
 
@@ -68,3 +68,4 @@ public class SunflowerDrive extends PIDCommand {
 		Robot.driveBase.setMotorPower(output);
 	}
 }
+ 

@@ -11,7 +11,7 @@ public class DriveForDistance extends CommandGroup {
 
     public DriveForDistance(double distance,double timeout) {
     	requires(Robot.driveBase);
-    	addParallel(new KidneyGrassDrive(distance,timeout));
+    	addParallel(new EncAvgDrive(distance,timeout));
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
