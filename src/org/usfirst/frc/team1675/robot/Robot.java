@@ -1,12 +1,16 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import org.usfirst.frc.team1675.robot.commands.auto.GearCenter;
+import org.usfirst.frc.team1675.robot.commands.auto.GearLeftBoiler;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
-import org.usfirst.frc.team1675.robot.subsystems.Intake;
+import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
 import org.usfirst.frc.team1675.robot.utilities.Logger;
 import org.usfirst.frc.team1675.robot.utilities.PowerDistribution;
+import org.usfirst.frc.team1675.robot.utilities.AutoChooser;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -24,21 +28,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
+	public static AutoChooser autoChooser;
 	public static DriveBase driveBase;
-	public static Intake intake;
 	public static PowerDistribution pdp;
 	public static Logger log;
 	public static Climber climber;
+	public static GearManipulator gearManipulator;
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	static {
 		try {
 			driveBase = new DriveBase();
-			intake = new Intake();
 			pdp = new PowerDistribution();
 			log = new Logger("log.txt");
 			climber = new Climber();
+			gearManipulator = new GearManipulator();
 		} catch (Throwable e) {
 			e.printStackTrace();
 		}
@@ -52,7 +57,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		SmartDashboard.putData("Auto mode", chooser);
+		autoChooser = new AutoChooser();
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**
@@ -83,9 +89,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-//		autonomousCommand = new DriveVBusForTime(.25, 5);
+		//autonomousCommand = new DriveForDistance(72,60);
+		//autonomousCommand = new GearLeftBoiler();
+		autonomousCommand = autoChooser.generateAuto();
 		
-
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

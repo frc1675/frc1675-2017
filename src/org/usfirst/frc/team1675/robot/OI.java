@@ -1,13 +1,13 @@
 package org.usfirst.frc.team1675.robot;
 
-
 import org.usfirst.frc.team1675.robot.commands.climber.Climbing;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftHigh;
 import org.usfirst.frc.team1675.robot.commands.drive.ShiftLow;
-import org.usfirst.frc.team1675.robot.commands.intake.IntakeDeploy;
-import org.usfirst.frc.team1675.robot.commands.intak
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.GearManipulating;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.GearManipulatorDown;
+import org.usfirst.frc.team1675.robot.commands.gearManipulator.GearManipulatorUp;
 import org.usfirst.frc.team1675.robot.utils.DPadButton;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -28,14 +28,16 @@ public class OI {
 			XBoxControllerMap.LEFT_BUMPER_BUTTON);
 	private JoystickButton driverStartButton = new JoystickButton(driverController, XBoxControllerMap.START_BUTTON);
 	private JoystickButton driverBackButton = new JoystickButton(driverController, XBoxControllerMap.BACK_BUTTON);
-	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController, XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
-	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController, XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
+	private JoystickButton driverRightJoystickButton = new JoystickButton(driverController,
+			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
+	private JoystickButton driverLeftJoystickButton = new JoystickButton(driverController,
+			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
 	private DPadButton driverUpDPadButton = new DPadButton(driverController, DPadButton.Direction.UP);
 	private DPadButton driverRightDPadButton = new DPadButton(driverController, DPadButton.Direction.RIGHT);
 	private DPadButton driverDownButton = new DPadButton(driverController, DPadButton.Direction.DOWN);
 	private DPadButton driverLeftDPadButton = new DPadButton(driverController, DPadButton.Direction.LEFT);
-  
-  private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
+
+	private Joystick operatorController = new Joystick(XBoxControllerMap.OPERATOR_CONTROLLER_PORT);
 	private JoystickButton operatorAButton = new JoystickButton(operatorController, XBoxControllerMap.A_BUTTON);
 	private JoystickButton operatorBButton = new JoystickButton(operatorController, XBoxControllerMap.B_BUTTON);
 	private JoystickButton operatorXButton = new JoystickButton(operatorController, XBoxControllerMap.X_BUTTON);
@@ -51,19 +53,33 @@ public class OI {
 			XBoxControllerMap.RIGHT_JOYSTICK_BUTTON);
 	private JoystickButton operatorLeftJoystickButton = new JoystickButton(operatorController,
 			XBoxControllerMap.LEFT_JOYSTICK_BUTTON);
-  
-  	private DPadButton operatorUpDPadButton = new DPadButton(operatorController, DPadButton.Direction.UP);
+
+	private DPadButton operatorUpDPadButton = new DPadButton(operatorController, DPadButton.Direction.UP);
 	private DPadButton operatorRightDPadButton = new DPadButton(operatorController, DPadButton.Direction.RIGHT);
 	private DPadButton operatorDownButton = new DPadButton(operatorController, DPadButton.Direction.DOWN);
 	private DPadButton operatorLeftDPadButton = new DPadButton(operatorController, DPadButton.Direction.LEFT);
 
-	public OI() {		
-		operatorBButton.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
-		operatorBButton.whenReleased(new Climbing(0));
 
-		operatorRightBumper.whenPressed(new IntakeDeploy());
-		operatorLeftBumper.whenPressed(new IntakeRetract());
+	public OI() {
+		
+		operatorRightBumper.whenPressed(new Climbing(RobotMap.ClimberConstants.CLIMBER_POWER));
+		operatorRightBumper.whenReleased(new Climbing(RobotMap.ClimberConstants.CLIMBER_STOPPED));
+	
 
+		operatorLeftBumper.whenPressed(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+		
+		
+		operatorYButton.whenPressed(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
+		operatorYButton.whenReleased(new GearManipulating(0));
+
+		operatorAButton.whenPressed(new GearManipulatorDown());
+		
+		operatorXButton.whenPressed(new GearManipulating(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_IN));
+		operatorXButton.whenReleased(new GearManipulating(0));
+
+		
+		operatorBButton.whenPressed(new GearManipulatorUp());
+		
 		driverRightBumper.whenPressed(new ShiftHigh());
 		driverRightBumper.whenReleased(new ShiftLow());
 	}
