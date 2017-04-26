@@ -21,7 +21,7 @@ public class LeftEscapeRight extends CommandGroup {
 	private static final double TURN_2_ANGLE = 90.0;
 	private static final double TURN_2_TIMEOUT = 4.0;
 	
-	private static final double SEGMENT_2 = 212.0;
+	private static final double SEGMENT_2 = 100.0;
 	private static final double SEGMENT_2_TIMEOUT = 5.0;
 	
 	private static final double TURN_3_ANGLE = -90.0;
