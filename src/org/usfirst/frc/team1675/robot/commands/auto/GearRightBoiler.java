@@ -12,13 +12,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class GearRightBoiler extends CommandGroup {
 	
-	private static final double SEGMENT_1 = 69.5;
+	private static final double SEGMENT_1 = 68.3;
 	private static final double SEGMENT_1_TIMEOUT = 4.0;
 	
-	private static final double TURN_ANGLE = -61.5;
+	private static final double TURN_ANGLE = -59.0;
 	private static final double TURN_TIMEOUT = 4.0;
 	
-	private static final double SEGMENT_2 = 71.5;
+	private static final double SEGMENT_2 = 70.8;
 	private static final double SEGMENT_2_TIMEOUT = 4.0;
 
     public GearRightBoiler() {
