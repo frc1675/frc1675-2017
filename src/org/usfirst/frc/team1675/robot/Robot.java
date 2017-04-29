@@ -1,8 +1,14 @@
 
 package org.usfirst.frc.team1675.robot;
 
+import java.beans.FeatureDescriptor;
+
 import org.usfirst.frc.team1675.robot.commands.auto.GearCenter;
 import org.usfirst.frc.team1675.robot.commands.auto.GearLeftBoiler;
+import org.usfirst.frc.team1675.robot.commands.auto.GearLeftFeeder;
+import org.usfirst.frc.team1675.robot.commands.auto.GearRightFeeder;
+import org.usfirst.frc.team1675.robot.commands.auto.LeftEscapeLeft;
+import org.usfirst.frc.team1675.robot.commands.auto.RightEscapeRight;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
@@ -13,6 +19,7 @@ import org.usfirst.frc.team1675.robot.utilities.AutoChooser;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -91,8 +98,13 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		//autonomousCommand = new DriveForDistance(72,60);
 		//autonomousCommand = new GearLeftBoiler();
-		autonomousCommand = autoChooser.generateAuto();
+//		autonomousCommand = autoChooser.generateAuto();
 		
+		CommandGroup autonomousCommand = new CommandGroup();
+		
+		autonomousCommand.addSequential(new GearRightFeeder());
+		
+		autonomousCommand.addSequential(new RightEscapeRight());
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

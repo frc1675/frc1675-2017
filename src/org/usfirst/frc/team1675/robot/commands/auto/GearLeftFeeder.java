@@ -12,13 +12,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class GearLeftFeeder extends CommandGroup {
 	
-	private static final double SEGMENT_1 = 65.8;
+	private static final double SEGMENT_1 = 69.8;
 	private static final double SEGMENT_1_TIMEOUT = 4.0;
 	
 	private static final double TURN_ANGLE = 61;
 	private static final double TURN_TIMEOUT = 4.0;
 	
-	private static final double SEGMENT_2 = 69.3;
+	private static final double SEGMENT_2 = 68.5;
 	private static final double SEGMENT_2_TIMEOUT = 4.0;
 
     public GearLeftFeeder() {

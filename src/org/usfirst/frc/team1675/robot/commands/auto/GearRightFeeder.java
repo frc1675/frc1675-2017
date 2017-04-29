@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1675.robot.commands.auto;
 
 import org.usfirst.frc.team1675.robot.RobotMap;
+import org.usfirst.frc.team1675.robot.commands.Wait;
 import org.usfirst.frc.team1675.robot.commands.drive.DriveForDistance;
 import org.usfirst.frc.team1675.robot.commands.drive.TurnOnGyro;
 import org.usfirst.frc.team1675.robot.commands.gearManipulator.AutoScore;
@@ -12,19 +13,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class GearRightFeeder extends CommandGroup {
 	
-	private static final double SEGMENT_1 = 67.8;
+	private static final double SEGMENT_1 = 73.8;
 	private static final double SEGMENT_1_TIMEOUT = 4.0;
 	
-	private static final double TURN_ANGLE = -60.0;
+	private static final double TURN_ANGLE = -58.0;
 	private static final double TURN_TIMEOUT = 4.0;
 	
-	private static final double SEGMENT_2 = 68.8;
+	private static final double SEGMENT_2 = 64.8;
 	private static final double SEGMENT_2_TIMEOUT = 4.0;
 
     public GearRightFeeder() {
         // Add Commands here:
     	addSequential(new DriveForDistance(SEGMENT_1, SEGMENT_1_TIMEOUT));
         addSequential(new TurnOnGyro(TURN_ANGLE, TURN_TIMEOUT));
+        addSequential(new Wait(0.5));
         addSequential(new DriveForDistance(SEGMENT_2, SEGMENT_2_TIMEOUT));
         addSequential(new AutoScore(RobotMap.GearManipulatorConstants.GEAR_SPINNER_POWER_OUT));
         //      addSequential(new Command2());
