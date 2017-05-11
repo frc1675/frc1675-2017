@@ -1,7 +1,7 @@
 frc1675-2017
 ============
 
-FRC 1675's codebase for their 2017 and 13th robot, <redacted> (practice) / <redacted> (competition)
+FRC 1675's codebase for their 2017 and 13th robot, Mystique.
 
 This code is currently under construction. We usually lead a cleanup effort post-season, so you may see extraneous or undocumented code in the repository at its current state.
 
