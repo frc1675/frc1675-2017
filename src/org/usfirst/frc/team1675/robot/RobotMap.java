@@ -33,6 +33,8 @@ public class RobotMap {
 	}
 
 	public static class DIOChannels {
+		public static final int AUTO_SIDE_VS_CENTER = 1;
+		public static final int AUTO_SIDE_CHOICE_OR_CENTER_VS_NOTHING = 2;
 	}
 
 	public static class AnalogInChannels {
