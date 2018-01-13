@@ -4,7 +4,8 @@ import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 import org.usfirst.frc.team1675.robot.commands.drive.CheeseDrive;
 
-import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -15,18 +16,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveBase extends Subsystem {
-	private CANTalon leftFront;
-	private CANTalon leftBack;
-	private CANTalon rightFront;
-	private CANTalon rightBack;
+	private TalonSRX leftFront;
+	private TalonSRX leftBack;
+	private TalonSRX rightFront;
+	private TalonSRX rightBack;
 	private DoubleSolenoid shifter;
 	AHRS ahrs;
 
 	public DriveBase() {
-		leftFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT);
-		leftBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_LEFT_BACK);
-		rightFront = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_FRONT);
-		rightBack = new CANTalon(RobotMap.CANDeviceIDs.DRIVE_RIGHT_BACK);
+		leftFront = new TalonSRX(RobotMap.CANDeviceIDs.DRIVE_LEFT_FRONT);
+		leftBack = new TalonSRX(RobotMap.CANDeviceIDs.DRIVE_LEFT_BACK);
+		rightFront = new TalonSRX(RobotMap.CANDeviceIDs.DRIVE_RIGHT_FRONT);
+		rightBack = new TalonSRX(RobotMap.CANDeviceIDs.DRIVE_RIGHT_BACK);
 		shifter = new DoubleSolenoid(RobotMap.SolenoidChannels.SHIFT_LOW,
 				RobotMap.SolenoidChannels.SHIFT_HIGH);
 		
@@ -38,26 +39,26 @@ public class DriveBase extends Subsystem {
 		rightBack.setInverted(false);
 		
 		
-		rightFront.reverseSensor(true);
+		rightFront.setInverted(true);
 
 	}
 	public void setLeftMotors(double power){
 		power = scaledDeadzone(power);
-		leftFront.set(power);
-		leftBack.set(power);
+		leftFront.set(ControlMode.PercentOutput,power);
+		leftBack.set(ControlMode.PercentOutput,power);
 	}
 	public void setRightMotors(double power){
 		power = scaledDeadzone(power);
-		rightFront.set(power);
-		rightBack.set(power);
+		rightFront.set(ControlMode.PercentOutput,power);
+		rightBack.set(ControlMode.PercentOutput,power);
 	}
 
 	public void setMotorPower(double power) {
 		power = scaledDeadzone(power);
-		leftFront.set(power);
-		leftBack.set(power);
-		rightFront.set(power);
-		rightBack.set(power);
+		leftFront.set(ControlMode.PercentOutput,power);
+		leftBack.set(ControlMode.PercentOutput,power);
+		rightFront.set(ControlMode.PercentOutput,power);
+		rightBack.set(ControlMode.PercentOutput,power);
   }
   
 	private double scaledDeadzone(double power) {
@@ -74,20 +75,20 @@ public class DriveBase extends Subsystem {
 		shifter.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void resetEncoder() {
-		leftFront.setEncPosition(0);
-		rightFront.setEncPosition(0);
+		leftFront.getSensorCollection().setAnalogPosition(0,0);
+		rightFront.getSensorCollection().setAnalogPosition(0,0);
 	}
 
 	public void reverseEncoder(boolean reversed) {
-		leftFront.reverseOutput(reversed);
-		rightFront.reverseOutput(reversed);
+		leftFront.setInverted(reversed);
+		rightFront.setInverted(reversed);
 	}
 
 	public double getLeftEncoderValue() {
-		return leftFront.getPosition();
+		return leftFront.getSelectedSensorPosition(0);
 	}
 	public double getRightEncoderValue() {
-		return rightFront.getPosition();
+		return rightFront.getSelectedSensorPosition(0);
 	}
 	public double getAngle() {
 		return ahrs.getAngle();
