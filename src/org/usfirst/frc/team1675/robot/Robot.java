@@ -3,6 +3,9 @@ package org.usfirst.frc.team1675.robot;
 
 import org.usfirst.frc.team1675.robot.commands.auto.GearCenter;
 import org.usfirst.frc.team1675.robot.commands.auto.GearLeftBoiler;
+import org.usfirst.frc.team1675.robot.commands.drive.EncAvgDrive;
+import org.usfirst.frc.team1675.robot.commands.drive.MakePIDWork;
+import org.usfirst.frc.team1675.robot.commands.drive.TurnOnGyro;
 import org.usfirst.frc.team1675.robot.subsystems.Climber;
 import org.usfirst.frc.team1675.robot.subsystems.DriveBase;
 import org.usfirst.frc.team1675.robot.subsystems.GearManipulator;
@@ -90,8 +93,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//autonomousCommand = new DriveForDistance(72,60);
-		//autonomousCommand = new GearLeftBoiler();
-		autonomousCommand = autoChooser.generateAuto();
+		autonomousCommand = new EncAvgDrive(180,30);
+		//autonomousCommand = autoChooser.generateAuto();
+		
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",

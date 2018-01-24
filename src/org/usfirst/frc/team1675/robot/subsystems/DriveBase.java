@@ -11,6 +11,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -38,12 +39,12 @@ public class DriveBase extends Subsystem {
 		rightFront.setInverted(false);
 		rightBack.setInverted(false);
 		
-		
-		rightFront.setInverted(true);
-
+		rightFront.setSensorPhase(true);
+		leftFront.setSensorPhase(true);
 	}
 	public void setLeftMotors(double power){
 		power = scaledDeadzone(power);
+		SmartDashboard.putNumber("motors", power);
 		leftFront.set(ControlMode.PercentOutput,power);
 		leftBack.set(ControlMode.PercentOutput,power);
 	}
@@ -75,13 +76,8 @@ public class DriveBase extends Subsystem {
 		shifter.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void resetEncoder() {
-		leftFront.getSensorCollection().setAnalogPosition(0,0);
-		rightFront.getSensorCollection().setAnalogPosition(0,0);
-	}
-
-	public void reverseEncoder(boolean reversed) {
-		leftFront.setInverted(reversed);
-		rightFront.setInverted(reversed);
+		leftFront.getSensorCollection().setQuadraturePosition(0,0);
+		rightFront.getSensorCollection().setQuadraturePosition(0,0);
 	}
 
 	public double getLeftEncoderValue() {

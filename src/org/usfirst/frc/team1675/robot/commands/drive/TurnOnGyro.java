@@ -16,6 +16,7 @@ public class TurnOnGyro extends PIDCommand {
 	static final double TOLERANCE = 0.5;
 	static final int BUFFER = 10;
 	double setpoint;
+	double timeout;
 	double initialDegrees;
 	/**
 	 * 
@@ -25,19 +26,19 @@ public class TurnOnGyro extends PIDCommand {
 		super(P, I, D);
 		requires(Robot.driveBase);
 		this.setpoint = setpoint;
+		this.timeout= timeout;
 	}
 
 	protected void initialize() {
 		SmartDashboard.putString("Turn command", "Started");
 		this.getPIDController().reset();
-		this.getPIDController().enable();
 		this.getPIDController().setOutputRange(-1.0, 1.0);
 		initialDegrees = Robot.driveBase.getAngle();
     	this.getPIDController().setSetpoint((initialDegrees + setpoint));
 		this.getPIDController().setAbsoluteTolerance(TOLERANCE);
 		this.getPIDController().setToleranceBuffer(BUFFER);
-		this.setTimeout(20);
-        this.getPIDController().setContinuous(true);
+		this.setTimeout(timeout);
+        this.getPIDController().enable();
 	}
 
 	protected void execute() {
