@@ -3,6 +3,8 @@ package org.usfirst.frc.team1675.robot.subsystems;
 import org.usfirst.frc.team1675.robot.RobotMap;
 
 import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -13,11 +15,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class GearManipulator extends Subsystem {
 
 	private DoubleSolenoid cylinderPosition;
-	private CANTalon gearIntake;
+	private TalonSRX gearIntake;
 
 	public GearManipulator() {
 
-		gearIntake = new CANTalon(RobotMap.CANDeviceIDs.GEAR_MANIPULATOR);
+		gearIntake = new TalonSRX(RobotMap.CANDeviceIDs.GEAR_MANIPULATOR);
 		cylinderPosition = new DoubleSolenoid(RobotMap.SolenoidChannels.DEPLOY_LEFT_EXTEND,
 				RobotMap.SolenoidChannels.DEPLOY_LEFT_RETRACT);
 
@@ -36,7 +38,7 @@ public class GearManipulator extends Subsystem {
 	}
 
 	public void runGearManipulator(double power) {
-		gearIntake.set(power);
+		gearIntake.set(ControlMode.PercentOutput,power);
 	}
 
 	public void initDefaultCommand() {

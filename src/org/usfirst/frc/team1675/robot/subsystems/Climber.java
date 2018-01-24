@@ -4,20 +4,22 @@ import org.usfirst.frc.team1675.robot.Robot;
 import org.usfirst.frc.team1675.robot.RobotMap;
 
 import com.ctre.CANTalon;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Climber extends Subsystem {
-	private CANTalon climberTalon;
+	private TalonSRX climberTalon;
 
 	public Climber() {
-		climberTalon = new CANTalon(RobotMap.CANDeviceIDs.CLIMBER);
+		climberTalon = new TalonSRX(RobotMap.CANDeviceIDs.CLIMBER);
 
 	}
 
 	public void setPower(double power) {
-		climberTalon.set(power);
+		climberTalon.set(ControlMode.PercentOutput,power);
 
 	}
 	
