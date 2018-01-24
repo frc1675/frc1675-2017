@@ -44,7 +44,6 @@ public class DriveBase extends Subsystem {
 	}
 	public void setLeftMotors(double power){
 		power = scaledDeadzone(power);
-		SmartDashboard.putNumber("motors", power);
 		leftFront.set(ControlMode.PercentOutput,power);
 		leftBack.set(ControlMode.PercentOutput,power);
 	}

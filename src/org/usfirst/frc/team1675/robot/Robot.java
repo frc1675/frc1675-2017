@@ -93,8 +93,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		//autonomousCommand = new DriveForDistance(72,60);
-		autonomousCommand = new EncAvgDrive(180,30);
-		//autonomousCommand = autoChooser.generateAuto();
+		autonomousCommand = autoChooser.generateAuto();
 		
 		
 		/*
